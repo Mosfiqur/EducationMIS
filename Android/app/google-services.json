@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "861225362374",
+    "project_id": "education-sector-emis",
+    "storage_bucket": "education-sector-emis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861225362374:android:2fec78401ee860e1fd48c7",
+        "android_client_info": {
+          "package_name": "com.unicefeducation.mis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861225362374-geibqf7ubmf0rc0b0dg97ajupsht41j0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unicefeducation.mis",
+            "certificate_hash": "19e87937234084a39c278a8af89456e7c32f5344"
+          }
+        },
+        {
+          "client_id": "861225362374-gdacau9d3ro63h8d0tmq4nsk0ag760bv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeCAEOOSvw0I37hCX6MCqJiufHITeml5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861225362374-gdacau9d3ro63h8d0tmq4nsk0ag760bv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,232 @@
+<!-- <pre>{{facilityViewModel|json}}</pre> -->
+<!-- <pre>{{facility|json}}</pre> -->
+
+
+<div class="card">
+  <div *ngIf="onlineOfflineStatus == 1">
+    <app-back-button [pageTitle]="'Online Facility Indicators'"></app-back-button>
+  </div>
+  <div *ngIf="onlineOfflineStatus == 2">
+    <app-back-button [pageTitle]="'Offline Facility Indicators'"></app-back-button>
+  </div>
+
+  <div style="text-align:left;margin-left: 1.9rem;">
+    <div class="row">
+      <div class="col-md-10">
+        <div *ngIf="onlineOfflineStatus == 1">
+          <div class="mb-2">Code : {{facility?.facilityCode}}</div>
+          <h5>Facility Name : {{facility?.name}}</h5>
+          <h6>Camp : {{facility?.campName}}</h6>
+          <h6>Implementation Partner Name: {{facility?.implementationPartnerName}}</h6>
+          <h6>Program Partner Name: {{facility?.programPartnerName}}</h6>
+        </div>
+
+        <div *ngIf="onlineOfflineStatus == 2">
+          <div class="mb-2">Code : {{facility?.facilityCode}}</div>
+          <h5>Facility Name : {{facility?.facilityName}}</h5>
+          <h6>Camp : {{facility?.campName}}</h6>
+          <h6>Implementation Partner Name: {{facility?.implementationPartnerName}}</h6>
+          <h6>Program Partner Name:{{facility?.programmingPartnerName}}</h6>
+        </div>
+      </div>
+      <div class="col-md-2">
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <form [formGroup]="indicatorForm" (ngSubmit)="onSubmit()">
+    <div style="text-align:right;">
+      <button type="button" class="btn btn-success mb-2 mr-4" type="submit">Save All</button>
+    </div>
+    <!-- {{indicatorForm.value | json}} -->
+    <!-- <pre>{{listFacilityIndicators|json}}</pre> -->
+    <!-- <input [(ngModel)]="indicator.id" name="indicatorId"></imput> -->
+    <div class="card" *ngFor="let indicator of listFacilityIndicators" style="margin:1px 0px 10px 1px">
+      <div class="card-header row">
+        <div class="col-md-11">
+          <h5 class="card-title">{{indicator.columnName}}</h5>
+          <h5 class="card-title" *ngIf="indicator.columnNameInBangla !== ''">( {{indicator.columnNameInBangla}} )</h5>
+        </div>
+        <!-- <div class="col-md-1" *ngIf="onlineOfflineStatus == 2"><button type="button"
+            (click)="onClickRecordSave(indicator.id,indicator.columnDataType)" class="btn btn-info">Save</button>
+        </div> -->
+
+        <!-- <div class="col-md-1" *ngIf="onlineOfflineStatus == 1">
+          <button type="button" (click)="onClickRecordSave(indicator.entityDynamicColumnId,indicator.columnDataType)"
+           class="btn btn-info">Save </button>
+        </div> -->
+      </div>
+      <div class="card-body Offline" *ngIf="onlineOfflineStatus === 2">
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === true">
+          <input class="form-control" type="text" value="{{disabledIndicatorNameFind(indicator.entityDynamicColumnId)}}" disabled />
+        </div>
+
+        <!-- <h5 class="card-title">{{indicator.columnName}}</h5> -->
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === false">
+          <div
+            *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Int' || ColumnDataTypeText(indicator.columnDataType) == 'Decimal'">
+            <input class="form-control" type="number" formControlName="{{indicator.id}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Text'">
+            <input class="form-control" type="text" formControlName="{{indicator.id}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Datetime'">
+            <input class="form-control" type="date" formControlName="{{indicator.id}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Boolean'">
+            <select class="custom-select mr-sm-2" formControlName="{{indicator.id}}" required>
+              <option value="">Please Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+            <button (click)="onClickListTypeSave(indicator)"
+              class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+              data-backdrop="static" data-keyboard="false">
+              <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+            </button>
+
+            <div class="py-2"
+              *ngIf="listSelectedListItem.get(indicator.entityDynamicColumnId)?.length > 0; else noItemFound;">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p>
+
+                <div *ngFor="let selectedListItem of listSelectedListItem.get(indicator.entityDynamicColumnId)">
+                  <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                    <span class="mr-3 ml-1"> {{selectedListItem.title}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noItemFound class="py-2">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text m-2 py-1 my-auto">You have not Choosed anything yet. </p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <!-- <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+          <button (click)="onClickListTypeSave(indicator)"
+            class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+            data-backdrop="static" data-keyboard="false">
+            <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+          </button>
+
+          <div class="py-2">
+            <div class="d-flex flex-wrap align-content-start">
+              <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p> 
+
+              <div *ngFor="let selectedListItem of listSelectedListItem">
+                <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                  <span class="mr-3 ml-1"> {{selectedListItem}}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="invalid-feedback d-block">
+          {{validationErrors?.value}}
+        </div> -->
+
+        <!-- {{ColumnDataTypeText(indicator.columnDataType)}} -->
+        <p class="card-text"></p>
+      </div>
+
+
+      <div class="card-body Online" *ngIf="onlineOfflineStatus === 1">
+        <!-- <h5 class="card-title">{{indicator.columnName}}</h5> -->
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === true">
+          <input class="form-control" type="text" value="{{disabledIndicatorNameFind(indicator.entityDynamicColumnId,indicator.values.join(','))}}" disabled />
+        </div>
+
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === false">
+          <div
+            *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Int' || ColumnDataTypeText(indicator.columnDataType) == 'Decimal'">
+            <input class="form-control" type="number" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Text'">
+            <input class="form-control" type="text" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Datetime'">
+            <input class="form-control" type="date" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Boolean'">
+            <select class="custom-select mr-sm-2" formControlName="{{indicator.entityDynamicColumnId}}" required>
+              <option value="">Please Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+            <button (click)="onClickListTypeSave(indicator)"
+              class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+              data-backdrop="static" data-keyboard="false">
+              <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+            </button>
+
+            <div class="py-2"
+              *ngIf="listSelectedListItem.get(indicator.entityDynamicColumnId)?.length > 0; else noItemFound;">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p>
+
+                <div *ngFor="let selectedListItem of listSelectedListItem.get(indicator.entityDynamicColumnId)">
+                  <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                    <span class="mr-3 ml-1"> {{selectedListItem.title}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noItemFound class="py-2">
+              <div class="d-flex flex-wrap align-content-start"
+                *ngIf="indicator.values.length==0 || listSelectedListItem.get(indicator.entityDynamicColumnId)?.length == 0">
+                <p class="gry-text  mr-2 py-1 my-auto">You have not Choosed anything yet. </p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <!-- <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+            <button (click)="onClickListTypeSave(indicator)"
+              class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+              data-backdrop="static" data-keyboard="false">
+              <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+            </button>
+  
+            <div class="py-2">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p> 
+  
+                <div *ngFor="let selectedListItem of listSelectedListItem">
+                  <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                    <span class="mr-3 ml-1"> {{selectedListItem}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="invalid-feedback d-block">
+          {{validationErrors?.value}}
+        </div> -->
+
+        <!-- {{ColumnDataTypeText(indicator.columnDataType)}} -->
+        <p class="card-text"></p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button type="button" *ngIf="listFacilityIndicators?.length != 0" class="btn btn-success mb-4 mr-4"
+        type="submit">Save All</button>
+    </div>
+  </form>
+</div>

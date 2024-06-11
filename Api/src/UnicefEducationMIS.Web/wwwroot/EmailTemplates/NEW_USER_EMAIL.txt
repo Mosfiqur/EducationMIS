@@ -1,0 +1,13 @@
+﻿<div style="border-radius: 5px;border: 1px solid #d5d5d5;font-family: arial;background-color: #f7f8f9;padding: 30px;width: 700px;min-height: 201px;text-align: left;margin-left: 20px;margin-top: 20px;">
+    <div style="font-size: 30px;font-family: arial;color: #000;margin-bottom: 30px;">An user account has been created for you. </div>
+    <div style="font-size: 15px;font-family: arial;color: #000;margin-bottom: 15px;">
+        Your credentials are as follows:<br>
+        Username: {0}<br>
+        Password: {1}<br><br>
+
+        Please click button below for login
+    </div>
+    <br>
+    <a href="{2}" style="font-size: 16px;text-transform: uppercase;color: #ffffff;font-family: arial;border: none;text-align: center;text-decoration: none;background-color: #5cacde;padding: 10px;margin-bottom: 30px;">LOGIN NOW</a>
+    <br><br>
+</div>

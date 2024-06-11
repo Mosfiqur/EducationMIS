@@ -1,0 +1,32 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Beneficiaries' Reporting cycle
+        </h1>
+
+        <schedule-instance-list *ngIf="pagedInstances.data.length>0" [pagedData]="pagedInstances"
+        [entityType] = "entityType"
+        (getPage)="onGetPage($event)"
+        (onPageSizeChanged)="onPageSizeChanged($event)"
+        (onAllCompleted)="onAllCompleted($event)"
+        >
+        </schedule-instance-list>
+
+        <div class="border-bottom border-top my-4 pb-1" *ngIf="pagedInstances.data.length==0">
+          <div colspan="12">
+
+            <div class="text-center py-5">
+              <p class="xl-text mb-0">No instacne data found.</p>
+              <p class="lg-text">(Reporting cycle will be displayed here)</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

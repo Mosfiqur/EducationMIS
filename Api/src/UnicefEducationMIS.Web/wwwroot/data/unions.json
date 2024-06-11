@@ -1,0 +1,27 @@
+﻿[
+  {
+    "id": 1,
+    "name": "Whykong",
+    "upazilaId": "1"
+  },
+  {
+    "id": 2,
+    "name": "Palong Khali",
+    "upazilaId": "1"
+  },
+  {
+    "id": 3,
+    "name": "Nhilla",
+    "upazilaId": "2"
+  },
+  {
+    "id": 4,
+    "name": "Raja Palong",
+    "upazilaId": "1"
+  },
+  {
+    "id": 5,
+    "name": "Baharchhara",
+    "upazilaId": "2"
+  }
+]

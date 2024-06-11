@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_relative"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/notification_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:text="Facility data collection process of instance [Test schedule-Jan/2021] has been started on [22-01-2021]."
+        android:textStyle="bold"
+        android:textColor="@color/green"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/notification_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notification_tv"
+        android:text="2021-01-22T21"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:textColor="@color/green"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:layout_margin="@dimen/_4sdp"
+        android:layout_below="@id/notification_date"
+        android:background="@color/green"/>
+</RelativeLayout>

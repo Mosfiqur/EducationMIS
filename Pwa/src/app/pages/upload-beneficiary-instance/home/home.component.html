@@ -1,0 +1,22 @@
+<div class="card m-5 border-0">
+  <div class="card-title" style="text-align: center; font-weight: 900;">Upload Beneficiary Data</div>
+
+  <div class=" my-4 pb-1" *ngIf="listInstance?.length===0">
+    <div colspan="12">
+      <div class="text-center py-5">
+        <p class="xl-text mb-0">No Data Available for Upload</p>
+        <p class="lg-text">(After Collecting Data in Offline , Uploaded Data will available here.)</p>
+      </div>
+    </div>
+  </div>
+
+  <a *ngFor="let instance of listInstance"
+      (click)="navigateTo(instance.id)"
+      style="cursor: pointer;cursor: pointer;border: 1px solid;margin-top: 20px;border-radius: 8px;"
+      aria-expanded="false">
+      <div class="card-body">
+          <h5 class="card-title">Schedule : {{instance.title}}</h5>
+          <p class="card-text">Date : {{instance.dataCollectionDate|date:'dd-MMM-yyyy'}}</p>
+      </div>
+  </a>
+</div>

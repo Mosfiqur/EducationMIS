@@ -1,0 +1,9 @@
+<span>
+    {{instance?.title}}
+    <span style="padding:3px" [ngClass]="{'upcoming-badge': instance?.status==instanceStatusEnum.Pending,                                     
+                      'running-badge': instance?.status==instanceStatusEnum.Running,
+                      'done-badge': instance?.status==instanceStatusEnum.Completed
+                    }">
+                        {{instance?.status | instanceStatus}}
+    </span>
+</span>

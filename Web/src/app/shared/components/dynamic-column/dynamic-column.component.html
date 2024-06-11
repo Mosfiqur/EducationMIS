@@ -1,0 +1,143 @@
+<div class="modal-content" *ngIf="dynamicColumnForm">
+  <form [formGroup]="dynamicColumnForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+      <button (click)="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">     
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Column Name <span class="red-text font-weight-bold">* </span>:</label>
+          <input 
+            name="columnName" 
+            type="text"
+            formControlName="columnName"
+            class="form-control" 
+            id="newColumnName">
+          <div class="invalid-feedback d-block">
+            {{validationErrors.columnName}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Add Bangla <span class="red-text font-weight-bold">* </span>:</label>
+          <input  
+              name="columnNameInBangla"
+              formControlName="columnNameInBangla"
+              type="text" 
+              class="form-control" 
+              id="addBangla">
+              <div class="invalid-feedback d-block">
+                {{validationErrors.columnNameInBangla}}
+              </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Column Type <span class="red-text font-weight-bold">* </span>:</label>
+            <select 
+              class="custom-select" 
+              formControlName="columnDataType"
+              name="columnDataType"
+              (change)="dataTypeSelect()"
+            >
+            <option value="">Select</option>
+              <option 
+                class="dropdown-item"                             
+                *ngFor="let dataType of dataTypeList" 
+                value="{{dataType.id}}"
+                
+              >
+              {{dataType.text}}</option>
+            </select> 
+            <div class="invalid-feedback d-block">
+              {{validationErrors.columnDataType}}
+            </div>        
+        </div>
+
+        <div class="form-group" *ngIf="selectedDataType == dataType.List">
+          <label for="exampleFormControlInput1">List Type <span class="red-text font-weight-bold">* </span>:</label>
+          <select 
+              class="custom-select" 
+              formControlName="columnListId"
+              name="columnListId"
+              (change)="onSelectListType()"
+            >
+            <option value="">Select</option>
+              <option selected
+                class="dropdown-item"                             
+                *ngFor="let listType of listDataTypes"
+                value="{{listType?.id}}"
+                
+              >
+              {{listType?.name}}</option>
+            </select>  
+            <div class="invalid-feedback d-block">
+              {{validationErrors.columnListId}}
+            </div>    
+        </div>
+        
+        
+        <div class="form-group" *ngIf="selectedDataType == dataType.List">             
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" 
+            id="exampleCheck1"
+            formControlName="isMultiValued"
+            name="isMultiValued"
+            >                
+            <label class="form-check-label" for="exampleCheck1">Is Multivalued?</label>
+     
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="selectedListDataType && openListEditor">
+          <list-editor 
+            (done)="onSaveListDataType($event)"
+            (cancel)="onCancelListDataType()"
+            [listId]="selectedListDataType?.id"
+            ></list-editor>
+        </div>
+  
+
+
+        <div class="form-group" *ngIf="entityTypeId == facilityEntityType">
+          <label for="exampleFormControlInput1">Target Population <span class="red-text font-weight-bold">* </span>:</label>
+            <select 
+              class="custom-select" 
+              formControlName="targetedPopulation"
+              name="targetedPopulation"
+              
+            >
+            <option value="">Select</option>
+              <option 
+                class="dropdown-item"                             
+                *ngFor="let population of targetPopulation" 
+                value="{{population.id}}"
+                
+              >
+              {{population.text}}</option>
+            </select> 
+            <div class="invalid-feedback d-block">
+              {{validationErrors.targetPopulation}}
+            </div>        
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Column Description</label>
+          <textarea 
+            class="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="3"
+            formControlName="description"
+            ></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+      <a type="button" (click)="cancel()"
+          class="btn site-btn-cutom-link"
+          data-dismiss="modal"><span>Cancel</span></a>
+      <button [disabled]="!dynamicColumnForm.valid || openListEditor" type="submit" class="btn site-btn-primary" ><span>{{buttonText}}</span></button>
+    </div>
+  </form>
+  </div>

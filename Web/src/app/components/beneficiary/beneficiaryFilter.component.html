@@ -1,0 +1,116 @@
+<div>
+    <div id="filter-main" class="collapse" aria-labelledby="headingTwo" data-parent="#filter-main">
+        <div class="allborder-box border-redious-xl p-3">
+
+            <form class="site-form">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Date of birth (From Date - To Date)</label>
+
+                        <input type="text" ngxDaterangepickerMd [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}"
+                          id="dateOfBirth" (datesUpdated)="dateOfBirthUpdated($event)" class="form-control" />
+
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Enrollment Date (From Date - To Date)</label>
+                        <input type="text" ngxDaterangepickerMd [locale]="{applyLabel: 'ok', format: 'DD-MM-YYYY'}"
+                            id="enrolmentDate" (datesUpdated)="enrollmentDatehUpdated($event)" class="form-control" />
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Sex</label>
+
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="beneficiaryFilterModel.sex" name="sex">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let gender of genderList" value="{{gender.id}}">
+                                {{gender.text}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Level of study</label>
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="beneficiaryFilterModel.levelOfStudy" name="levelOfStudy">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let level of levelOfStudyList" value="{{level.id}}">
+                                {{level.text}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Camp </label>
+                        <div class="dropdown">
+                            <button class="btn site-btn-outlined btn-block" type="button" (click)="campModal_clicked()">
+                                <div class="col-10 d-inline-block p-0">Select Camp</div>
+                            </button>
+
+                        </div>
+                        <div class="d-flex flex-wrap align-content-start " *ngIf="camps.length>0">
+                            <p class="gry-text  mr-2 py-1 my-auto">Camp selected :</p>
+
+                            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngFor="let c of camps">
+                                <span class="mr-3 ml-1"> {{c.name}}</span>
+                                <span class="mr-1"><a (click)="removeCamp(c)"><i class="fa fa-times"
+                                            aria-hidden="true"></i></a></span>
+
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Facility</label>
+                        <div class="dropdown">
+                            <button class="btn site-btn-outlined btn-block" type="button" (click)="facilityModal_clicked()">
+                                <div class="col-10 d-inline-block p-0">Select Facility</div>
+                            </button>
+
+                        </div>
+                        <div class="d-flex flex-wrap align-content-start " *ngIf="facilities.length>0">
+                            <p class="gry-text  mr-2 py-1 my-auto">Facility selected :</p>
+
+                            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngFor="let c of facilities">
+                                <span class="mr-3 ml-1"> {{c.facilityName}}</span>
+                                <span class="mr-1"><a (click)="removeFacility(c)"><i class="fa fa-times"
+                                            aria-hidden="true"></i></a></span>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <p class="mb-0 gry-text pr-3">
+                            Disabled
+                        </p>
+
+                        <!-- <label class="switch" type="button" data-toggle="collapse" data-target="#Recordinstance"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            <input type="checkbox" [(ngModel)]="beneficiaryFilterModel.disable" name="disable">
+                            <span class="slider round"></span>
+                        </label> -->
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="beneficiaryFilterModel.disable" name="disable">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let dis of listOfDisability" value="{{dis.value}}">
+                                {{dis.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+
+            
+
+            <div class="py-3 text-right">
+                <a #collapseFilter class="btn site-btn-cutom-link" data-dismiss="modal" type="button" 
+                    type="button" data-toggle="collapse" data-target="#filter-main" aria-expanded="false"
+                    aria-controls="collapseTwo"><span>Cancel</span></a>
+                <a class="btn site-btn-primary ml-3" (click)="applyFilter()"><span>Filter Data</span></a>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1316 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Facility Id",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 2,
+    "Name": "Facility Name",
+    "NameInBangla": "নাম",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 3,
+    "Name": "Targeted Population",
+    "NameInBangla": "",
+    "ColumnType": 6,
+    "IsMultiValued": false,
+    "ColumnListId": 7,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 4,
+    "Name": "Facility Status",
+    "NameInBangla": "",
+    "ColumnType": 6,
+    "IsMultiValued": false,
+    "ColumnListId": 9,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 5,
+    "Name": "Latitude",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 6,
+    "Name": "Longitude",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 7,
+    "Name": "Donors",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 8,
+    "Name": "Non Education Partner",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 9,
+    "Name": "Program Partner",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 10,
+    "Name": "Implementation Partner",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 11,
+    "Name": "Remarks",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 12,
+    "Name": "Upazila",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 13,
+    "Name": "Union",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 14,
+    "Name": "Camp",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 15,
+    "Name": "Para Name",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 16,
+    "Name": "Block",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 17,
+    "Name": "Teacher",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 18,
+    "Name": "Facility Type",
+    "NameInBangla": "",
+    "ColumnType": 6,
+    "IsMultiValued": false,
+    "ColumnListId": 8,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": true
+  },
+  {
+    "Id": 19,
+    "Name": "# of LF established in rohingya community",
+    "NameInBangla": "রোহিঙ্গা জনগোষ্ঠিতে প্রতিষ্ঠিত LF এর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 20,
+    "Name": "# of classrooms in LF in rohingya community",
+    "NameInBangla": "রোহিঙ্গা জনগোষ্ঠিতে LF এ ক্লাসের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 21,
+    "Name": "# of shifts in LF in rohingya community",
+    "NameInBangla": "রোহিঙ্গা জনগোষ্ঠিতে LF এ শিফটের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 22,
+    "Name": "# of Functional Community Latrines near LF",
+    "NameInBangla": "LF এর নিকট কার্যকর ল্যাট্রিনের সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 23,
+    "Name": "# of Latrines established for Boys",
+    "NameInBangla": "ছেলেদের জন্য প্রতিষ্ঠিত ল্যাট্রিনের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 24,
+    "Name": "# of Latrines established for Girls",
+    "NameInBangla": "মেয়েদের জন্য প্রতিষ্ঠিত ল্যাট্রিনের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 25,
+    "Name": "ID of the latrines accessible to the LC (use ; separator)",
+    "NameInBangla": "LC এর জন্য গমনীয় ল্যাট্রিনের ID ( ; ব্যাবহার করুন পার্থক্য করার জন্য)",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 26,
+    "Name": "# of handwashing station established",
+    "NameInBangla": "হাত ধোওয়ার প্রতিষ্ঠিত স্থান এর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+
+  {
+    "Id": 27,
+    "Name": "# of rohingya girls in level-1",
+    "NameInBangla": "লেভেল-১ এ রোহিঙ্গা মেয়ের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 28,
+    "Name": "# of rohingya boys in level-1",
+    "NameInBangla": "লেভেল-১ এ রোহিঙ্গা ছেলের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 29,
+    "Name": "# of rohingya girls in level-2",
+    "NameInBangla": "লেভেল-২ এ রোহিঙ্গা মেয়ের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 30,
+    "Name": "# of rohingya boys in level-2",
+    "NameInBangla": "লেভেল-২ এ রোহিঙ্গা ছেলের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 31,
+    "Name": "# of rohingya girls in level-3",
+    "NameInBangla": "লেভেল-৩ এ রোহিঙ্গা মেয়ের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 32,
+    "Name": "# of rohingya boys in level-3",
+    "NameInBangla": "লেভেল-৩ এ রোহিঙ্গা ছেলের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 33,
+    "Name": "# of rohingya girls in level-4",
+    "NameInBangla": "লেভেল-৪ এ রোহিঙ্গা মেয়ের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 34,
+    "Name": "# of rohingya boys in level-4",
+    "NameInBangla": "লেভেল-৪ এ রোহিঙ্গা ছেলের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+  {
+    "Id": 35,
+    "Name": "# of rohingya girls (3) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির মেয়ের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 36,
+    "Name": "# of rohingya girls (3) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির মেয়ের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 37,
+    "Name": "# of rohingya girls (3) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির মেয়ের (৩) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 38,
+    "Name": "# of rohingya boys (3) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির ছেলের(৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 39,
+    "Name": "# of rohingya boys (3) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির ছেলের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 40,
+    "Name": "# of rohingya boys (3) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির ছেলের(৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+
+
+
+
+  {
+    "Id": 41,
+    "Name": "# of HC girls (3) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির মেয়ের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 42,
+    "Name": "# of HC girls (3) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির মেয়ের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 43,
+    "Name": "# of HC girls (3) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির মেয়ের (৩) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 44,
+    "Name": "# of HC boys (3) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির ছেলের(৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 45,
+    "Name": "# of HC boys (3) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির ছেলের (৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 46,
+    "Name": "# of HC boys (3) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির ছেলের(৩) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+  {
+    "Id": 47,
+    "Name": "# of rohingya girls (4-5) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 48,
+    "Name": "# of rohingya girls (4-5) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 49,
+    "Name": "# of rohingya girls (4-5) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 50,
+    "Name": "# of rohingya boys (4-5) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির ছেলের(৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 51,
+    "Name": "# of rohingya boys (4-5) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির ছেলের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 52,
+    "Name": "# of rohingya boys (4-5) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির ছেলের(৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+
+
+  {
+    "Id": 53,
+    "Name": "# of HC girls (4-5) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 54,
+    "Name": "# of HC girls (4-5) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 55,
+    "Name": "# of HC girls (4-5) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির মেয়ের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 56,
+    "Name": "# of HC boys (4-5) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির ছেলের(৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 57,
+    "Name": "# of HC boys (4-5) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির ছেলের (৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 58,
+    "Name": "# of HC boys (4-5) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির ছেলের(৪-৫) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+  {
+    "Id": 59,
+    "Name": "# of rohingya girls (6-14) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 60,
+    "Name": "# of rohingya girls (6-14) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 61,
+    "Name": "# of rohingya girls (6-14) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 62,
+    "Name": "# of rohingya boys (6-14) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 63,
+    "Name": "# of rohingya boys (6-14) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 64,
+    "Name": "# of rohingya boys (6-14) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+
+
+
+
+
+  {
+    "Id": 65,
+    "Name": "# of HC girls (6-14) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 66,
+    "Name": "# of HC girls (6-14) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 67,
+    "Name": "# of HC girls (6-14) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির মেয়ের (৬-১৪) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 68,
+    "Name": "# of HC boys (6-14) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 69,
+    "Name": "# of HC boys (6-14) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 70,
+    "Name": "# of HC boys (6-14) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির ছেলের(৬-১৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+  {
+    "Id": 71,
+    "Name": "# of rohingya girls (15-18) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+
+  },
+  {
+    "Id": 72,
+    "Name": "# of rohingya girls (15-18) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 73,
+    "Name": "# of rohingya girls (15-18) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 74,
+    "Name": "# of rohingya boys (15-18) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির ছেলের(১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 75,
+    "Name": "# of rohingya boys (15-18) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির ছেলের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 76,
+    "Name": "# of rohingya boys (15-18) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির ছেলের(১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+
+
+
+
+  {
+    "Id": 77,
+    "Name": "# of HC girls (15-18) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 78,
+    "Name": "# of HC girls (15-18) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 79,
+    "Name": "# of HC girls (15-18) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির মেয়ের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 80,
+    "Name": "# of HC boys (15-18) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির ছেলের(১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 81,
+    "Name": "# of HC boys (15-18) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির ছেলের (১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 82,
+    "Name": "# of HC boys (15-18) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির ছেলের(১৫-১৮) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+
+  {
+    "Id": 83,
+    "Name": "# of rohingya girls (19-24) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 84,
+    "Name": "# of rohingya girls (19-24) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 85,
+    "Name": "# of rohingya girls (19-24) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 86,
+    "Name": "# of rohingya boys (19-24) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত রোহিঙ্গা জনগোষ্ঠির ছেলের(১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 87,
+    "Name": "# of rohingya boys (19-24) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম রোহিঙ্গা জনগোষ্ঠির ছেলের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+  {
+    "Id": 88,
+    "Name": "# of rohingya boys (19-24) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  রোহিঙ্গা জনগোষ্ঠির ছেলের(১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsAutoCalculated": true,
+    "IsFixed": false
+  },
+
+
+
+
+  {
+    "Id": 89,
+    "Name": "# of HC girls (19-24) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 90,
+    "Name": "# of HC girls (19-24) with disability enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 91,
+    "Name": "# of HC girls (19-24) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির মেয়ের (১৯-২৪) সংখ্য",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 92,
+    "Name": "# of HC boys (19-24) enrolled in LF",
+    "NameInBangla": "LF এ ভর্তিকৃত স্থানীয় জনগোষ্ঠির ছেলের(১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 93,
+    "Name": "# of HC boys (19-24) with disability enrolled",
+    "NameInBangla": "LF এ ভর্তিকৃত শারিরিকভাবে অক্ষম স্থানীয় জনগোষ্ঠির ছেলের (১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 94,
+    "Name": "# of HC boys (19-24) receiving edu materials",
+    "NameInBangla": "LF এ শিক্ষা উপকরণ প্রাপ্ত  স্থানীয় জনগোষ্ঠির ছেলের(১৯-২৪) সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+
+
+
+
+
+  {
+    "Id": 95,
+    "Name": "# of female rohingya learning facilitators trained",
+    "NameInBangla": "প্রশিক্ষণপ্রাপ্ত রোহিঙ্গা মহিলা শিক্ষাদানকারীর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 96,
+    "Name": "# of male rohingya learning facilitators trained",
+    "NameInBangla": "প্রশিক্ষণপ্রাপ্ত রোহিঙ্গা পুরুষ শিক্ষাদানকারীর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 97,
+    "Name": "# of female HC learning facilitators trained ",
+    "NameInBangla": "প্রশিক্ষণপ্রাপ্ত স্থানীয় মহিলা শিক্ষাদানকারীর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 98,
+    "Name": "# of male HC learning facilitators trained ",
+    "NameInBangla": "প্রশিক্ষণপ্রাপ্ত স্থানীয় পুরুষ শিক্ষাদানকারীর সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 99,
+    "Name": "Number of DRR awareness sessions conducted in HC (non-formal/community-based schools)",
+    "NameInBangla": "স্থানীয় জনগোষ্ঠীতে (অনানুষ্ঠানিক / সম্প্রদায়ভিত্তিক বিদ্যালয়) এ পরিচালিত DRR সচেতনতা অধিবেশন সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 100,
+    "Name": "# of Rohingya Learning Facility Education Committees  established in rohingya camps",
+    "NameInBangla": "রোহিঙ্গা শিবিরগুলিতে প্রতিষ্ঠিত রোহিঙ্গা শিক্ষা সুবিধা শিক্ষা কমিটির সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 101,
+    "Name": "# of female rohingya caregivers sensitized on child/youth rights, protection and parenting",
+    "NameInBangla": "শিশু / যুব অধিকার, সুরক্ষা এবং অভিভাবকত্ব সম্পর্কে সংবেদনশীলকৃত রোহিঙ্গা নারীর সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 102,
+    "Name": "# of male rohingya caregivers sensitized on child/youth rights, protection and parenting",
+    "NameInBangla": "শিশু / যুব অধিকার, সুরক্ষা এবং অভিভাবকত্ব সম্পর্কে সংবেদনশীলকৃত রোহিঙ্গা পুরুষের সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 103,
+    "Name": "# of female HC caregivers sensitized on child/youth rights, protection and parenting",
+    "NameInBangla": "শিশু / যুব অধিকার, সুরক্ষা এবং অভিভাবকত্ব সম্পর্কে সংবেদনশীলকৃত রোহিঙ্গা নারীর সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 104,
+    "Name": "# of male HC caregivers sensitized on child/youth rights, protection and parenting",
+    "NameInBangla": "শিশু / যুব অধিকার, সুরক্ষা এবং অভিভাবকত্ব সম্পর্কে সংবেদনশীলকৃত রোহিঙ্গা পুরুষের সংখ্যা ",
+    "ColumnType": 1,
+    "TargetedPopulation": 1,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 105,
+    "Name": "# of rohingya girls aged 3-24 years old engaged in social cohesion initiatives",
+    "NameInBangla": "সামাজিক সমন্বয় উদ্যোগে নিযুক্ত 3-24 বছর বয়সী রোহিঙ্গা মেয়েদের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 106,
+    "Name": "# of rohingya boys aged 3-24 years old engaged in social cohesion initiatives",
+    "NameInBangla": "সামাজিক সমন্বয় উদ্যোগে নিযুক্ত 3-24 বছর বয়সী রোহিঙ্গা ছেলেদের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 2,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 107,
+    "Name": "# of children benefitting from food",
+    "NameInBangla": "খাদ্য সুবিধাপ্রাপ্ত শিশুর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 108,
+    "Name": "# of children benefitting from school/classroom/toilet rehabilitation",
+    "NameInBangla": "স্কুল / শ্রেণিকক্ষ / টয়লেট পুনর্বাসন থেকে উপকৃত শিশুদের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 109,
+    "Name": "# of children benefitting food",
+    "NameInBangla": "খাদ্য সুবিধাপ্রাপ্ত শিশুর সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 110,
+    "Name": "Other rapid intervention (ICT, LAB etc.)",
+    "NameInBangla": "অন্যান্য দ্রুত হস্তক্ষেপ গৃহীত",
+    "ColumnType": 2,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 111,
+    "Name": "Damage Status",
+    "NameInBangla": "ক্ষতির অবস্থা",
+    "ColumnType": 6,
+    "ColumnListId": 2,
+    "IsMultiValued": false,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 112,
+    "Name": "Damage caused by",
+    "NameInBangla": "ক্ষতির কারণ",
+    "ColumnType": 6,
+    "ColumnListId": 3,
+    "IsMultiValued": true,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 113,
+    "Name": "Date of damage took place",
+    "NameInBangla": "ক্ষতির তারিখ",
+    "ColumnType": 4,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 114,
+    "Name": "Action required",
+    "NameInBangla": "ব্যবস্থা নেয়া প্রয়োজন",
+    "ColumnType": 6,
+    "ColumnListId": 4,
+    "IsMultiValued": false,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 115,
+    "Name": "# days required to take action",
+    "NameInBangla": "ব্যবস্থা নেয়ার জন্য প্রয়োজনীয় দিনের সংখ্যা",
+    "ColumnType": 1,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 116,
+    "Name": "Taken action",
+    "NameInBangla": "ব্যবস্থা নেয়া হয়েছে",
+    "ColumnType": 6,
+    "ColumnListId": 5,
+    "IsMultiValued": false,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 117,
+    "Name": "Repair started date",
+    "NameInBangla": "মেরামত শুরু তারিখ",
+    "ColumnType": 4,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 118,
+    "Name": "Repair Ending date",
+    "NameInBangla": "মেরামত শেষ তারিখ",
+    "ColumnType": 4,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 119,
+    "Name": "How many times the facility damaged",
+    "NameInBangla": "কতবার ক্ষতিগ্রস্ত হয়েছে",
+    "ColumnType": 6,
+    "ColumnListId": 6,
+    "IsMultiValued": false,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 120,
+    "Name": "Reporting Date",
+    "NameInBangla": "রিপোর্টের তারিখ",
+    "ColumnType": 4,
+    "TargetedPopulation": 3,
+    "EntityTypeId": 2,
+    "IsFixed": false
+  },
+  {
+    "Id": 122,
+    "Name": "proGres ID",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 123,
+    "Name": "Beneficiary Name",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 124,
+    "Name": "Father Name",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 125,
+    "Name": "Mother Name",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 126,
+    "Name": "FCN Id",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 127,
+    "Name": "Date Of Birth",
+    "NameInBangla": "",
+    "ColumnType": 4,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 128,
+    "Name": "Sex",
+    "NameInBangla": "",
+    "ColumnType": 6,
+    "IsMultiValued": false,
+    "ColumnListId": 10,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 129,
+    "Name": "Disabled",
+    "NameInBangla": "",
+    "ColumnType": 5,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 130,
+    "Name": "Education level",
+    "NameInBangla": "শিক্ষার স্তর",
+    "ColumnType": 6,
+    "IsMultiValued": false,
+    "ColumnListId": 1,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 131,
+    "Name": "Enrollment Date",
+    "NameInBangla": "",
+    "ColumnType": 4,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 132,
+    "Name": "Facility",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 133,
+    "Name": "Camp",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 134,
+    "Name": "Block",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 135,
+    "Name": "Sub Block",
+    "NameInBangla": "",
+    "ColumnType": 1,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+  {
+    "Id": 136,
+    "Name": "Remarks",
+    "NameInBangla": "",
+    "ColumnType": 2,
+    "EntityTypeId": 1,
+    "IsFixed": true
+  },
+
+  {
+    "Id": 137,
+    "Name": "Have received educational material?",
+    "NameInBangla": "শিক্ষা উপকরণ পেয়েছে কি?",
+    "ColumnType": 5,
+    "EntityTypeId": 1,
+    "IsFixed": false
+  }
+]

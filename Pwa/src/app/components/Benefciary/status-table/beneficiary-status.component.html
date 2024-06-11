@@ -1,0 +1,140 @@
+<div class="card">
+  <!-- <pre>{{facility|json}}</pre> -->
+  <div *ngIf="onlineOfflineStatus == 1">
+    <app-back-button [pageTitle]="'Online Beneficiary Status Table'"></app-back-button>
+  </div>
+  <div *ngIf="onlineOfflineStatus == 2">
+    <app-back-button [pageTitle]="'Offline Beneficiary Status Table'"></app-back-button>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="card-text" *ngIf="onlineOfflineStatus == 1"> Facility Name : {{facility?.name}} </p>
+        <p class="card-text" *ngIf="onlineOfflineStatus == 2"> Facility Name : {{facility?.facilityName}} </p>
+        <p class="card-text"> Camp Name: {{facility?.campName}} </p>
+        <p class="card-text" *ngIf="onlineOfflineStatus == 2"> Programming Partner :
+          {{facility?.programmingPartnerName}}
+        </p>
+        <p class="card-text" *ngIf="onlineOfflineStatus == 1"> Programming Partner : {{facility?.programPartnerName}}
+        </p>
+
+        <p class="card-text"> Implementation Partner : {{facility?.implementationPartnerName}} </p>
+      </div>
+
+      <div class="col-md-6" *ngIf="onlineOfflineStatus == 1">
+        <button (click)="navigateToBeneficiaryCreate(facility.id)" type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> Create Beneficiary</button>
+      </div>
+
+      <div class="col-md-6" *ngIf="onlineOfflineStatus == 2">
+        <button (click)="navigateToBeneficiaryCreate(facility.id)" type="button" class="btn btn-info">
+          <i class="fa fa-plus"></i> Create Beneficiary</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <pre>{{listBeneficiary|json}}</pre> -->
+
+<div class="card">
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6" *ngIf = "onlineOfflineStatus === 1">
+      <div class="col-auto">
+        <div class="input-group mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-search"></i></div>
+          </div>
+          <input type="text" name="beneficiarySearchText" [(ngModel)]="beneficiarySearchText"
+          class="form-control" placeholder="Search Beneficiary">
+        </div>
+      </div>
+      <span style="padding-left:1rem">Total Beneficiaries : {{paginationConfig.totalItems}}</span>
+    </div>
+    <div class="col-md-6" *ngIf = "onlineOfflineStatus === 2">
+      <div class="col-auto">
+        <div class="input-group mt-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-search"></i></div>
+          </div>
+          <input type="text" (keyup)="searchBeneficiaryOfflineonKeyup($event)" 
+          class="form-control" placeholder="Search Beneficiary">
+        </div>
+      </div>
+      <span style="padding-left:1rem">Total Beneficiaries : {{listBeneficiary.length}}</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Unhcr Id</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      
+      <tbody *ngIf="onlineOfflineStatus == 1">
+        <div class=" my-4 pb-1" *ngIf="listBeneficiary.length===0">
+          <div colspan="12">
+            <div class="text-center py-5">
+              <p class="xl-text mb-0">No data found.</p>
+              <p class="lg-text">(Data will be displayed here)</p>
+            </div>
+          </div>
+        </div>
+
+
+        <tr *ngFor="let beneficiary of listBeneficiary | paginate : paginationConfig"
+          (click)="navigateToBeneficiaryIndicator(beneficiary)" style="cursor:pointer;">
+          <td>{{beneficiary.beneficiaryName}}</td>
+          <td>{{beneficiary.unhcrId}}</td>
+          <td *ngIf="CollectionStatusText(beneficiary.collectionStatus); let status;">
+
+            <span *ngIf="status =='NotCollected'" class="badge badge-pill badge-info">{{status}}</span>
+            <span *ngIf="status =='Collected'" class="badge badge-pill badge-success">{{status}}</span>
+            <span *ngIf="status =='Approved'" class="badge badge-pill badge-warning">{{status}}</span>
+            <span *ngIf="status =='Recollect'" class="badge badge-pill badge-primary">{{status}}</span>
+            <span *ngIf="status =='Requested_Inactive'" class="badge badge-pill badge-dark">{{status}}</span>
+          </td>
+        </tr>
+      </tbody>
+
+      <tbody *ngIf="onlineOfflineStatus == 2">
+
+        <div class=" my-4 pb-1" *ngIf="listBeneficiary.length===0">
+          <div colspan="12">
+            <div class="text-center py-5">
+              <p class="xl-text mb-0">No data found.</p>
+              <p class="lg-text">(Data will be displayed here)</p>
+            </div>
+          </div>
+        </div>
+
+        <tr *ngFor="let beneficiary of listBeneficiary | paginate : { itemsPerPage: 5, currentPage: offlinePageNo }"
+          (click)="navigateToBeneficiaryIndicator(beneficiary)" style="cursor:pointer;">
+          <td>{{beneficiary.beneficiaryName}}</td>
+          <td>{{beneficiary.UnhcrId}}</td>
+          <td *ngIf="CollectionStatusText(beneficiary.collectionStatus); let status;">
+
+            <span *ngIf="status =='NotCollected'" class="badge badge-pill badge-info">{{status}}</span>
+            <span *ngIf="status =='Collected'" class="badge badge-pill badge-success">{{status}}</span>
+            <span *ngIf="status =='Approved'" class="badge badge-pill badge-warning">{{status}}</span>
+            <span *ngIf="status =='Recollect'" class="badge badge-pill badge-primary">{{status}}</span>
+            <span *ngIf="status =='Disengaged'" class="badge badge-pill badge-warning">{{status}}</span>
+            <span *ngIf="status =='Requested_Inactive'" class="badge badge-pill badge-dark">{{status}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="onlineOfflineStatus == 1">
+    <pagination-controls (pageChange)="getPage($event)" class="d-flex justify-content-end pt-3"
+      id="beneficiary_status_table"></pagination-controls>
+  </div>
+  <div *ngIf="onlineOfflineStatus == 2">
+    <pagination-controls (pageChange)="offlinePageNo = $event" class="d-flex justify-content-end pt-3">
+    </pagination-controls>
+  </div>
+
+</div>

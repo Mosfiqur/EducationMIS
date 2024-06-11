@@ -1,0 +1,273 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Budget
+        </h1>
+
+        <div>
+          <div class="my-4 pb-1">
+            <a class="site-btn-primary py-2 px-3" [routerLink]="['/unicef/framework/new-budget']"><span>Add New Budget
+              </span></a>
+          </div>
+
+        </div>
+
+        <div class="full-table-ctl">
+          <!-- table control start -->
+          <div class="py-2">
+            <div class="table-control-head" id=#table-control-head-default>
+              <div class="d-flex flex-wrap py-2">
+                <div class="flex-grow-1 mr-3">
+                </div>
+                <div>
+                  <a class="site-btn-outlined py-2 px-3" (click)="onAddNewDynamicColumn()">
+                    <span class="mr-3">Add Column</span>
+                    <span>
+
+                      <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+                        style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                        <g>
+                          <path d="M8.1,15.7h5.3V3H8.1V15.7z M8.7,3.7h3.9V15H8.7V3.7z" />
+                          <path d="M12.6,18.1c-0.2-0.1-0.3,0-0.5,0.1l-0.4,0.4v-2.2c0-0.2-0.2-0.4-0.4-0.4h-1.1c-0.2,0-0.4,0.2-0.4,0.4l0,2.3l-0.6-0.6
+                                c-0.1-0.1-0.3-0.2-0.5-0.1c-0.2,0.1-0.3,0.2-0.3,0.4v1c0,0.1,0,0.2,0.1,0.3c0.1,0.1,0.6,0.6,1.1,1.1c1,1,1,1,1.2,1
+                                c0.2,0,0.2-0.1,0.5-0.3c0.1-0.1,0.3-0.3,0.6-0.6c0.4-0.4,0.8-0.9,1-1c0.1-0.1,0.1-0.2,0.1-0.3v-1.2C12.9,18.3,12.7,18.2,12.6,18.1z
+                                M12.2,19.7c-0.7,0.7-1.2,1.2-1.5,1.5c-0.3-0.3-1.1-1.1-1.7-1.7v-0.4l0.6,0.6c0.1,0.1,0.3,0.2,0.5,0.1c0.2-0.1,0.3-0.2,0.3-0.4
+                                l0-2.6H11v2.6c0,0.2,0.1,0.3,0.3,0.4c0.2,0.1,0.3,0,0.5-0.1l0.4-0.4V19.7z" />
+                          <path
+                            d="M22.1,10.3H14V23h8.1c0.3,0,0.5-0.2,0.5-0.5V10.9C22.7,10.6,22.4,10.3,22.1,10.3z M22,14.3h-4V11h4V14.3z M18,15h4v3.3h-4
+                                V15z M17.4,11v3.3h-2.7V11H17.4z M17.4,18.3h-2.7V15h2.7V18.3z M14.7,19h2.7v3.4h-2.7V19z M18,22.3V19h4v3.4H18z" />
+                          <path d="M3.9,10.3c-0.3,0-0.5,0.2-0.5,0.5v3.5V15v3.3V19v3.5c0,0.3,0.2,0.5,0.5,0.5h3.8V10.3H3.9z M4,11h3v3.3H4V11z M4,15h3v3.3H4
+                                V15z M7,22.3H4V19h3V22.3z" />
+                        </g>
+                      </svg>
+
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- table option start -->
+
+              <div [ngClass]="{'show-context-menu': numberOfBudgetsSelected > 0}" class=" table-cell-options py-2 px-2"
+                id=#table-cell-option-show-hide>
+                <div class="d-flex flex-wrap">
+                  <p class="my-auto flex-grow-1 ml-2"><span
+                      class="mr-2">{{numberOfBudgetsSelected}}</span><span>Budget(s) selected</span></p>
+                  <div class="d-flex">
+
+                    <a *ngIf="numberOfBudgetsSelected == 1" [routerLink]="[totalSelected[0]?.id || 0,'edit']"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Edit</span>
+                      <span>
+                        <i class="fa fa-pencil-alt"></i>
+                      </span>
+                    </a>
+
+                    <a (click)="deleteSelectedBudgets()" class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Delete</span>
+                      <span>
+                        <i class="fa fa-trash-alt"></i>
+                      </span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+              <!-- table option end -->
+            </div>
+
+
+
+          </div>
+          <!-- table control end -->
+
+          <!-- table start -->
+
+          <div>
+            <page-size-selector (onPageSizeChanged)="onPageSizeChanged($event)" [totalItems]="pagedBugets?.total">
+            </page-size-selector>
+            <div class="site-table table-responsive">
+              <!-- <table class="table">
+                
+                  <thead>
+                    <tr>
+                      <th scope="col" >
+                        <div class="form-check">                          
+                          <input type="checkbox" 
+                          class="form-check-input"  
+                          [ngModel]="isAllSelected"
+                          (ngModelChange)="selectAll($event)"
+                          name="materialExampleRadios" id=#chkoption>                                                   
+                        </div>
+                      </th>
+                      <th scope="col" >Start Date</th>
+                      <th scope="col" >End Date</th>
+                      <th scope="col" >Donor</th>
+                      <th scope="col" >Project</th>
+                      <th scope="col" >Amount</th>                     
+                      <th scope="col"                       
+                        *ngFor="let col of dynamicColumns">  
+                        
+                       <a class="cursor-pointer"> 
+                         <span (click)="onEditDynamicColumn(col)">{{col?.columnName}}</span></a>                        
+                    </th>                     
+                    </tr>
+                  </thead>
+                  <tbody>                   
+                      <tr class="border-bottom" *ngIf="!budgets || !budgets.length">
+                        <td colspan="12" >
+                          <div class="py-2 px-3">
+                            <div class="text-center py-5">
+                              <p  class="xl-text mb-0">Create new Budget</p>
+                              <p class="lg-text">(your budget will display here)</p>
+                            </div>
+                          </div>
+                        </td> 
+                      </tr> 
+                    <tr *ngFor="let budget of budgets | paginate : paginationConfig">
+                      <th scope="row ">
+                        <div class="form-check">
+                          <input 
+                            type="checkbox" 
+                            class="form-check-input"
+                            [(ngModel)]="budget.isSelected"
+                            (ngModelChange)="toggleSelection(budget)"
+                            name="materialExampleRadios"  id=#chkoption>                                                   
+                        </div>
+                      </th>
+                      <td >        
+                        {{budget?.startDate | date: 'dd-MMM-yy'}}
+                    </td>
+                    <td >     
+                      {{budget?.endDate | date: 'dd-MMM-yy'}}
+                  </td>
+                      <td >        
+                        {{budget?.donor?.name}}
+                    </td>
+                      <td >
+                        {{budget?.project?.name}} 
+                      </td>
+                      <td >
+                        {{budget?.amount}} 
+                      </td>
+                      <td *ngFor="let cell of budget.dynamicCells" >
+                        
+                        <a class="cursor-pointer"> <span >
+                          
+                        <cell-viewer 
+                        [cell]="cell"                           
+                        (edit)="editDynamicCell(cell)"                                                                   
+                        (add)="addDynamicCell(cell)"
+                        [showAdd]="true"
+                        ></cell-viewer>
+                        </span></a>
+                      </td>
+                     </tr>              
+                  </tbody>
+                </table> -->
+
+
+              <ngx-datatable class='material' [columnMode]="ColumnMode.force" [selected]="selected"
+                [selectionType]="SelectionType.checkbox" (select)="onNgxDataTableSelect($event)"
+                [selectAllRowsOnPage]="true" [rowIdentity]="rowIdentity" [externalPaging]="true"
+                [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)"
+                (activate)="onActivate($event)" [rows]="rows" [columns]="columns" [scrollbarH]="true"
+                [headerHeight]="50" [footerHeight]="50" rowHeight="auto"  [virtualization]="false">
+                <ngx-datatable-footer>
+                  <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+                    let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
+
+                    <div>
+                      Selected: {{getSelected}} of {{rowCount}} total
+                    </div>
+                    <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'"
+                      [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                      [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+                      [hidden]="!((rowCount / pageSize) > 1)" (change)="setPage($event)">
+                    </datatable-pager>
+                  </ng-template>
+                </ngx-datatable-footer>
+              </ngx-datatable>
+
+              <ng-template #hdrTplWithContextMenu let-column="column" ngx-datatable-header-template>
+                <div class="header-btn ">
+                  <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  </span>&nbsp;
+                  <span container="body" ngbTooltip="{{column.name}}">
+                    {{column.name}}
+                  </span>
+
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button"
+                      (click)="openDynamicColumnModalForEdit(column.columnId)">Edit</button>
+
+                    <button class="dropdown-item" type="button"
+                      (click)="openDynamicColumnModalForDelete(column.columnId)">Remove</button>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template #hdrTpl let-column="column" ngx-datatable-header-template>
+                <span container="body" ngbTooltip="{{column.name}}">
+                  {{column.name}}
+                </span>
+              </ng-template>
+              <ng-template #customCellTpl let-column="column" let-row="row" ngx-datatable-cell-template
+                let-value="value">
+                <span container="body" ngbTooltip="{{value}}">
+                  {{value}}
+                </span>
+              </ng-template>
+
+              <ng-template #cellView list-type-cell-renderer let-column="column" let-row="row"
+                ngx-datatable-cell-template let-value="value">
+
+                <a class="cursor-pointer"> <span container="body" ngbTooltip="{{getListCellText(value)}}">
+                    <cell-viewer [cell]="value" (edit)="editDynamicCell($event,value)"
+                      (add)="addDynamicCell($event,value)" [showAdd]="true">
+                    </cell-viewer>
+                  </span></a>
+              </ng-template>
+              <ng-template #budgetDate let-column="column" let-value="value" ngx-datatable-header-template>
+                {{value | date: 'dd-MMM-yyyy'}}
+              </ng-template>
+
+            </div>
+            <!-- <pagination-controls (pageChange)="getPage($event)"  class="d-flex justify-content-end pt-3" id="budget_list"></pagination-controls> -->
+            <!-- <div class="border-top">
+                <div class="pt-3"> 
+                  <nav aria-label="Page navigation example ">
+                    <ul class="pagination mb-0 justify-content-end">
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" >1</a></li>
+                      <li class="page-item"><a class="page-link" >2</a></li>
+                      <li class="page-item"><a class="page-link" >3</a></li>
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+         
+              </div> -->
+
+          </div>
+
+          <!-- table end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

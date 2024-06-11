@@ -1,0 +1,116 @@
+﻿[
+ 
+  {
+    "id": 2,
+    "ssid": "CXB-233",
+    "name": "Camp 24",
+    "nameAlias": "Camp 24",
+    "unionId": 3
+  },
+  {
+    "id": 3,
+    "ssid": "CXB-224",
+    "name": "Camp 16",
+    "nameAlias": "Camp 16",
+    "unionId": 2
+  },
+  {
+    "id": 4,
+    "ssid": "CXB-222",
+    "name": "Camp 14",
+    "nameAlias": "Camp 14",
+    "unionId": 2
+  },
+  {
+    "id": 5,
+    "ssid": "CXB-220",
+    "name": "Camp 13",
+    "nameAlias": "Camp 13",
+    "unionId": 2
+  },
+  {
+    "id": 6,
+    "ssid": "CXB-219",
+    "name": "Camp 19",
+    "nameAlias": "Camp 19",
+    "unionId": 2
+  },
+  {
+    "id": 7,
+    "ssid": "CXB-218",
+    "name": "Camp 12",
+    "nameAlias": "Camp 12",
+    "unionId": 2
+  },
+  {
+    "id": 8,
+    "ssid": "CXB-217",
+    "name": "Camp 11",
+    "nameAlias": "Camp 11",
+    "unionId": 2
+  },
+  {
+    "id": 9,
+    "ssid": "CXB-216",
+    "name": "Camp 20",
+    "nameAlias": "Camp 20",
+    "unionId": 2
+  },
+  {
+    "id": 10,
+    "ssid": "CXB-215",
+    "name": "Camp 18",
+    "nameAlias": "Camp 18",
+    "unionId": 2
+  },
+  {
+    "id": 11,
+    "ssid": "CXB-214",
+    "name": "Camp 10",
+    "nameAlias": "Camp 10",
+    "unionId": 2
+  },
+  {
+    "id": 12,
+    "ssid": "CXB-213",
+    "name": "Camp 9",
+    "nameAlias": "Camp 9",
+    "unionId": 2
+  },
+  {
+    "id": 13,
+    "ssid": "CXB-211",
+    "name": "Camp 8W",
+    "nameAlias": "Camp 8W",
+    "unionId": 2
+  },
+  {
+    "id": 14,
+    "ssid": "CXB-210",
+    "name": "Camp 8E",
+    "nameAlias": "Camp 8E",
+    "unionId": 2
+  },
+  {
+    "id": 15,
+    "ssid": "CXB-085",
+    "name": "Camp 22",
+    "nameAlias": "Camp 22",
+    "unionId": 1
+  },
+
+  {
+    "id": 17,
+    "ssid": "CXB-017",
+    "name": "Camp 25",
+    "nameAlias": "Camp 25",
+    "unionId": 3
+  },
+  {
+    "id": 18,
+    "ssid": "CXB-206",
+    "name": "Camp 4",
+    "nameAlias": "Camp 4",
+    "unionId": 2
+  }
+]

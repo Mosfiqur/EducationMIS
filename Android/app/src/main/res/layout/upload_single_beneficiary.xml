@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/personal_info_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12sp"
+        app:cardElevation="5sp"
+        app:cardCornerRadius="5sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4sp">
+            <RelativeLayout
+                android:id="@+id/one"
+                android:layout_width="match_parent"
+                android:layout_margin="4sp"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HPQ - 1234567"
+                    android:textColor="@color/green"
+                    android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/id_tv"
+                    android:text="Unicef Bangladesh"
+                    android:textSize="16sp"
+                    android:textColor="@color/green"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/status_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/collected_rectangle"
+                    android:padding="12sp"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/one"
+                android:layout_marginTop="8sp"
+                android:layout_marginRight="4sp"
+                android:layout_alignParentRight="true">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/upload_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8sp"
+                    android:layout_toRightOf="@id/details_btn"
+                    android:layout_marginLeft="4sp"
+                    android:background="@color/green"
+                    android:text="Upload"
+                    android:textColor="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/details_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8sp"
+                    android:layout_marginRight="4sp"
+                    android:background="@color/green"
+                    android:text="View Details"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

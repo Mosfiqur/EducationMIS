@@ -1,0 +1,66 @@
+<div class="container-fluid h-100 loginpage" style="overflow:auto;">
+  <div class="row d-flex h-100 justify-content-center align-items-center m-auto">
+    <div class="login-area login-area col-lg-5 col-sm-10 col-md-7 col-xl-4 col-12">
+      <div class="text-center">
+        <img class="simple-logo img-fluid img-cover" src=".\assets\images\logo B_T.png" alt="site-logo">
+        
+        
+      </div>
+      <div class="col-12 text-center my-1">
+        <p class="login-title"><strong>Log in</strong></p>
+        <div class="border-bottom"></div>
+      </div>
+      <div class="contact-form mt-20">
+        <form class="p-3" [formGroup]="loginForm">
+          <div *ngIf="showErrorMsg" class="alert alert-danger" role="alert">
+            Invalid Email or Password!
+          </div>
+          <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control" id="email" formControlName="email" [(ngModel)]="email"
+              placeholder="Email Address" autofocus/>
+            <div *ngIf="loginFormControl.email.errors && loginFormControl.email.touched"
+              class="invalid-feedback d-block">
+              <div *ngIf="loginFormControl.email.errors.required">Please enter email</div>
+              <div *ngIf="loginFormControl.email.errors.minlength">Email Address length should be between 2 to 255
+                characters</div>
+              <div *ngIf="loginFormControl.email.errors.maxlength">Email Address length should be between 2 to 255
+                characters</div>
+              <div *ngIf="loginFormControl.email.errors.email">Please enter a valid email</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="password"
+              placeholder="Password" />
+            <div *ngIf="loginFormControl.password.errors && loginFormControl.password.touched"
+              class="invalid-feedback d-block">
+              <div *ngIf="loginFormControl.password.errors.required">Please enter password</div>
+              <div *ngIf="loginFormControl.password.errors.minlength">Password length should be between 2 to 255
+                characters</div>
+              <div *ngIf="loginFormControl.password.errors.maxlength">Password length should be between 2 to 255
+                characters</div>
+            </div>
+            <!-- <a class="forgot" (click)="goToSignup()"><small>Forgot Passowrd??</small></a> -->
+
+          </div>
+          
+
+          <div class="w-100 send text-center form-group my-4">
+            <button type="submit" class="btn site-btn-outlined rounded-pill" (click)="verifyLogin()">
+              <p class="m-0">Log in</p>
+            </button>
+            
+            
+          </div>
+          <div class="float-right forgot">
+            <a class="cursor-pointer  small" (click)="forgotPassword()">Forgot password?</a>
+          </div>
+          <!-- <div class="send text-center">
+            <a class="anchor bold" (click)="goToSignup()">Don't have an account?</a>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

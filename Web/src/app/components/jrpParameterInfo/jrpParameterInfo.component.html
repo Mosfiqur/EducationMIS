@@ -1,0 +1,66 @@
+<div class="modal-content">
+
+
+  <form [formGroup]="parameterForm">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add Parameter</h5>
+      <button type="button" class="close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- 
+      <div class="form-group">
+        <label for="exampleInputEmail1">Select Target</label>
+        <button class="btn site-btn-primary form-control" (click)="selectTarget()">Select Target</button>
+        <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" >
+          <span> {{getTargetText()}}</span>
+        </span>
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="exampleInputEmail1">Select Indicator</label>
+        <button class="btn site-btn-primary form-control" (click)="selectIndicator()">Select Indicator</button>
+        <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+          <span> {{getIndicatorText()}}</span>
+        </span>
+      </div> -->
+      <div class="col-sm-12">
+        <div class="form-group row">
+          <button class="btn site-btn-primary col-sm-2 col-form-label" (click)="selectTarget()">Target</button>
+          <div class="col-sm-10">
+            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+              <span> {{getTargetText()}}</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <button class="btn site-btn-primary col-sm-2 col-form-label" (click)="selectIndicator()">Indicator</button>
+          <div class="col-sm-10">
+            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+              <span> {{getIndicatorText()}}</span>
+            </span>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input formControlName="name" name="name" type="text" class="form-control">
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      <button type="button" class="btn site-btn-primary"
+        [title]="parameterForm.valid ? 'Save facility data' : 'Disabled until fill all field'"
+        [disabled]="!parameterForm.valid" (click)="save()">Save </button>
+    </div>
+  </form>
+
+
+
+</div>

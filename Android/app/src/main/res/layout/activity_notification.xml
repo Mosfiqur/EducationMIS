@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.NotificationViewModel" />
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:elevation="5sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:onClick="goBack"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="1sp"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+
+                    app:tint="@color/green" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/back"
+                    android:layout_marginLeft="8sp"
+                    android:text="@string/notification"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/close_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8sp"
+                    android:text="Clear All"
+                    android:textColor="@color/green"
+                    android:textSize="18sp"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/svSearchNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            shimmer:iconifiedByDefault="false"
+            shimmer:queryHint="Search"
+            android:layout_margin="12sp"
+            android:inputType="textEmailAddress|textNoSuggestions"
+            android:background="@drawable/rectangle"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRecordsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/svSearchNotifications"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="2sp"
+            android:textSize="16sp"
+            tools:text="Total count message goes here" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notification_recyler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tvRecordsCount"
+            android:layout_margin="12sp" />
+    </RelativeLayout>
+</layout>

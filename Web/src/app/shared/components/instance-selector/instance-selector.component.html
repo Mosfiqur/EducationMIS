@@ -1,0 +1,67 @@
+<div id="{{elementId}}" #modalcontainer class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">{{title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+       
+        <div class="site-table table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="row">
+                  &nbsp;
+                </th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let instance of lstInstance | paginate: instancePaginationConfig">
+              <tr (click)="checkbox_clicked($event,instance)" class="cursor-pointer">
+                <th scope="row">
+                  <div class="form-check form-check-style">
+                    <div class="checkBox_hide_style">
+                      &nbsp;
+                    </div>
+                    <input 
+                      type="checkbox" 
+                      class="form-check-input"  
+                      name="{{instance.title}}"
+                      [checked]="instance.Selected===true">                                                   
+                  </div>
+                </th>
+                <td>
+                  {{instance.title}}
+                </td>
+                <td>{{instance.dataCollectionDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{InstanceStatusText(instance.status)}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+        <div class=" border-top pt-3">
+          <pagination-controls id='instance_pagination' (pageChange)="pageChangedInstance(p=$event)" class="d-flex justify-content-end pt-3">
+          </pagination-controls>
+        </div>
+        
+      </div>
+      
+      <div class="modal-footer">
+        <a type="button" (click)="confirm()" class="btn site-btn-primary"
+          data-dismiss="modal"><span>Confirm</span></a>
+        
+      </div>
+    </div>
+  </div>
+</div>

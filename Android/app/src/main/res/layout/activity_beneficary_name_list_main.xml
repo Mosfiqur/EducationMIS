@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.BeneficiaryViewModel" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.benificiary.BeneficiaryListActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:popupTheme="@style/AppTheme.PopupOverlay" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/back"
+                        android:layout_width="24sp"
+                        android:layout_height="24sp"
+                        android:onClick="goBack"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="1sp"
+                        android:src="@drawable/ic_arrow_back_black_24dp"
+                        app:tint="@color/green"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/app_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/back"
+                        android:layout_centerVertical="true"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/upload_all_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8sp"
+                        android:text="@string/upload"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

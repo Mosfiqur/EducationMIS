@@ -1,0 +1,16 @@
+<ng-template #rt let-r="result" let-t="term">  
+  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<input 
+      id="typeahead-http" type="text" 
+      class="form-control mx-sm-3" 
+      [class.is-invalid]="searchFailed" 
+      [(ngModel)]="model" 
+      [ngbTypeahead]="search" 
+      placeholder="Wikipedia search" 
+      [resultTemplate]="rt"
+      [inputFormatter]="formatter"
+      />
+
+    {{model | json}}

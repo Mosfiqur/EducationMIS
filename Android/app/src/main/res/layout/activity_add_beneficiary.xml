@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.BeneficiaryAddViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:elevation="5sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="1sp"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    app:tint="@color/green"
+                    android:onClick="goBack"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/back"
+                    android:layout_marginLeft="8sp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/save_all_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12sp"
+                    android:text="@string/save"
+                    android:textColor="@color/black"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                     />
+
+            </RelativeLayout>
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical"
+            android:layout_below="@id/toolbar">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/add_beneficiary_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_beneficiary"
+                    android:layout_margin="8sp"
+                    android:textColor="@color/green"
+                    android:textSize="21sp"
+                    android:layout_centerHorizontal="true" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/unchrIdField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/add_beneficiary_tv"
+                    android:hint="@string/unchr_id"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/unchr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/green"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/facilityIdField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/unchrIdField"
+                    android:hint="@string/facility_id"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/facilittid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nameOfStudentField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/facilityIdField"
+                    android:hint="@string/name_of_student"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fathernameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/nameOfStudentField"
+                    android:hint="@string/father_name"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fathername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/motherNameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/fathernameField"
+                    android:hint="@string/mother_name"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mothername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fcnIdField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/motherNameField"
+                    android:hint="@string/fcnid"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fcnid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <RelativeLayout
+                    android:id="@+id/beneficiaryCampField"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/fcnIdField"
+                    android:background="@drawable/rectangle">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:text="@string/beneficiary_camp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/select_camp_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8sp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/beneficiaryBlockField"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/beneficiaryCampField"
+                    android:background="@drawable/rectangle">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:text="@string/beneficiary_block"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/select_block_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8sp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/beneficiarySubBlockField"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/beneficiaryBlockField"
+                    android:background="@drawable/rectangle">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:text="@string/beneficiary_sub_block"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/select_subblock_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8sp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/dobField"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/beneficiarySubBlockField"
+
+                    android:background="@drawable/rectangle">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:text="@string/dob"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/select_dob_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8sp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/sex_spinner_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/dobField">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/sexSpinner_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4sp"
+                        android:textSize="16sp"
+                        android:textColor="@color/green"
+                        android:text="@string/please_select_gender"/>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/sexSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_below="@id/sexSpinner_tv"
+                        android:layout_marginLeft="4sp"
+                        android:layout_marginRight="4sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/disabled_spinner_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/sex_spinner_relative">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/disabled_Spinner_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4sp"
+                        android:textSize="16sp"
+                        android:textColor="@color/green"
+                        android:text="@string/disabled"/>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/disabledSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginLeft="4sp"
+                        android:layout_marginRight="4sp"
+                        android:layout_below="@id/disabled_Spinner_tv" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/los_spinner_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/disabled_spinner_relative">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/los_Spinner_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4sp"
+                        android:textSize="16sp"
+                        android:textColor="@color/green"
+                        android:text="@string/los"/>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/losSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_below="@id/los_Spinner_tv"
+                        android:layout_marginLeft="4sp"
+                        android:layout_marginRight="4sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/enrollmentDateField"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/los_spinner_relative"
+                    android:hint="@string/enrollment_date"
+                    android:background="@drawable/rectangle">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:text="@string/enrollment_date"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/select_enrollment_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8sp"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dataHolderNameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/enrollmentDateField"
+                    android:hint="@string/dataholder_name"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dataholdername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dataHolderPhoneField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/dataHolderNameField"
+                    android:hint="@string/dataholder_phone"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dataholderphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/remarksField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/dataHolderPhoneField"
+                    android:hint="@string/remarks"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/lfLocationField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/remarksField"
+                    android:hint="@string/lfLocation"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lftlocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/green" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/programmingPartnerField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/lfLocationField"
+                    android:hint="@string/programmingPartner"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/programmingpartner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/green"
+                        android:text="@{viewModel.implementationPartner}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/implementationPartnerField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8sp"
+                    android:layout_below="@id/programmingPartnerField"
+                    android:hint="@string/implementationPartner"
+                    style="@style/TextInputLayoutStyle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/implementationpartner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/green"
+                        android:text="@{viewModel.implementationPartner}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>
+
+<!--  android:onClick="@{(view)-> viewModel.save(view)}"  "/>-->
+<!--  android:text="@{viewModel.dob}" -->
+<!--  android:text="@{viewModel.enrollmentDate}" -->
+<!--  android:onClick="@{(view)-> viewModel.selectdob(view)}"-->
+<!--    android:onClick="@{(view)-> viewModel.selectEnrollment(view)}"-->

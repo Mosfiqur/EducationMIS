@@ -1,0 +1,37 @@
+.ag-overlay{
+    position: relative !important;
+}
+.block-inline{
+    display: inline-block;
+}
+
+
+.notification-body{
+    min-width: 767px;
+    max-height:calc(100vh - 100px);
+   overflow-y:auto;
+ }
+ .notification-list:hover{
+ background-color:var(--Blue600);
+ color:white;
+ cursor:pointer;
+ }
+ .clear-btn{
+     color:var(--Blue600);
+     &:hover{
+         color:var(--Blue700);
+         text-decoration: underline;
+         cursor:pointer;
+     }
+ }
+ #notification_list{
+    .ngx-pagination{
+         margin-bottom:0rem;
+         .pagination-next{
+              padding-right:0;
+          }
+     }
+ }
+ div.dropdown:hover {
+     cursor:pointer;
+ }

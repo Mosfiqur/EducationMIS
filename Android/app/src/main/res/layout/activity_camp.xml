@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.BeneficiaryViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:shimmer="http://schemas.android.com/tools"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:onClick="goBack"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="1sp"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    app:tint="@color/green"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/header_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/back"
+                    android:layout_centerVertical="true"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="12sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginBottom="8sp"
+            android:hint="Search"
+            app:endIconDrawable="@drawable/ic_close_black_24dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            style="@style/TextInputLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_tf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/green"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/benificiary_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchTextField"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/no_content_iv"
+            android:layout_width="256sp"
+            android:layout_height="256sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/no_content_found" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8sp"
+            android:textSize="16sp"
+            android:text="@string/no_content_found"
+            android:layout_below="@id/no_content_iv" />
+
+    </RelativeLayout>
+</layout>

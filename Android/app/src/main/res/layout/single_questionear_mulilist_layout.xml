@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/personal_info_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12sp"
+        app:cardElevation="5sp"
+        app:cardCornerRadius="5sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
+            android:padding="4sp">
+            <RelativeLayout
+                android:id="@+id/header_relative"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/indicator_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indicator 01:"
+                    android:textSize="21sp"
+                    android:textColor="@color/green"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/save_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="Save"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    android:textSize="19sp"/>
+
+            </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/indicator_en_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4sp"
+                android:layout_below="@id/header_relative"
+                android:text="What is your father name?"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/indicator_bn_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_below="@id/indicator_en_tv"
+                android:text="Apnar babar name ki?"
+                android:textSize="16sp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/select_data_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4sp"
+                android:layout_below="@id/indicator_bn_tv"
+                android:textSize="18sp"
+                android:text="Select"
+                android:textColor="@color/green"
+                android:textStyle="bold"/>
+
+<!--            <ListView-->
+<!--                android:id="@+id/multiselectlist"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/indicator_bn_tv"-->
+<!--                android:layout_marginTop="8sp"-->
+<!--                android:layout_marginBottom="4sp"-->
+<!--                android:visibility="gone"/>-->
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

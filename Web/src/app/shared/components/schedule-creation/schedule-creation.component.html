@@ -1,0 +1,130 @@
+<div class="modal-content">
+  <form class="site-form" [formGroup]="scheduleForm">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add New Schedule</h5>
+      <button type="button" (click)="onClose()" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title <span class="red-text font-weight-bold">* </span>:</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Schedule July,2020 to July,2021" 
+            id="dashbordname"
+            formControlName="scheduleName"
+            name="scheduleName"
+            >
+            <div class="invalid-feedback d-block">
+              {{validationErrors?.scheduleName}}
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="inputEmail4">Frequency <span class="red-text font-weight-bold">* </span>:</label>
+
+            <select 
+              class="form-content-2-scroll pr-2 custom-select" 
+              [attr.disabled]="isEditing ? 'true' : null"            
+              formControlName="scheduleType"
+              name="scheduleType"            
+            >
+            <option value="">Select</option>
+              <option class="dropdown-item" 
+              *ngFor="let frequency of frequencies"
+              value="{{frequency.text}}"
+              >{{frequency.text}}</option>
+            </select>
+            
+            <div class="invalid-feedback d-block">
+              {{validationErrors?.scheduleType}}
+            </div>
+          </div>
+          
+        <div class="form-group">
+          <div formGroupName="dateRange">
+            <div class="form-group">
+              <label for="">Start Date</label>
+                  <div class="input-group"  >
+
+                  
+
+                    <input type="text"                    
+                      [disabled]="isEditing"
+                        class="form-control" 
+                        id="calender" 
+                        bsDatepicker #dpStart="bsDatepicker"
+                        [placeholder]="dpConfig.placeholderText"
+                        formControlName="startDate"
+                        [bsConfig]="dpConfig"
+                        
+                        >
+                    <div class="input-group-prepend">
+                      <span 
+                      (click)="dpStart.toggle()"
+                      class="input-group-text alt-input-group-text" id="">
+                        <icon-calender></icon-calender>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback d-block" >
+                    {{validationErrors?.startDate}}
+                  </div>
+            </div>
+
+            <div class="form-group">
+              <label for="">End Date</label>
+              <div class="input-group">
+                <input 
+                [disabled]="isEditing"
+                type="text"                 
+                bsDatepicker #dpEnd="bsDatepicker"
+                class="form-control" 
+                id="calender1" 
+                [placeholder]="dpConfig.placeholderText"
+                
+                formControlName="endDate"
+                [bsConfig]="dpConfig"
+                >
+                <div class="input-group-prepend">
+                  <span 
+                  (click)="dpEnd.toggle()"
+                  class="input-group-text alt-input-group-text" id="">
+                    <icon-calender></icon-calender>
+                  </span>
+                </div>
+              </div>
+              <div class="invalid-feedback d-block" >
+                {{validationErrors?.endDate}}
+              </div>
+            </div>
+
+            <div class="invalid-feedback d-block" >
+              {{validationErrors?.dateRange}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea 
+            class="form-control" 
+            id="exampleFormControlTextarea1" 
+            formControlName="description"
+            rows="3"></textarea>
+        </div>
+ 
+    </div>
+    <div class="modal-footer">
+      <a type="button" (click)="onCancel()" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel </span></a>
+      <button 
+        type="button" 
+        (click)="onSubmit()" 
+        class="btn site-btn-primary"
+        [disabled]="!scheduleForm.valid"
+        ><span>Save </span></button>
+    </div>
+  </form>
+  </div>

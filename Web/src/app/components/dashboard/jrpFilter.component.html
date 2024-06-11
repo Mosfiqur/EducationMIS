@@ -1,0 +1,188 @@
+<div class="allborder-box border-redious-xl p-3 mt-2">
+
+    <form class="site-form">
+        <div class="form-row">
+
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Beneficiary Instance</label>
+                <div class="dropdown">
+                    <button class="btn site-btn-outlined btn-block" (click)="benSelector.reloadCheck()"
+                        instance-modal-trigger="selectBeneficiaryInstanceModal">
+                        Select Beneficiary Instance
+                    </button>
+
+                    <instance-selector-modal #benSelector elementId="selectBeneficiaryInstanceModal"
+                        title="Select Instance" [selectedInstanceIds]="beneficiaryInstances" instanceFor=1
+                        isMultivalued="false" instanceStatus=6
+                        (instanceValueChanged)="beneficiaryInstanceValue_changed($event)">
+                    </instance-selector-modal>
+                </div>
+                <div class="d-flex flex-wrap align-content-start " *ngIf="beneficiaryInstances.length>0">
+
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+                        *ngFor="let c of beneficiaryInstances">
+                        <span class="mr-3 ml-1"> {{c.title}}</span>
+                        <span class="mr-1"><a (click)="removeBeneficiaryInstance(c)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></a></span>
+
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Facility Instance</label>
+                <div class="dropdown">
+                    <button class="btn site-btn-outlined btn-block" (click)="facSelector.reloadCheck()"
+                        instance-modal-trigger="selectFacilityInstanceModal">
+                        Select Facility Instance
+                    </button>
+
+                    <instance-selector-modal #facSelector elementId="selectFacilityInstanceModal"
+                        title="Select Instance" [selectedInstanceIds]="facilityInstances" instanceFor=2
+                        isMultivalued="false" instanceStatus=6
+                        (instanceValueChanged)="facilityInstanceValue_changed($event)">
+                    </instance-selector-modal>
+                </div>
+                <div class="d-flex flex-wrap align-content-start " *ngIf="facilityInstances.length>0">
+
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngFor="let c of facilityInstances">
+                        <span class="mr-3 ml-1"> {{c.title}}</span>
+                        <span class="mr-1"><a (click)="removeFacilityInstance(c)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></a></span>
+
+                    </span>
+                </div>
+
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Program Partner</label>
+                <div class="dropdown">
+                    <button class="btn site-btn-outlined btn-block" type="button" (click)="ppModal_clicked()">
+                        <div class="col-10 d-inline-block p-0">Select PP</div>
+                    </button>
+
+                </div>
+                <div class="d-flex flex-wrap align-content-start " *ngIf="programPartner.length>0">
+                    <p class="gry-text  mr-2 py-1 my-auto">PP selected :</p>
+
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngFor="let c of programPartner">
+                        <span class="mr-3 ml-1"> {{c.partnerName}}</span>
+                        <span class="mr-1"><a (click)="removePp(c)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></a></span>
+
+                    </span>
+                </div>
+
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Implementation Partner</label>
+                <div class="dropdown">
+                    <button class="btn site-btn-outlined btn-block" type="button" (click)="ipModal_clicked()">
+                        <div class="col-10 d-inline-block p-0">Select IP</div>
+                    </button>
+
+                </div>
+                <div class="d-flex flex-wrap align-content-start " *ngIf="implementationPartner.length>0">
+                    <p class="gry-text  mr-2 py-1 my-auto">IP selected :</p>
+
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+                        *ngFor="let c of implementationPartner">
+                        <span class="mr-3 ml-1"> {{c.partnerName}}</span>
+                        <span class="mr-1"><a (click)="removeIp(c)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></a></span>
+
+                    </span>
+                </div>
+
+            </div>
+        
+
+        
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputPassword4">Camp </label>
+                <div class="dropdown">
+                    <button class="btn site-btn-outlined btn-block" type="button" (click)="campModal_clicked()">
+                        <div class="col-10 d-inline-block p-0">Select Camp</div>
+                    </button>
+
+                </div>
+                <div class="d-flex flex-wrap align-content-start " *ngIf="camps.length>0">
+                    <p class="gry-text  mr-2 py-1 my-auto">Camp selected :</p>
+
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngFor="let c of camps">
+                        <span class="mr-3 ml-1"> {{c.name}}</span>
+                        <span class="mr-1"><a (click)="removeCamp(c)"><i class="fa fa-times"
+                                    aria-hidden="true"></i></a></span>
+
+                    </span>
+                </div>
+
+
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Sex</label>
+
+                <select class="form-content-2-scroll pr-2 custom-select"
+                (change)="dropDownValueChanged()"
+                [(ngModel)]="jrpFilterModel.gender" name="sex">
+                    <option value="">Select</option>
+                    <option class="dropdown-item" *ngFor="let gender of genderList" value="{{gender.id}}">
+                        {{gender.text}}</option>
+                </select>
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputPassword4">Disable</label>
+                <select class="form-content-2-scroll pr-2 custom-select"
+                (change)="dropDownValueChanged()"
+                [(ngModel)]="jrpFilterModel.disability"  name="disable">
+                    <option value="">Select</option>
+                    <option class="dropdown-item" *ngFor="let level of disabilityList" value="{{level.value}}">
+                        {{level.title}}</option>
+                </select>
+            </div>
+
+
+        
+        
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Targeted Poulation</label>
+
+                <select class="form-content-2-scroll pr-2 custom-select"
+                (change)="dropDownValueChanged()"
+                [(ngModel)]="jrpFilterModel.targetedPopulationId" name="population">
+                    <option value="">Select</option>
+                    <option class="dropdown-item" *ngFor="let target of targetPopulationList" value="{{target.id}}">
+                        {{target.text}}</option>
+                </select>
+
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputEmail4">Age group</label>
+
+                <select class="form-content-2-scroll pr-2 custom-select"
+                (change)="dropDownValueChanged()"
+                [(ngModel)]="jrpFilterModel.age" name="age">
+                    <option value="">Select</option>
+                    <option class="dropdown-item" *ngFor="let age of ageGroupList" value="{{age.id}}">
+                        {{age.text}}</option>
+                </select>
+            </div>
+            <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                <label for="inputPassword4">Level of study</label>
+                <select class="form-content-2-scroll pr-2 custom-select"
+                (change)="dropDownValueChanged()"
+                [(ngModel)]="jrpFilterModel.level" name="levelOfStudy">
+                    <option value="">Select</option>
+                    <option class="dropdown-item" *ngFor="let level of levelOfStudyList" value="{{level.id}}">
+                        {{level.text}}</option>
+                </select>
+            </div>
+
+
+        </div>
+    </form>
+
+
+
+</div>

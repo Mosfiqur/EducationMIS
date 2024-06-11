@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "fullName": "Mr. Admin",
+    "password": "Abcd1234",
+    "email": "admin@system.com",
+    "roleId": 1,
+    "designationName": "Admin",
+    "phoneNumber": "01700112233"
+  },
+  {
+    "id": 2,
+    "fullName": "Mr. Program Partner",
+    "password": "Abcd1234",
+    "email": "pp@system.com",
+    "roleId": 2,
+    "designationName": "Program Partner",
+    "phoneNumber": "01700112233",
+    "eduSectorPartners": [
+      {
+        "id": 32,
+        "partnerType": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "fullName": "Mr. Implementation Partner",
+    "password": "Abcd1234",
+    "email": "ip@system.com",
+    "roleId": 3,
+    "designationName": "Implementation Partner",
+    "phoneNumber": "01700112233",
+    "eduSectorPartners": [
+      {
+        "id": 32,
+        "partnerType": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "fullName": "Mr. Teacher",
+    "password": "Abcd1234",
+    "email": "teacher@system.com",
+    "roleId": 4,
+    "designationName": "Teacher",
+    "phoneNumber": "01700112233",
+    "eduSectorPartners": [
+      {
+        "id": 32,
+        "partnerType": 2
+      },
+      {
+        "id": 32,
+        "partnerType": 3
+      }
+    ]
+  }  
+]

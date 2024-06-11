@@ -1,0 +1,103 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select List Item</h5>
+        <button type="button" (click)="handleCancel()" #closeEdit class="close" >
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="cellForm" (ngSubmit)="onSubmit()" *ngIf="column.columnDataType != dataType.List">
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">{{cell?.columnName}}</label>
+                <input 
+                    *ngIf="column.columnDataType===dataType.Int || column.columnDataType===dataType.Decimal" 
+                    type="number"
+                    class="form-control" id="cell"
+                    formControlName="value"
+                    name="value"
+                    >
+
+                <input 
+                    *ngIf="column.columnDataType===dataType.Text" 
+                    type="text"
+                    class="form-control" id="cell"
+                    formControlName="value"
+                    name="value"
+                    >
+
+                    <div 
+                    *ngIf="column.columnDataType===dataType.Datetime" 
+                    class="input-group" >
+                        <input type="text" 
+                            class="form-control" 
+                            id="calender" 
+                            ngbDatepicker #dpStart="ngbDatepicker"
+                            placeholder="1/7/2020"
+                            formControlName="value"
+                            >
+                        <div class="input-group-prepend">
+                          <span 
+                          (click)="dpStart.toggle()"
+                          class="input-group-text alt-input-group-text" id="">
+                            <icon-calender></icon-calender>
+                          </span>
+                        </div>
+                      </div>
+
+              
+                      <div *ngIf="column.columnDataType === dataType.Boolean">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input"
+                                   id="addressType1Id"
+                                   type="radio"
+                                   value="Yes"
+                                   formControlName="value"> Yes
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input"
+                                   id="addressType1Id"
+                                   type="radio"
+                                   value="No"
+                                   formControlName="value"> No
+                          </label>
+                        </div>  
+                      </div>
+                
+              <div class="invalid-feedback d-block" >
+              
+              </div> 
+            </div>
+        </form>
+
+        <form>
+            <div *ngFor="let item of listItems; let i = index;">
+                <label for="{{i}}">
+                <input                 
+                type="checkbox" 
+                class="form-control check"
+                name="{{i}}"                
+                [checked]="item.isSelected"
+                (click)="onModelChange($event.target.checked, item)"
+                 id="{{i}}">
+                    {{item.title}}
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        <a type="button" #cancelButton (click)="handleCancel()" class="btn site-btn-cutom-link"><span>Cancel</span></a>
+        <button type="button" 
+        *ngIf="column.columnDataType === dataType.List"        
+        (click)="saveList()" class="btn site-btn-primary"><span>Select</span></button>
+        
+        <button type="button" 
+        *ngIf="column.columnDataType != dataType.List"
+        [disabled]="!cellForm.valid"
+        (click)="onSubmit()" class="btn site-btn-primary"><span>Select</span></button>
+    </div>
+</div>

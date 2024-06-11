@@ -1,0 +1,307 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+        <div class="d-flex headding-with-back-btn pb-3 mb-0">
+          <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/users/home']">
+              <span class="pr-3">                               
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                  c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                  c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z"/>
+                </svg>
+
+              </span>
+          </a>
+
+          <h1 class="pb-3 mb-0">
+            Basic Info
+          </h1>
+          </div>
+
+  
+      </div>
+      <div class="mt-4">
+        
+        <form  [formGroup]="userForm">
+        <div class="row">
+          
+          <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">         
+
+            <div class="row">
+              <div class="col pr-2">
+                <div class="form-content-2-scroll pr-2">                    
+                  <div class="flex-grow-1">
+                    <div class="form-group">
+                      <label for="inputEmail4">User Name<span class="red-text font-weight-bold">* </span>:</label>
+                      <input  [attr.disabled]="!editing ? '': null"  type="text" 
+                          class="form-control" 
+                          id="Name" 
+                          placeholder="Enter User Name"               
+                          formControlName="fullName"
+                          name="fullName"
+                          >
+                        <div class="invalid-feedback d-block">                                
+                          {{validationErrors.fullName}}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail4">Designation <span class="red-text font-weight-bold">* </span>:</label>
+                      <input  [attr.disabled]="!editing ? '': null"  type="text" 
+                      class="form-control" 
+                      id="Name" 
+                      placeholder="Enter Designation"               
+                      formControlName="designationName"
+                      name="fullName"
+                      >
+                 
+                    <div class="invalid-feedback d-block">                                
+                      {{validationErrors.designationId}}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Email <span class="red-text font-weight-bold">* </span>:</label>
+                      <input 
+                      [attr.disabled]="!editing ? '': null" 
+                      type="text" 
+                      class="form-control" 
+                      id="email" 
+                      placeholder="Enter Email Address"                            
+                      formControlName="email"
+                      name="email"
+                      >
+                      <div class="invalid-feedback d-block" >                            
+                      {{validationErrors.email}}
+                    </div>
+
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Phone Number :</label>
+                      <input 
+                      [attr.disabled]="!editing ? '': null" 
+                      type="text" 
+                        class="form-control" 
+                        id="phonenumber" 
+                        placeholder="Enter Phone Number"
+                        formControlName="phoneNumber"
+                        name="phoneNumber"
+                      >
+                      
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors.phoneNumber}}
+                    </div>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Role <span class="red-text font-weight-bold">* </span>:</label>
+                     
+                    <select [attr.disabled]="!editing ? '': null" class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="roleId"
+                    name="roleId"
+                    (change)="onSelectRole($event.target.value)"
+                    >
+                    <option value="">Select</option>
+                      <option class="dropdown-item"                             
+                      *ngFor="let role of roles" value="{{role.id}}">{{role.roleName}}</option>
+                    </select>
+                   
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors.roleId}}
+                    </div>
+                    </div>
+                    
+                  <div class="form-group col-md-6" 
+                  *ngIf="selectedRole?.levelRank==levelRank.ProgramPartner || selectedRole?.levelRank==levelRank.ImplementationPartner">
+                    <label for="inputEmail4">Education sector partner <span class="red-text font-weight-bold">* </span>:</label>
+                    <select  [attr.disabled]="!editing ? '': null"  class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="educationSectorPartnerId"
+                    name="educationSectorPartnerId"                          
+                    >
+                    <option value="">Select</option>
+                      <option class="dropdown-item"                             
+                      *ngFor="let esp of espList" value="{{esp.id}}">{{esp.partnerName}}</option>
+                    </select>
+                    
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors.educationSectorPartnerId}}
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6" *ngIf="selectedRole?.levelRank==levelRank.Teacher">
+                    <label for="inputEmail4">Programme partner <span class="red-text font-weight-bold">* </span>:</label>
+                    <select  [attr.disabled]="!editing ? '': null"  class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="programPartnerId"
+                    name="programPartnerId"                          
+                    >
+                    <option value="">Select</option>
+                      <option class="dropdown-item"                             
+                      *ngFor="let esp of espList" value="{{esp.id}}">{{esp.partnerName}}</option>
+                    </select>
+                  
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors.programPartnerId}}
+                    </div>                 
+                  </div>
+
+                  <div class="form-group col-md-6" *ngIf="selectedRole?.levelRank==levelRank.Teacher">
+                    <label for="inputEmail4">Implementing partner <span class="red-text font-weight-bold">* </span>:</label>
+                    <select 
+                    class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="implementationPartnerId"
+                    name="implementationPartnerId"                          
+                    [attr.disabled]="!editing ? '': null" 
+                    >
+                    <option value="">Select</option>
+                      <option class="dropdown-item"                             
+                      *ngFor="let esp of espList" value="{{esp.id}}">{{esp.partnerName}}</option>
+                    </select>
+                 
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors.implementationPartnerId}}
+                    </div>                      
+                  </div>                
+                  </div>
+                                   
+                </div>
+              </div>
+            </div>
+        
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+            
+            <button type="button"        
+            *ngIf="!editing"
+            (click)="editing=true"
+            [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center"                                            
+          >
+          <span>Edit</span>
+          <span>
+            <svg
+              version="1.1"
+              id="Layer_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 26 26"
+              style="enable-background: new 0 0 26 26;"
+              xml:space="preserve"
+            >
+              <g>
+                <g>
+                  <g>
+                    <g>
+                      <polygon points="7.4,15.7 6,20 10.3,18.6 " />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <rect
+                        x="8.5"
+                        y="10.6"
+                        transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.1064 13.1195)"
+                        width="9.7"
+                        height="4.2"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="M19.8,8.2l-2-2c-0.3-0.3-0.7-0.3-1,0l-0.6,0.6l2.9,2.9l0.6-0.6C20.1,8.9,20.1,8.4,19.8,8.2z"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </span>
+          </button>
+
+              <button type="button"
+                *ngIf="editing"
+                (click) ="onSubmit()"
+                [disabled]="!userForm.valid"                     
+                [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center"                                            
+              >
+                <span> Save  </span>
+              </button>
+            <a (click)="editing=false" *ngIf="editing"  class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center" ><span> Cancel </span></a>
+          </div>
+        
+        </div>
+      </form> 
+      </div>
+
+      <div class="mt-4 row">
+        <div class="col-sm-12 col-12 pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+          <div class="allborder-box border-redious-xl hover-shadow">
+            <div>
+              <div class="py-3 px-3 border-bottom d-flex">
+                <p class="mb-0 gry-text flex-grow-1 py-1">
+                  Detail Info
+                </p>
+      
+              </div>
+      
+              <div class="py-2 px-3">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr *ngFor="let cell of dynamicCells">
+                        <td>{{cell.columnName}}</td>
+                        <td>                
+                          <cell-viewer                         
+                                [cell]="cell"
+                                (edit)="editDynamicCell(cell)"                        
+                                (add)="addDynamicCell(cell)"  
+          
+                                [showAdd]="true"                                           
+                                ></cell-viewer>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                 </div> 
+      
+      
+              </div>
+            </div>
+      
+          </div>
+      
+      
+        </div>
+      
+      
+      </div>
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 
+<div class="m-4 row">
+    <div class="col-sm-12 col-12 pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+      <div class="allborder-box border-redious-xl hover-shadow">
+         
+        <app-profile-info-update [basicInfo]="userBasicInfo"></app-profile-info-update>
+
+      
+    
+      </div>
+    </div>
+  </div>
+   -->

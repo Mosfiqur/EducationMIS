@@ -1,0 +1,68 @@
+<div class="py-2" *ngIf="showCurrentFilter()">
+    <div class="d-flex flex-wrap align-content-start ">
+      <p class="gry-text  mr-2 py-1 my-auto">Now showing :</p>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showUpazila()">
+        <span class="mr-3 ml-1"> Upazila: {{facilityFilterModel.upazilaName}}</span>
+        <span class="mr-1"><a (click)="removeFilter('upazila')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showUnion()">
+        <span class="mr-3 ml-1">Union: {{facilityFilterModel.unionName}}</span>
+        <span class="mr-1"><a (click)="removeFilter('union')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" 
+      *ngIf="showTargetedPopulation()">
+        <span class="mr-3 ml-1"> Targeted Population: {{getTargetedPopulation(facilityFilterModel.targetedPopulation)}}</span>
+        <span class="mr-1"><a (click)="removeFilter('targetedPopulation')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showType()">
+        <span class="mr-3 ml-1">Type:
+          {{getType(facilityFilterModel.facilityType)}}</span>
+        <span class="mr-1"><a (click)="removeFilter('facilityType')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="showStatus()">
+        <span class="mr-3 ml-1"> Status: {{getStatus(facilityFilterModel.facilityStatus)}}</span>
+        <span class="mr-1"><a (click)="removeFilter('facilityStatus')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="facilityFilterModel.teachers.length>0">
+        <span class="mr-3 ml-1"> Teacher:
+
+          <span *ngFor="let c of facilityFilterModel.teachers">
+            <span> {{c.fullName}},</span>
+          </span>
+        </span>
+        <span class="mr-1"><a (click)="removeFilter('teachers')"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="facilityFilterModel.programPartner.length>0">
+        <span class="mr-3 ml-1"> Program Partner:
+
+          <span *ngFor="let c of facilityFilterModel.programPartner">
+            <span> {{c.partnerName}},</span>
+          </span>
+        </span>
+        <span class="mr-1"><a (click)="removeFilter('programPartner')"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+
+      </span>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="facilityFilterModel.implementationPartner.length>0">
+        <span class="mr-3 ml-1"> Facility:
+
+          <span *ngFor="let c of facilityFilterModel.implementationPartner">
+            <span> {{c.partnerName}},</span>
+          </span>
+        </span>
+        <span class="mr-1"><a (click)="removeFilter('implementationPartner')"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+
+      </span>
+    </div>
+  </div>

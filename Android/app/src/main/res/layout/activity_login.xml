@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="userLogin"
+            type="com.unicef.mis.viewmodel.LoginViewModel" />
+    </data>
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="370sp"
+                android:background="@color/green" />
+
+            <!--Top Header Layout-->
+
+
+            <ScrollView
+                android:id="@+id/profile_header_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:layout_marginTop="35sp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/app_logo"
+                        android:layout_width="256sp"
+                        android:layout_height="128sp"
+                        android:src="@drawable/app_banner"
+                        android:layout_centerHorizontal="true" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/layer1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/app_logo"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginTop="35sp"
+                        android:layout_marginRight="32sp"
+                        app:cardElevation="5sp"
+                        android:layout_margin="32sp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/welcome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/welcome"
+                                android:textSize="36sp"
+                                android:layout_marginTop="8sp"
+                                android:layout_marginBottom="16sp"
+                                android:textColor="@color/green"
+                                android:layout_centerHorizontal="true"/>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/emailTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/welcome"
+                                android:layout_marginLeft="12sp"
+                                android:layout_marginRight="12sp"
+                                android:layout_marginBottom="8sp"
+                                android:hint="Email"
+                                style="@style/TextInputLayoutStyle">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textEmailAddress"
+                                    android:textColor="@color/green"
+                                    android:text="@={userLogin.email}"/>
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/passwordTextField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/emailTextField"
+                                android:layout_marginLeft="12sp"
+                                android:layout_marginRight="12sp"
+                                android:layout_marginTop="4sp"
+                                android:layout_marginBottom="24sp"
+                                android:hint="password"
+                                app:passwordToggleEnabled="true"
+                                app:passwordToggleTint ="@color/green"
+                                style="@style/TextInputLayoutStyle">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textPassword"
+                                    android:text="@={userLogin.password}"/>
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="?attr/actionBarSize"
+                                android:layout_below="@id/passwordTextField"/>
+
+
+
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </RelativeLayout>
+
+
+
+
+            </ScrollView>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_btn"
+                android:layout_width="186sp"
+                android:layout_height="72sp"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@color/green"
+                android:foreground="?selectableItemBackground"
+                android:text="@string/login"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:onClick="@{()-> userLogin.onLoginClicked()}" />
+        </RelativeLayout>
+
+
+    </ScrollView>
+</layout>

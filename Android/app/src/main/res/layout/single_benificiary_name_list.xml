@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <import type="com.unicef.mis.enumtype.CollectionStatus" />
+        <variable
+            name="beneficiary"
+            type="com.unicef.mis.model.Beneficiary" />
+    </data>
+    <RelativeLayout
+        android:id="@+id/benificiary_name_list_relative"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:text="@{beneficiary.beneficiaryName}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:text="@{beneficiary.unhcrId}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@{beneficiary.collectionStatus == CollectionStatus.NotCollected.getIntValue() ? @drawable/collected_rectangle : @drawable/not_collected_rectangle}"
+            android:padding="12sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@{beneficiary.getCollectionStatusText()}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_below="@id/status_tv"
+            android:layout_marginTop="4sp"
+            android:layout_marginBottom="4sp"
+            android:background="@color/green" />
+
+    </RelativeLayout>
+</layout>

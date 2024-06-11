@@ -1,0 +1,157 @@
+<div class="modal-content">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Indicator</h5>
+        <button type="button" (click)="close()" class="close"  aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Indicator Name</label>
+                <textarea
+                class="form-control" 
+                id="indicatorName"
+                formControlName="indicator"
+                cols="3"
+                >
+
+                </textarea>
+               
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.indicator}}
+                      </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Units</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="indicatorName"
+                    formControlName="unit"
+                    >
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.unit}}
+                      </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">BaseLine</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    id="indicatorName"
+                    formControlName="baseLine"
+                    >
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.baseLine}}
+                      </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Target</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    id="indicatorName" 
+                    formControlName="target"
+                    >
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.target}}
+                      </div>
+            </div>
+            <div formGroupName="dateRange">
+                <div class="form-group">
+                  <label for="">Start Date</label>
+                      <div class="input-group" >
+                        <input type="text" 
+                            class="form-control" 
+                            id="calender" 
+                            ngbDatepicker #dpStart="ngbDatepicker"
+                            placeholder="Pick a date"
+                            formControlName="startDate"
+                            (click)="dpStart.toggle()"
+                            >
+                        <div class="input-group-prepend">
+                          <span 
+                          (click)="dpStart.toggle()"
+                          class="input-group-text alt-input-group-text" id="">
+                            <icon-calender></icon-calender>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback d-block" >
+                        {{validationErrors?.startDate}}
+                      </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="">End Date</label>
+                  <div class="input-group"  >
+                    <input 
+                    (click)="dpEnd.toggle()"
+                    type="text" 
+                    ngbDatepicker #dpEnd="ngbDatepicker"
+                    class="form-control" 
+                    id="calender1" 
+                    placeholder="Pick a date"
+                    formControlName="endDate"
+                    >
+                    <div class="input-group-prepend">
+                      <span 
+                      (click)="dpEnd.toggle()"
+                      class="input-group-text alt-input-group-text" id="">
+                        <icon-calender></icon-calender>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback d-block" >
+                    {{validationErrors?.endDate}}
+                  </div>
+                </div>
+
+                <div class="invalid-feedback d-block" >
+                  {{validationErrors?.dateRange}}
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Organization(s)</label>
+                <select 
+                    class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="organizationId"                    
+                    >
+                    <option value="">Select</option>
+                    <option class="dropdown-item" 
+                    *ngFor="let org of organizations"
+                    value="{{org.id}}"
+                    >{{org.partnerName}}</option>
+                    </select>
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.organizationId}}
+                      </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Add Frequency of reporting</label>
+                <select 
+                    class="form-content-2-scroll pr-2 custom-select" 
+                    formControlName="reportingFrequencyId"                    
+                    >
+                    <option value="">Select</option>
+                    <option class="dropdown-item" 
+                    *ngFor="let frequency of frequencies"
+                    value="{{frequency.id}}"
+                    >{{frequency.name}}</option>
+                    </select>
+                    <div class="invalid-feedback d-block" >
+                        {{validationErrors?.reportingFrequencyId}}
+                      </div>
+            </div>
+        
+    </div>
+    <div class="modal-footer">
+        <a type="button" (click)="cancel()" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+        <button
+            [disabled]="form.invalid"
+         type="submit" class="btn site-btn-primary"><span>Add</span></button>
+    </div>
+</form>
+</div>

@@ -1,0 +1,20 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title red-text" id="exampleModalLabel">{{title}}</h5>
+        <button type="button" (click)="handleCancel()" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <h3 class="red-text ">
+            {{assertion}}
+        </h3>
+        <p class="gry-text mb-0">
+            {{body}}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a type="button" (click)="handleCancel()" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+        <a type="button" (click)="handleOkay()" class="btn site-btn-primary-red"><span>{{confirmText}}</span></a>
+    </div>
+</div>

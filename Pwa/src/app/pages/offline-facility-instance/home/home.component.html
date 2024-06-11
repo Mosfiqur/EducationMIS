@@ -1,0 +1,10 @@
+<!-- <div class="card m-5 border-0">
+  <a *ngFor="let instance of listInstance" [routerLink]="['/unicefpwa/offline-facility-instance/facility',collectFor,instance.id]" style="cursor: pointer;cursor: pointer;border: 1px solid;margin-top: 20px;border-radius: 8px;" aria-expanded="false" >
+  <div class="card-body" >
+    <h5 class="card-title">Schedule : {{instance.instanceTitle}}</h5>
+    <p class="card-text">Month : {{instance.dataCollectionDate|date:'dd-MMM-yyyy'}}</p>
+  </div>
+</a>
+</div> -->
+
+<facility-instance [onlineOfflineStatus]="status" redirectTo='/unicefpwa/offline-facility-instance/facility'></facility-instance>

@@ -1,0 +1,318 @@
+<div class="p-4">
+  <div class="row">
+      <div class="col-12 site-maincontent-form-ctl-sm">
+          <div class="d-flex headding-with-back-btn pb-3 mb-0">
+            <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/framework/target']">
+                <span class="pr-3">                               
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                  <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                    c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                    c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z"/>
+                  </svg>
+
+                </span>
+            </a>
+
+              <h1 class="mb-0">
+               Add New Target
+              </h1>
+            </div>
+
+            <div class="mt-4">
+              <form [formGroup]="targetForm" (ngSubmit)="onSubmit()"> 
+              <div class="row">
+
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">         
+
+                  <div class="row">
+                    <div class="col pr-2">
+                      <div class="form-content-2-scroll pr-2">
+                
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Targeted Population<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+  
+                          <select class="form-content-2-scroll pr-2 custom-select"
+                            (change)="onTargetPopulationChange()"
+                            formControlName="targetedPopulation"
+                            name="targetedPopulation">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let population of targetPopulationList"
+                              value="{{population.id}}">
+                              {{population.text}}
+                            </option>
+                          </select>
+  
+                          <div class="invalid-feedback d-block">
+                            {{validationErrors.targetedPopulation}}
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Upazila <span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+  
+                          <select 
+                            class="form-content-2-scroll pr-2 custom-select"
+                            formControlName="upazilaId"
+                            (change)="onChangeUpazila()"
+                            >
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let item of upazilaList"
+                              value="{{item.id}}">
+                              {{item.text}}
+                            </option>
+                          </select>
+  
+                          <div class="invalid-feedback d-block">
+                            {{validationErrors.upazilaId}}
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Union <span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+  
+                          <select 
+                            class="form-content-2-scroll pr-2 custom-select"
+                            formControlName="unionId"
+                            >
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let item of filteredUnions"
+                              value="{{item.id}}">
+                              {{item.text}}
+                            </option>
+                          </select>
+  
+                          <div class="invalid-feedback d-block">
+                            {{validationErrors.unionId}}
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Camp Name <span class="red-text font-weight-bold"><span *ngIf="isCampRequired">*</span> </span>:</label>
+  
+                            <select class="form-content-2-scroll pr-2 custom-select" 
+                            formControlName="campId"
+                            name="campId"
+                            >
+                              <option value="">Select</option>
+                              <option class="dropdown-item" 
+                              *ngFor="let camp of filteredCamps"
+                              value="{{camp.id}}"
+                              >{{camp.text}}</option>
+                            </select>
+                            
+                            <div class="invalid-feedback d-block" >
+                              {{validationErrors?.campId}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Gender <span class="red-text font-weight-bold">* </span>:</label>
+  
+                            <select class="form-content-2-scroll pr-2 custom-select" 
+                            formControlName="gender"
+                            
+                            >
+                              <option value="">Select</option>
+                              <option class="dropdown-item" 
+                              *ngFor="let gender of genderList"
+                              value="{{gender.id}}"
+                              >{{gender.text}}</option>
+                            </select>
+                            
+                            <div class="invalid-feedback d-block" >
+                              {{validationErrors?.gender}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Age group <span class="red-text font-weight-bold">* </span>:</label>
+  
+                            <select class="form-content-2-scroll pr-2 custom-select" 
+                            formControlName="ageGroupId"
+                            
+                            >
+                              <option value="">Select</option>
+                              <option class="dropdown-item" 
+                              *ngFor="let ageGroup of ageGroupList"
+                              value="{{ageGroup.id}}"
+                              >{{ageGroup.name}}</option>
+                            </select>
+                            
+                            <div class="invalid-feedback d-block" >
+                              {{validationErrors?.ageGroupId}}
+                            </div>
+                          </div>
+                        </div>
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">PIN <span class="red-text font-weight-bold">* </span>:</label>
+                            <input 
+                              type="number" 
+                              class="form-control" 
+                              id="target3YearMale" 
+                              placeholder="People in need"
+                              formControlName="peopleInNeed"                              
+                              >
+                                    
+                            <div class="invalid-feedback d-block" >
+                              {{validationErrors?.peopleInNeed}}
+                            </div>
+                          </div>
+                        </div>
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Target  <span class="red-text font-weight-bold">* </span>:</label>
+                            <input 
+                              type="number" 
+                              class="form-control" 
+                              id="target3YearFemale" 
+                              placeholder="Target"
+                              formControlName="target"
+                              >
+      
+                              <div class="invalid-feedback d-block" >
+                                {{validationErrors?.target}}
+                              </div>
+                          </div>
+                        </div>
+
+                      <div class="row" formGroupName="dateRange">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div  class="">
+                            <div class="">  
+                              
+                                <div  formGroupName="startDate">
+  
+                                  <div class="form-group">
+                                    <label for="inputEmail4">Start Year <span class="red-text font-weight-bold">* </span>:</label>
+      
+                                    <select class="form-content-2-scroll pr-2 custom-select" 
+                                    formControlName="startYear"
+                                    
+                                    >
+                                      <option value="">Select</option>
+                                      <option class="dropdown-item" 
+                                      *ngFor="let year of yearList"
+                                      value="{{year}}"
+                                      >{{year}}</option>
+                                    </select>
+                                    
+                                    <div class="invalid-feedback d-block" >
+                                      {{validationErrors?.startYear}}
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputEmail4">Start Month <span class="red-text font-weight-bold">* </span>:</label>
+      
+                                    <select class="form-content-2-scroll pr-2 custom-select" 
+                                    formControlName="startMonth"
+                                    
+                                    >
+                                      <option value="">Select</option>
+                                      <option class="dropdown-item" 
+                                      *ngFor="let month of monthList"
+                                      value="{{month.id}}"
+                                      >{{month.text}}</option>
+                                    </select>
+                                    
+                                    <div class="invalid-feedback d-block" >
+                                      {{validationErrors?.startMonth}}
+                                    </div>
+                                  </div>
+  
+                                </div>                           
+                               
+                             
+                            </div>
+                          </div>
+                        </div>
+               
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div  class="">
+                            <div class="">  
+                              
+                                <div  formGroupName="endDate">
+                                  <div class="form-group">
+                                    <label for="inputEmail4">End Year <span class="red-text font-weight-bold">* </span>:</label>
+      
+                                    <select class="form-content-2-scroll pr-2 custom-select" 
+                                    formControlName="endYear"
+                                    
+                                    >
+                                      <option value="">Select</option>
+                                      <option class="dropdown-item" 
+                                      *ngFor="let year of yearList"
+                                      value="{{year}}"
+                                      >{{year}}</option>
+                                    </select>
+                                    
+                                    <div class="invalid-feedback d-block" >
+                                      {{validationErrors?.endYear}}
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputEmail4">End Month <span class="red-text font-weight-bold">* </span>:</label>
+      
+                                    <select class="form-content-2-scroll pr-2 custom-select" 
+                                    formControlName="endMonth"
+                                    
+                                    >
+                                      <option value="">Select</option>
+                                      <option class="dropdown-item" 
+                                      *ngFor="let month of monthList"
+                                      value="{{month.id}}"
+                                      >{{month.text}}</option>
+                                    </select>
+                                    
+                                    <div class="invalid-feedback d-block" >
+                                      {{validationErrors?.endMonth}}
+                                    </div>
+                                  </div>
+                                </div>
+
+                               
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback d-block" >
+                        {{validationErrors?.dateRange}}
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+              
+                </div>
+                <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+                  <button type="submit"
+                  [disabled]="!targetForm.valid"
+                  
+                  [title]="targetForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                    class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center" ><span> Save </span></button>
+                  <a  [routerLink]="['/unicef/framework/target']"  class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center" ><span> Return Without Saving </span></a>
+                </div>
+              </div>              
+            </form>
+            </div>
+
+            
+
+          </div>
+        </div>
+
+      </div>

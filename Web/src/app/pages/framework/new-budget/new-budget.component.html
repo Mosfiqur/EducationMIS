@@ -1,0 +1,180 @@
+<div class="p-4" *ngIf="budgetForm">
+  <div class="row">
+      <div class="col-12 site-maincontent-form-ctl-sm">
+          <div class="d-flex headding-with-back-btn pb-3 mb-0">
+            <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/framework/budget']">
+                <span class="pr-3">                               
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                  <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                    c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                    c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z"/>
+                  </svg>
+
+                </span>
+            </a>
+
+              <h1 class="mb-0">
+               Add New Budget
+              </h1>
+            </div>
+
+            <div class="mt-4">
+              <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+              <div class="row">              
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">         
+
+                  <div class="row">
+                      <div class="col pr-2">
+                        <div class="form-content-2-scroll pr-2">
+                          <div formGroupName="dateRange">
+                            <div class="form-group">
+                              <label for="">Start Date</label>
+                                  <div class="input-group"  >
+                                    <input type="text" 
+                                        class="form-control" 
+                                        id="calender"                                                                                 
+                                        formControlName="startDate"
+
+                                        bsDatepicker #dpStart="bsDatepicker"
+                                        [placeholder]="dpConfig.placeholderText"                                        
+                                        [bsConfig]="dpConfig"
+                                        >
+                                    <div class="input-group-prepend">
+                                      <span 
+                                      (click)="dpStart.toggle()"
+                                      class="input-group-text alt-input-group-text" id="">
+                                        <icon-calender></icon-calender>
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="invalid-feedback d-block" >
+                                    {{validationErrors?.startDate}}
+                                  </div>
+                            </div>
+  
+                            <div class="form-group">
+                              <label for="">End Date</label>
+                              <div class="input-group" s>
+                                <input 
+                                                                
+                                type="text" 
+                                formControlName="endDate"
+                                class="form-control" 
+                                id="calender1" 
+                                [placeholder]="dpConfig.placeholderText"                                        
+                                [bsConfig]="dpConfig"
+                                bsDatepicker #dpEnd="bsDatepicker"
+                                
+                                >
+                                <div class="input-group-prepend">
+                                  <span 
+                                  (click)="dpEnd.toggle()"
+                                  class="input-group-text alt-input-group-text" id="">
+                                    <icon-calender></icon-calender>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="invalid-feedback d-block" >
+                                {{validationErrors?.endDate}}
+                              </div>
+                            </div>
+
+                            <div class="invalid-feedback d-block" >
+                              {{validationErrors?.dateRange}}
+                            </div>
+                          </div>
+                      
+                          
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Donor <span class="red-text font-weight-bold">* </span>:</label>
+                            
+                              <ng-template #rt let-r="result" let-t="term">  
+                                <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+                              </ng-template>
+                              
+                              <input 
+                                    id="typeahead-http" type="text" 
+                                    class="form-control" 
+                                    [class.is-invalid]="searchFailed" 
+                                    formControlName="donor" 
+                                    [ngbTypeahead]="searchDonor" 
+                                    placeholder="Search donor name" 
+                                    [resultTemplate]="rt"
+                                    [inputFormatter]="formatter"
+                                    [editable]="true"
+                                    />
+
+
+                              <div class="invalid-feedback d-block" >
+                                {{validationErrors?.donor}}
+                              </div>                    
+                          </div>
+                        </div>
+
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Project <span class="red-text font-weight-bold">* </span>:</label>
+                       
+                              <input 
+                                    id="typeahead-http" type="text" 
+                                    class="form-control" 
+                                    [class.is-invalid]="searchFailed" 
+                                    formControlName="project" 
+                                    [ngbTypeahead]="searchProject" 
+                                    placeholder="Search project name" 
+                                    [resultTemplate]="rt"
+                                    [inputFormatter]="formatter"
+                                    />
+
+                              <div class="invalid-feedback d-block" >
+                                {{validationErrors?.project}}
+                              </div>
+                          </div>
+                        </div>
+
+                        <div  class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">Amount <span class="red-text font-weight-bold">* </span>:</label>
+                            <input 
+                              type="number" 
+                              class="form-control" 
+                              id="amount" 
+                              placeholder="Enter amount (USD)"
+                              formControlName="amount"
+                              name="amount"
+                              min="1"
+                              >
+                              <div class="invalid-feedback d-block" >
+                                {{validationErrors?.amount}}
+                              </div>
+                          </div>
+                        </div>
+                      
+                        </div>
+                    </div>
+                  </div>
+              
+                </div>
+                <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+                  <button 
+                    type="submit" 
+                    class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center" 
+                    [disabled]="!budgetForm.valid"
+                   
+                    [title]="budgetForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                    ><span> Save </span></button>
+                  <a 
+                    [routerLink]="['/unicef/framework/budget']"  
+                    class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center" ><span> Return Without Saving </span>
+                  </a>
+                </div>
+                
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+

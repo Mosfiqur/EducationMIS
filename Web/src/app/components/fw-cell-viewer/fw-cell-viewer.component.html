@@ -1,0 +1,12 @@
+<div class="tableBlock cell-text" title="{{displayValue}}" *ngIf="displayValue">    
+  <a (click)="onEdit($event)" class="edit-btn" >
+    <span class="">{{displayValue}}</span>
+   </a>  
+</div>
+
+<a *ngIf="!displayValue && showAdd"
+ class="cursor-pointer p-2"
+ (click)="onAdd($event)"
+ >
+ <span class="gry-text">+ Add</span>
+</a>

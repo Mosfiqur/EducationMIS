@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Here only one variable - ScheduleListViewModel and variable name could be viewModel  -->
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="ViewModel"
+            type="com.unicef.mis.viewmodel.ScheduleViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/collect_facility_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12sp" />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/collect_facility_recycler"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/no_content_iv"
+                android:layout_width="256sp"
+                android:layout_height="256sp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/no_content_found"
+                android:visibility="@{ViewModel.hasRecord?View.GONE: View.VISIBLE}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/no_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/no_content_iv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8sp"
+                android:gravity="center"
+                android:text="@string/no_content_found"
+                android:textSize="16sp"
+                android:visibility="@{ViewModel.hasRecord?View.GONE: View.VISIBLE}" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

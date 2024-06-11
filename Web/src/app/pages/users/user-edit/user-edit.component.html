@@ -1,0 +1,101 @@
+<div class="p-4">
+  <div class="row">
+      <div class="col-12 site-maincontent-ctl">
+          <div class="d-flex headding-with-back-btn pb-3 mb-0">
+            <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/users/home']">
+                <span class="pr-3">                               
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                  <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                    c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                    c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z"/>
+                  </svg>
+
+                </span>
+            </a>
+
+              <h1 class="mb-0">
+              Edit User
+              </h1>
+            </div>
+
+            <div class="mt-4">
+              <div class="row">
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">         
+
+                  <div class="row">
+                    <div class="col pr-2">
+                      <div class="form-content-2-scroll pr-2">
+                
+                      <form>
+                        <div class="flex-grow-1">
+                          <div class="form-group">
+                            <label for="inputEmail4">User Name<span class="red-text font-weight-bold">* </span>:</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Enter User Name">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="inputEmail4">Designation <span class="red-text font-weight-bold">* </span>:</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="col-10 d-inline-block p-0">Select</div> 
+                        </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" >---</a>
+                                <a class="dropdown-item" >---</a>
+                                <a class="dropdown-item" >---</a>
+                             </div>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email :</label>
+                            <input type="text" class="form-control" id="email" placeholder="Enter Email Address">
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Phone Number :</label>
+                            <input type="text" class="form-control" id="phonenumber" placeholder="Enter Phone Number">
+                          </div>
+
+
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Role <span class="red-text font-weight-bold">* </span>:</label>
+                            <div class="dropdown">
+                              <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="col-10 d-inline-block p-0">Select</div> 
+                          </button>
+                              <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" >---</a>
+                                  <a class="dropdown-item" >---</a>
+                                  <a class="dropdown-item" >---</a>
+                               </div>
+                          </div>
+                          </div>
+
+                          
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Education sector partner :</label>
+                          <input type="text" class="form-control" id="Educationsectorpartner" placeholder="Enter Education sector partner">
+                        </div>
+                        </div>
+                      </form>                     
+                      </div>
+                    </div>
+                  </div>
+              
+                </div>
+                <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+                  <a href="" class="site-btn-primary py-2 px-3 mb-3 btn-block text-center" ><span> Save </span></a>
+                  <a [routerLink]="['/unicef/users/home']"  class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center" ><span> Return Without Saving </span></a>
+                </div>
+              </div>
+            </div>
+
+            
+
+          </div>
+        </div>
+
+      </div>

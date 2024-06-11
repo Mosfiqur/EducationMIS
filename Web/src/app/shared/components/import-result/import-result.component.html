@@ -1,0 +1,53 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import Result</h5>
+        <button type="button" (click)="close()" class="close" >
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="importResult.errorMessage">
+            {{importResult.errorMessage}}
+        </div>
+     <div *ngIf="!importResult.errorMessage">
+        <p>Total {{importResult.totalImported}} rows imported.</p>
+        <p>Total {{importResult.rowErrors.length}} errors.</p>
+     </div>
+
+      <table class="table table-bordered" *ngIf="importResult.rowErrors.length">
+          <thead>
+              <tr>   
+                  <th>SL</th>               
+                  <th>Row Number</th>
+                  <th>Error Detail</th>
+              </tr>
+          </thead>
+          <tbody>           
+              <tr *ngFor="let error of importResult.rowErrors | paginate:pagingConfig; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{error.rowNumber}}</td>
+                  <td>{{error.errorMessage}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <pagination-controls *ngIf="importResult.rowErrors.length" (pageChange)="getPage($event)" id="import_result_list" class="d-flex justify-content-end pt-3"></pagination-controls>
+    </div>
+    <div class="modal-footer">       
+          <button           
+            type="button" 
+            class="btn btn-outline-secondary mr-2" 
+            ngbTooltip="Copied!"             
+            triggers="click:blur"
+            #t="ngbTooltip" (click)="t.open();copyToClipboard();">
+            <span><i class="fa fa-copy"></i> Copy</span>
+          </button>
+        <a  type="button" 
+            (click)="handleCancel()" 
+            class="btn site-btn-cutom-link"><span>Cancel</span></a>        
+        <button 
+            type="button"                 
+            (click)="handleOk()" 
+            class="btn site-btn-primary"><span>Ok</span></button>
+    </div>
+</div>

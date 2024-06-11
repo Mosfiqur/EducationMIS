@@ -1,0 +1,22 @@
+﻿[
+  {
+    "id": 1,
+    "name": "3 Years"
+  },
+  {
+    "id": 2,
+    "name": "4-5 Years"
+  },
+  {
+    "id": 3,
+    "name": "6-14 Years"
+  },
+  {
+    "id": 4,
+    "name": "15-18 Years"
+  },
+  {
+    "id": 5,
+    "name": "19-24 Years"
+  }
+]

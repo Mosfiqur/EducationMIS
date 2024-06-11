@@ -1,0 +1,20 @@
+.show-context-menu {
+    display: block !important;   
+}
+
+.unapprove-beneficiary-data{
+    background-color: var(--Green500) !important;
+}
+.unapprove-recollect-beneficiary-data{
+    background-color: var(--Gry800) !important;
+    color: white !important;
+}
+.recollect-beneficiary-data{
+    background-color: var(--Gry600) !important;
+}
+.approve-beneficiary-data{
+    background-color: var(--Blue300) !important;
+}
+.deactivate-beneficiary-data{
+    background-color: var(--Red900) !important;
+}

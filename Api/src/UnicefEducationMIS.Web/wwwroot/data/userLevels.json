@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "levelName": "Admin",
+    "rank":  100
+  },
+  {
+    "id": 2,
+    "levelName": "Program Partner",
+    "rank": 90
+  },
+  {
+    "id": 3,
+    "levelName": "Implementation Partner",
+    "rank": 80
+  },
+  {
+    "id": 4,
+    "levelName": "Teacher",
+    "rank": 70
+  }
+]

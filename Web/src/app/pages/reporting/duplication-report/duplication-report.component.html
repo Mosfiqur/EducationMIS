@@ -1,0 +1,46 @@
+<form class="site-form">  
+  
+ <div class="form-row">
+  <div class="form-group col-md-3">
+    <label>Implementing Partner</label>
+   <div>
+    <ng-multiselect-dropdown
+    [placeholder]="'Select'"
+    [data]="espList"
+    [(ngModel)]="filters.selectedIPs"
+    [settings]="dropdownSettings"
+    name="selectedIPs"
+    >
+    </ng-multiselect-dropdown>
+   </div>
+    
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <label>Programming Partner</label>
+    <div>
+      <ng-multiselect-dropdown
+      [placeholder]="'Select'"
+      [data]="espList"
+      [(ngModel)]="filters.selectedPPs"
+      [settings]="dropdownSettings"
+      name="selectedPPs"
+      >
+      </ng-multiselect-dropdown>
+    </div>
+    
+  </div>
+  
+ </div>
+ 
+ <div class="form-row">
+  <div class="mb-2 col-md-3 ">
+    
+    <button 
+     [disabled]="!filters.selectedPPs.length || !filters.selectedIPs.length"
+     [title]="(!filters.selectedPPs.length || !filters.selectedIPs.length) ? 'Disabled until PP and IP is selected': 'Download report'"
+     class="btn site-btn-primary btn-block mt-2"  (click)="download()"><i class="fa fa-download"></i> Download</button>
+ </div>
+ </div>
+</form>

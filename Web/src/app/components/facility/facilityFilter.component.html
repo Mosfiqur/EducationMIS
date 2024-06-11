@@ -1,0 +1,144 @@
+<div>
+    <div id="filter-main" class="collapse" aria-labelledby="headingTwo" data-parent="#filter-main">
+        <div class="allborder-box border-redious-xl p-3">
+
+            <form class="site-form">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label>Upazila</label>
+
+                        <select (change)="selectUpazila($event.target.value)"
+                            class="form-content-2-scroll pr-2 custom-select" [(ngModel)]="facilityFilterModel.upazilaId"
+                            name="upazilaId">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let u of upazilas" value="{{u.id}}">
+                                {{u.name}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Union</label>
+                        <select (change)="selectUnion($event.target.value)"
+                            class="form-content-2-scroll pr-2 custom-select" [(ngModel)]="facilityFilterModel.unionId"
+                            name="unionId">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let u of unions" value="{{u.id}}">
+                                {{u.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Targeted Population</label>
+
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="facilityFilterModel.targetedPopulation" name="targetedPopulation">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let population of tartedPopulationList"
+                                value="{{population.id}}">
+                                {{population.text}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Type</label>
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="facilityFilterModel.facilityType" name="facilityType">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let fac of typeList" value="{{fac.id}}">
+                                {{fac.text}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Status </label>
+                        <select class="form-content-2-scroll pr-2 custom-select"
+                            [(ngModel)]="facilityFilterModel.facilityStatus" name="facilityStatus">
+                            <option value="">Select</option>
+                            <option class="dropdown-item" *ngFor="let status of statusList" value="{{status.id}}">
+                                {{status.text}}
+                            </option>
+                        </select>
+
+
+                    </div>
+                    <div class="form-group col-md-6"><label for="inputPassword4">Teacher</label>
+                        <div class="dropdown">
+                            <button class="btn site-btn-outlined btn-block" type="button" (click)="teacherModal_clicked()">
+                                <div class="col-10 d-inline-block p-0">Select Teacher</div>
+                            </button>
+
+                        </div>
+                        <div class="d-flex flex-wrap align-content-start " *ngIf="teachers.length>0">
+                            <p class="gry-text  mr-2 py-1 my-auto">Teacher selected :</p>
+
+                            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+                                *ngFor="let c of teachers">
+                                <span class="mr-3 ml-1"> {{c.fullName}}</span>
+                                <span class="mr-1"><a (click)="removeTeacher(c)"><i class="fa fa-times"
+                                            aria-hidden="true"></i></a></span>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Programme Partner</label>
+                        <div class="dropdown">
+                            <button class="btn site-btn-outlined btn-block" type="button" (click)="ppModal_clicked()">
+                                <div class="col-10 d-inline-block p-0">Select Programme Partner</div>
+                            </button>
+
+                        </div>
+                        <div class="d-flex flex-wrap align-content-start " *ngIf="programPartner.length>0">
+                            <p class="gry-text  mr-2 py-1 my-auto">Programme Partner selected :</p>
+
+                            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+                                *ngFor="let c of programPartner">
+                                <span class="mr-3 ml-1"> {{c.partnerName}}</span>
+                                <span class="mr-1"><a (click)="removePp(c)"><i class="fa fa-times"
+                                            aria-hidden="true"></i></a></span>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Implementing Partner</label>
+                        <div class="dropdown">
+                            <button class="btn site-btn-outlined btn-block" type="button" (click)="ipModal_clicked()">
+                                <div class="col-10 d-inline-block p-0">Select Implementing Partner</div>
+                            </button>
+
+                        </div>
+                        <div class="d-flex flex-wrap align-content-start " *ngIf="implementationPartner.length>0">
+                            <p class="gry-text  mr-2 py-1 my-auto">Implementing Partner Selected:</p>
+
+                            <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+                                *ngFor="let c of implementationPartner">
+                                <span class="mr-3 ml-1"> {{c.partnerName}}</span>
+                                <span class="mr-1"><a (click)="removeIp(c)"><i class="fa fa-times"
+                                            aria-hidden="true"></i></a></span>
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+            <div class="py-3 text-right">
+                <a #collapseFilter class="btn site-btn-cutom-link" data-dismiss="modal" type="button" 
+                    type="button" data-toggle="collapse" data-target="#filter-main" aria-expanded="false"
+                    aria-controls="collapseTwo"><span>Cancel</span></a>
+                <a class="btn site-btn-primary ml-3" (click)="applyFilter()"><span>Filter Data</span></a>
+            </div>
+
+        </div>
+    </div>
+</div>

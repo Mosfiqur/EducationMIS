@@ -1,0 +1,421 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Facilities' Schedules
+        </h1>
+
+        <div>
+          <div class="my-4 pb-1">
+            <a (click)="createNewSchedule()" class="site-btn-primary py-2 px-3"><span>Create Monitoring
+                Schedule</span></a>
+          </div>
+
+        </div>
+
+
+        <div class="full-table-ctl">
+          <!-- table control start -->
+          <div class="py-3">
+            <div class="table-control-head" id=#table-control-head-default>
+              <div class="d-flex flex-wrap py-2">
+                <div class="flex-grow-1 mr-3">
+                  <p class="gry-text  mr-2 py-1 my-auto">All Schedules</p>
+                </div>
+              </div>
+
+              <!-- table option start -->
+
+              <div [ngClass]="{'show-context-menu': numberOfSchedulesSelected > 0}"
+                class=" table-cell-options py-2 px-2" id=#table-cell-option-show-hide>
+                <div class="d-flex flex-wrap">
+                  <p class="my-auto flex-grow-1 ml-2"><span class="mr-2">1</span><span> Schedule(s) selected</span></p>
+                  <div class="d-flex">
+                    <a *ngIf="numberOfSchedulesSelected==1" (click)="editSchedule()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Edit</span>
+                      <span>
+                        <icon-edit></icon-edit>
+                      </span>
+
+                    </a>
+
+                    <a (click)="deleteSelectedSchedules()" class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Delete</span>
+                      <span>
+                        <i class="fa fa-trash-alt"></i>
+                      </span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+              <!-- table option end -->
+            </div>
+
+
+
+          </div>
+          <!-- table control end -->
+
+          <!-- table start -->
+          <div >
+            <page-size-selector (onPageSizeChanged)="onPageSizeChanged($event)" [totalItems]="pagedSchedules?.total">
+            </page-size-selector>
+
+            <div>
+
+              <div class="site-table table-responsive">
+                <table class="table table-editable">
+
+                  <thead>
+                    <tr>
+                      <th scope="row">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" name="materialExampleRadios" id=#chkoption
+                            [ngModel]="isAllSelected" (ngModelChange)="selectAll($event)">
+                        </div>
+                      </th>
+                      <th scope="col">Name</th>
+                      <th scope="col"> Description</th>
+                      <th>From Date</th>
+                      <th>To Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr class="table-info-ctl" *ngIf="!schedules || !schedules.length">
+                      <td colspan="5">
+                        <div class="py-2 px-3">
+                          <div class="text-center py-5">
+                            <p class="xl-text mb-0">Create new Schedule</p>
+                            <p class="lg-text">(your schedules will display here)</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr *ngFor="let schedule of schedules | paginate: paginationConfig">
+                      <th scope="row ">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" name="materialExampleRadios"
+                            [(ngModel)]="schedule.isSelected" (ngModelChange)="toggleSelection(schedule)" id=#chkoption>
+                        </div>
+                      </th>
+                      <td>{{schedule.scheduleName}}</td>
+                      <td>{{schedule.description}}</td>
+                      <td>{{schedule.startDate | date}}</td>
+                      <td>{{schedule.endDate | date}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+              <pagination-controls (pageChange)="getPage($event)" id="facility_schedule_list"
+                class="d-flex justify-content-end pt-3"></pagination-controls>
+              <!-- <div class="border-top">
+                <div class="pt-3"> 
+                  <nav aria-label="Page navigation example ">
+                    <ul class="pagination mb-0 justify-content-end">
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" >1</a></li>
+                      <li class="page-item"><a class="page-link" >2</a></li>
+                      <li class="page-item"><a class="page-link" >3</a></li>
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+         
+              </div> -->
+
+            </div>
+          </div>
+          <!-- table end -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Schedule modal -->
+  <div class="modal fade newSchedule" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Schedule</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="site-form">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Title</label>
+              <input type="text" class="form-control" placeholder="Schedule July,2020 to July,2021" id="dashbordname"
+                readonly>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">Frequency <span class="red-text font-weight-bold">* </span>:</label>
+              <div class="dropdown">
+                <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="col-10 d-inline-block p-0">Select</div>
+                </button>
+                <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item">Biweekly</a>
+                  <a class="dropdown-item">Monthly</a>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label for="">Start Date</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="1/7/2020">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text alt-input-group-text" id="">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+                          style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                          <g>
+                            <g>
+                              <g>
+                                <path d="M20.7,4.6h-0.9V3h-1.6v1.6H7.8V3H6.3v1.6H5.3C4.1,4.6,3,5.6,3,6.9v13.8C3,21.9,4.1,23,5.3,23h15.3c1.3,0,2.3-1.1,2.3-2.3
+				V6.9C23,5.6,21.9,4.6,20.7,4.6z M21.4,20.7c0,0.4-0.4,0.8-0.8,0.8H5.3c-0.4,0-0.8-0.4-0.8-0.8V10.3h16.9V20.7z M21.4,8.8H4.6V6.9
+				c0-0.4,0.4-0.8,0.8-0.8h0.9v1.6h1.6V6.1h10.3v1.6h1.6V6.1h0.9c0.4,0,0.8,0.4,0.8,0.8V8.8z" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="18.5" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="18.5" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="">End Date</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="1/7/2021">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text alt-input-group-text" id="">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+                          style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                          <g>
+                            <g>
+                              <g>
+                                <path d="M20.7,4.6h-0.9V3h-1.6v1.6H7.8V3H6.3v1.6H5.3C4.1,4.6,3,5.6,3,6.9v13.8C3,21.9,4.1,23,5.3,23h15.3c1.3,0,2.3-1.1,2.3-2.3
+				V6.9C23,5.6,21.9,4.6,20.7,4.6z M21.4,20.7c0,0.4-0.4,0.8-0.8,0.8H5.3c-0.4,0-0.8-0.4-0.8-0.8V10.3h16.9V20.7z M21.4,8.8H4.6V6.9
+				c0-0.4,0.4-0.8,0.8-0.8h0.9v1.6h1.6V6.1h10.3v1.6h1.6V6.1h0.9c0.4,0,0.8,0.4,0.8,0.8V8.8z" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="18.5" y="12" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="6" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="9.1" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="12.2" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="15.3" y="18.2" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect x="18.5" y="15.1" width="1.6" height="1.6" />
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel </span></a>
+          <a type="button" class="btn site-btn-primary"><span>Create </span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal end New Schedule -->
+
+
+  <!-- modal start -->
+
+  <!-- Delete Schedule -->
+  <div class="modal fade deleteSelectedIndicator" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title red-text" id="exampleModalLabel">Confirm Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="red-text ">
+            Are you sure you want to remove?
+          </h3>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary-red"><span>Delete</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Delete schedule-->
+
+</div>

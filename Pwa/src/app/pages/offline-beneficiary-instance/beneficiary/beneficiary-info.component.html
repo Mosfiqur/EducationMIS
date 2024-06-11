@@ -1,0 +1,41 @@
+  <!-- <pre>{{facility|json}}</pre> -->
+<!-- 
+<div class="card">
+  <div class="card-body">
+    <p class="card-text"> Facility Name : {{facility?.facilityName}} </p>
+    <p class="card-text"> Camp Name: {{facility?.campName}} </p>
+    <p class="card-text"> Programming Partner : {{facility?.programmingPartnerName}} </p>
+    <p class="card-text"> Implementation Partner : {{facility?.implementationPartnerName}} </p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Id</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let beneficiary of listBeneficiary" (click)="navigateToBeneficiaryIndicator(beneficiary)" style="cursor:pointer;">
+            <td>{{beneficiary.beneficiaryName}}</td>
+            <td>{{beneficiary.id}}</td>
+            <td *ngIf="CollectionStatusText(beneficiary.collectionStatus); let status;">
+              
+              <span *ngIf="status =='NotCollected'" class="badge badge-pill badge-info">{{status}}</span>
+              <span *ngIf="status =='Collected'" class="badge badge-pill badge-success">{{status}}</span>
+              <span *ngIf="status =='Approved'" class="badge badge-pill badge-warning">{{status}}</span>
+              <span *ngIf="status =='Recollect'" class="badge badge-pill badge-primary">{{status}}</span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+<beneficiary-status [onlineOfflineStatus]="status" redirectTo="/unicefpwa/online-beneficiary-instance/indicator"></beneficiary-status>

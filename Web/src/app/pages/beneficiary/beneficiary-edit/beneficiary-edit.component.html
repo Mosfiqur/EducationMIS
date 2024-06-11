@@ -1,0 +1,645 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div class="d-flex headding-with-back-btn pb-3 mb-0">
+        <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/beneficiary/home']">
+          <span class="pr-3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+              style="enable-background:new 0 0 26 26;" xml:space="preserve">
+              <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                    c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                    c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z" />
+            </svg>
+
+          </span>
+        </a>
+
+        <h1 class="mb-0">
+          {{editState ? 'Edit Beneficiary' : 'Add New Beneficiary'}}
+        </h1>
+      </div>
+      <form #bForm="ngForm">
+        <div class="mt-4">
+          <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">
+
+              <div class="">
+                <div class="row">
+                  <div class="col pr-2">
+                    <div class="form-content-1-scroll pr-2">
+
+                      <!-- <pre>{{beneficiaryCreateViewModel|json}}</pre> -->
+                      <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Facility Id
+                            <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <input type="text" 
+                            class="form-control" readonly="true"
+                            [(ngModel)]="beneficiaryCreateViewModel.facilityCode" 
+                            name="facilityCode"
+                            required
+                            placeholder="This is the unique ID per facility form facility table">
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+
+                          <div class="pb-3">
+                            <a  data-toggle="modal" data-target=".facilitySelect"
+                              class="btn site-btn-primary px-3 py-2 mt-4"><span>
+                                Select Facility </span></a>
+                          </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+                          <label for="inputEmail4"> proGres ID<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <input type="al" 
+                            class="form-control" 
+                            [(ngModel)]="beneficiaryCreateViewModel.unhcrId"
+                            required
+                            name="progressId" 
+                            placeholder="This is the unique ID per student"
+
+                            >
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">FCN id 
+                            <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <input type="text" 
+                            [(ngModel)]="beneficiaryCreateViewModel.fcnId" name="fcnId"
+                            class="form-control" placeholder="Enter FCN_id"
+                            required
+                            >
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Name of the student<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <input type="text" 
+                            [(ngModel)]="beneficiaryCreateViewModel.name" name="name"
+                            class="form-control" placeholder="Enter Student Name"
+                            required
+                            >
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Father's Name:</label>
+                          <input type="text" [(ngModel)]="beneficiaryCreateViewModel.fatherName" name="fatherName"
+                            class="form-control" placeholder="Enter Fathers's Name">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Mother's Name:</label>
+                          <input type="text" [(ngModel)]="beneficiaryCreateViewModel.motherName" name="motherName"
+                            class="form-control" placeholder="Enter Mother's Name">
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">FCN id 
+                            <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <input type="text" 
+                            [(ngModel)]="beneficiaryCreateViewModel.fcnId" name="fcnId"
+                            class="form-control" placeholder="Enter FCN_id"
+                            required
+                            >
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Camp   <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campselect" data-backdrop="static" data-keyboard="false"
+                              data-toggle="modal">
+                              <div class="col-10 d-inline-block p-0">{{selectedCampName}}</div>
+                            </button>
+
+                          </div>
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Block   <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campblockselect" data-backdrop="static" data-keyboard="false"
+                               data-toggle="modal">
+                              <div class="col-10 d-inline-block p-0">{{selectedBlockName}}</div>
+                            </button>
+
+                          </div>
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Sub Block   <span class="red-text font-weight-bold ml-2">*</span>:</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campsubblockselect" data-backdrop="static" data-keyboard="false"
+                              data-toggle="modal">
+                              <div class="col-10 d-inline-block p-0">{{selectedSubBlockName}}</div>
+                            </button>
+
+                          </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Date of birth:<span class="red-text font-weight-bold ml-2">* </span>
+                          </label>
+                          <input name="dateOfBirth" 
+                          
+                            [(ngModel)]="beneficiaryCreateViewModel.dateOfBirth" 
+                            class="form-control"
+                            
+                            required
+                            bsDatepicker #dateOfBirth="bsDatepicker"
+                            [placeholder]="dpConfig.placeholderText"                                        
+                            [bsConfig]="dpConfig"
+
+                            >
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Sex:<span class="red-text font-weight-bold ml-2">* </span> </label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <div class="col-10 d-inline-block p-0">{{selectedGenderName}}</div>
+                            </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" *ngFor="let gen of gender" (click)="genderSelect(gen)">{{gen.name}}</a>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Disabled :</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <div class="col-10 d-inline-block p-0">{{this.beneficiaryCreateViewModel.disabled?"Yes":"No"}}</div>
+                            </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                             
+                              <a class="dropdown-item" (click)="setDisability(false)">No</a>
+                              <a class="dropdown-item" (click)="setDisability(true)">Yes</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Level of the study<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <div class="col-10 d-inline-block p-0">{{selectedlevelOfStudyName}}</div>
+                            </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" *ngFor="let gen of levelOfStudy" (click)="levelOfStudySelect(gen)">{{gen.name}}</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Enrollment_Date of current level<span
+                              class="red-text font-weight-bold ml-2">* </span> :</label>
+                          <input 
+                            name="enrollmentDate" 
+                            
+                            bsDatepicker #enrollmentDate="bsDatepicker"
+                            [placeholder]="dpConfig.placeholderText"                                        
+                            [bsConfig]="dpConfig"
+                            
+                            [(ngModel)]="beneficiaryCreateViewModel.enrollmentDate" class="form-control"
+                            required
+                            >
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4"> Data Holder Name:</label>
+                          <input type="al" [(ngModel)]="dataHolderName" name="dataHolderName" readonly="true" class="form-control" placeholder="Auto-fill from data entry person profile">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Data Holder Phone:</label>
+                          <input type="al" [(ngModel)]="dataHolderPhone" name="dataHolderPhone" class="form-control" placeholder="Auto-fill from data entry person profile" readonly="true">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Remarks:</label>
+                          <textarea class="form-control" name="remarks" [(ngModel)]="beneficiaryCreateViewModel.remarks" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">LF Location (camp)</label>
+                          <input type="al" readonly="true" [(ngModel)]="selectedFacilityViewModel.campName"
+                            name="facilityCamp" class="form-control" placeholder="Auto-fill from LC table">
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4"> Partner PP:</label>
+                          <input type="al" readonly="true"
+                            [(ngModel)]="selectedFacilityViewModel.programmingPartnerName" name="programPartnerName"
+                            class="form-control" placeholder="Auto-fill from LC table">
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4"> Partner IP:</label>
+                          <input type="al" readonly="true"
+                            [(ngModel)]="selectedFacilityViewModel.implemantationPartnerName"
+                            name="implementationPartnerName" class="form-control" placeholder="Auto-fill from LC table">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+              <button
+                [disabled]="!bForm.valid || (selectedCampId==0 || selectedBlockId==0 || selectedSubBlockId==0)"
+                (click)="save()" 
+                class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center"><span> Save </span></button>
+              <a [routerLink]="['/unicef/beneficiary/home']"
+                class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center"><span> Return Without Saving </span></a>
+
+            </div>
+          </div>          
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Select facility modal -->
+  <div class="modal fade facilitySelect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Facility</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" name="facilitySearchText" [(ngModel)]="facilityConfig.searchText" (keyup)="facilitySearchChange()"
+              class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a >
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                  l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                  s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Facility Name</th>
+                      <th colspan="2" scope="col">Camp Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer" (click)="facilityRadioOnChange(fac)"
+                      *ngFor="let fac of facilities | paginate: { itemsPerPage: facilityConfig.itemsPerPage,currentPage: facilityConfig.currentPage, totalItems: facilityConfig.total,id:'facility_pagination' }">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="instanceRadio"
+                            (change)="facilityRadioOnChange(fac)" [checked]="fac.id == selectedFacilityViewModel.id" />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{fac.facilityName}}</div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{fac.campName}}</div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <pagination-controls id='facility_pagination' (pageChange)="pageChangedFacility(p=$event)" class="d-flex justify-content-end pt-3">
+              </pagination-controls>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button"  #facilityModalClose class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="selectFacilityClicked()" class="btn site-btn-primary" ><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end select facility  -->
+
+  <!-- Select camp modal -->
+  <div class="modal fade campselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp</h5>
+          <button type="button" (click) = "closeCampModalClicked()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" name="campSearchText" [(ngModel)]="campConfig.searchText" (keyup)="campSearchChange()" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a >
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                  l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                  s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Camp Name</th>
+                      <th colspan="2" scope="col">Camp SSID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- {{changeCampId}}
+                    {{selectedCampId}} -->
+                    <tr class="cursor-pointer" (click)="campRadioOnChange(cam)"
+                      *ngFor="let cam of camps | paginate: { itemsPerPage: campConfig.itemsPerPage,currentPage: campConfig.currentPage, totalItems: campConfig.total,id:'camp_pagination' }">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="{{cam.id}}"
+                            (change)="campRadioOnChange(cam)" 
+                            [checked]="(cam.id == selectedCampId && !changeCampId) || (changeCampId && cam.id === selectedTempCampId)" />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{cam.name}}</div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{cam.ssid}}</div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <pagination-controls id='camp_pagination' (pageChange)="pageChangedCamp(p=$event)" class="d-flex justify-content-end pt-3">
+              </pagination-controls>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeCampModalClicked()" data-dismiss="modal" #campModalClose class="btn site-btn-cutom-link" ><span>Cancel</span></a>
+          <a type="button" (click)="selectCampClicked()" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end select camp  -->
+
+  <!-- Select camp block modal -->
+  <div class="modal fade campblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Block</h5>
+          <button type="button" (click)="closeBlockModalClicked()" class="close" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" name="blockSearchText" [(ngModel)]="blockConfig.searchText" (keyup)="blockSearchChange()" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a >
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                          l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                          s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Block Name</th>
+                      <th colspan="2" scope="col">Block Id</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  class="cursor-pointer" (click)="blockRadioOnChange(bl)"
+                      *ngFor="let bl of blocks | paginate: { itemsPerPage: blockConfig.itemsPerPage,currentPage: blockConfig.currentPage, totalItems: blockConfig.total,id:'block_pagination' }">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="{{bl.id}}"
+                            (change)="blockRadioOnChange(bl)" [checked]="(bl.id == selectedBlockId && !changeBlockId) || (changeBlockId && bl.id === selectedTempBlockId)"   />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{bl.name}}</div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{bl.code}}</div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <pagination-controls id='block_pagination' (pageChange)="pageChangedBlock(p=$event)" class="d-flex justify-content-end pt-3">
+              </pagination-controls>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeBlockModalClicked()" data-dismiss="modal" #blockModalClose class="btn site-btn-cutom-link"><span>Cancel</span></a>
+          <a type="button" (click)="selectBlockClicked()"  class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp block camp  -->
+
+  <!-- Select camp block modal -->
+  <div class="modal fade campsubblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Sub Block</h5>
+          <button type="button" class="close" (click)="closeSubBlockModalClicked()" 
+          data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" name="subBlockSearchText" [(ngModel)]="subBlockConfig.searchText" (keyup)="subBlockSearchChange()" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a >
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                            l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                            s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer" (click)="subBlockRadioOnChange(sb)"
+                      *ngFor="let sb of subBlocks | paginate: { itemsPerPage: subBlockConfig.itemsPerPage,currentPage: subBlockConfig.currentPage, totalItems: subBlockConfig.total,id:'subBlock_pagination' }">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="instanceRadio"
+                            (change)="subBlockRadioOnChange(sb)" [checked]="sb.id == selectedSubBlockId"
+                            [checked]="(sb.id == selectedSubBlockId && !changeSubBlockId) || (changeSubBlockId && sb.id === selectedTempSubBlockId)" />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{sb.name}}</div>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <pagination-controls id='subBlock_pagination' (pageChange)="pageChangedSubBlock(p=$event)" class="d-flex justify-content-end pt-3">
+              </pagination-controls>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeSubBlockModalClicked()" #subBlockModalClose class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="selectSubBlockClicked()" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp block camp  -->
+</div>

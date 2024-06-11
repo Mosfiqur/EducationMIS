@@ -1,0 +1,18 @@
+<!-- <table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Id</th>
+    <th>Status</th>
+  </tr>
+
+  <tr *ngFor="let beneficiary of listBeneficiary" (click)="navigateToBeneficiaryIndicator(beneficiary)">
+    <td>{{beneficiary.beneficiaryName}}</td>
+    <td>{{beneficiary.entityId}}</td>
+    <td>{{CollectionStatusText(beneficiary.collectionStatus)}}</td>
+  </tr>
+</table> -->
+
+<beneficiary-status [onlineOfflineStatus]="status" redirectTo="/unicefpwa/online-beneficiary-instance/indicator">
+</beneficiary-status>
+
+

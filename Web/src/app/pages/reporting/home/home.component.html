@@ -1,0 +1,38 @@
+<div class="p-4 borderBoxHeight">
+    <div class="row">
+        <div class="col-12">
+            <div class="">
+
+                <h1 class="pb-3 mb-0">
+                    Reporting and Records
+                </h1>
+
+                <div>
+                    <div class="mt-4 pb-1">
+                        <label>Report</label>
+                        <div class="dropdown">
+                            <button class="btn btn-block  site-btn-outlined dropdown-toggle text-left" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="col-10 d-inline-block p-0">{{selectedReportName}}</div>
+                            </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                                <a (click)="onRouteSelected(r)" *ngFor="let r of reports" [routerLink]="r.value"
+                                    class="dropdown-item">{{r.name}}</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+                <!-- <h2 class="mb-0">Now Showing: <span class="ml-2">{{selectedReportName}}</span></h2> -->
+                <div class="report-section allborder-box border-redious-xl p-3">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-4">
+      <span class="legend-text">Not Collected</span>
+      <div class="legend-box not-collected-row">&nbsp;</div>
+    </div>
+    <div class="col-4">
+      <span class="legend-text">Collected</span>
+      <div class="legend-box collected-row">&nbsp;</div>
+    </div>
+    <div class="col-4">
+      <span class="legend-text">Recollect</span>
+      <div class="legend-box recollect-row">&nbsp;</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4" *ngIf="entityType==1">
+      <span class="legend-text">Requested inactive</span>
+      <div class="legend-box requested-inactive-row">&nbsp;</div>
+    </div>
+    <div class="col-4" *ngIf="entityType==1">
+      <span class="legend-text">Inactivated</span>
+      <div class="legend-box inactivated-row">&nbsp;</div>
+    </div>
+    <div class="col-4" >
+      <span class="legend-text">Deleted</span>
+      <div class="legend-box deleted-row">&nbsp;</div>
+    </div>
+  </div>

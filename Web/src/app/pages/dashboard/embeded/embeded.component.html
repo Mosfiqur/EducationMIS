@@ -1,0 +1,62 @@
+<div class="p-4 ">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div class="">
+
+        <h1 class="pb-3 mb-0">
+          Embed Dashboard
+        </h1>
+
+        <div>
+          <div class="my-4 pb-1">
+            <!-- <a class="site-btn-primary py-2 px-3" (click)="openEmbeddedDashboard()"><span>Add New Dashboard</span></a>
+
+
+            <br/><br/> -->
+
+            <a class="btn site-btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+              <span>
+                Selected Dashboard: {{selectedDashboard?.name}}
+                <i class=" fa fa-angle-down pl-2" aria-hidden="true"></i>
+              </span>
+
+            </a>
+            <div class="dropdown-menu py-0" aria-labelledby="dropdownMenutableview">
+              <span (click)="dashboardSelectedClicked(dash)" class="py-2 d-flex dropdown-item  border-bottom"
+                *ngFor="let dash of lstEmbeddedDashboard">
+                <span class="flex-grow-1 cursor-pointer">{{dash.name}} </span>
+                <span class="ml-2">
+                  <a class="edit-btn" (click)="editEmbeddedDashboard(dash)">
+                    <i class=" fa fa-pencil-alt px-1"></i>
+                  </a>
+                </span>
+              </span>
+
+              <span class="py-2 ">
+                <a class="btn site-btn-cutom-link w-100 text-left" (click)="openEmbeddedDashboard()" type="button">
+                  <span class="">+ Create new view</span>
+                </a>
+              </span>
+
+
+            </div>
+
+          </div>
+
+        </div>
+        
+        <div *ngIf="selectedDashboard.isEmbedded===false" class="embed-responsive embed-responsive-16by9">
+          <iframe [src]="url" class="embed-responsive-item"></iframe>
+        </div>
+
+        <div *ngIf="selectedDashboard.isEmbedded===true" [innerHtml]='selectedDashboard.link'></div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

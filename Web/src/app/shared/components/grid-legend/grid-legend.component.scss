@@ -1,0 +1,43 @@
+
+.not-collected-row{
+    background-color: #d6d4e0;
+}
+.collected-row{
+    background-color: #b8a9c9;
+}
+.recollect-row{
+    background-color:#622569;
+}
+
+.recollect-row .datatable-body-cell{
+    color: white !important;
+}
+.recollect-row:hover .datatable-body-cell{
+    color:rgba(0, 0, 0, 0.87) !important;
+}
+
+.recollect-row .datatable-body-cell .gry-text{
+    color: white !important;
+}
+
+.deleted-row{
+    background-color: #c83349;
+}
+.requested-inactive-row{
+    background-color: #eeac99    ;
+}
+.inactivated-row{
+    background-color:#e06377;
+}
+
+.legend-box{
+    display: inline-block;
+    height: 10px;
+    width: 25px;
+    position: absolute;
+    top: 7px;
+    left: -15px;
+}
+.legend-text{
+    font-size: .84rem;
+}

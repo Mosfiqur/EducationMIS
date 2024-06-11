@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'UnicefEduMisKey'
+            keyPassword 'UnicefEduMis2020'
+            storeFile file('~/Desktop/Work/Android/WorkInProgress/CM 360/Example Code/unicefandroid/KeyStore/unicefandroid.jks')
+            storePassword 'UnicefEduMis2020'
+        }
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.unicefeducation.mis"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 7
+        versionName "1.5"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src/main/res', 'src/main/res/anim'
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+//    dataBinding {
+//        enabled = true
+//    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //jetpack library includes here
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0'
+
+    //firebase dependency
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.android.play:core:1.9.0'
+}

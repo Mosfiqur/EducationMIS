@@ -1,0 +1,1246 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Beneficiary Grid
+        </h1>
+        <div>
+          <div class="my-4 pb-1" *ngIf="selectedInstanceId>0">
+            <a [routerLink]="['/unicef/beneficiary/edit/0/'+ selectedInstanceId]"
+              class="site-btn-primary py-2 px-3"><span> Add New
+                Beneficiary
+              </span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="d-flex flex-wrap">
+          <div class="flex-grow-1 mr-2">
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn" type="button" data-toggle="collapse" data-target="#filter-main"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="px-2">Filter By</span>
+                    <i class="fas fa-chevron-down pr-3"></i>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" placeholder="Search beneficiaries" class="form-control"
+                (input)="search($event.target.value)" name="searchText">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                            l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                            s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+
+
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="flex-shrink-0 mr-2">
+              <div class="dropdown">
+                <a class="btn site-btn-outlined dropdown-toggle" role="button" id="dropdownMenuLinkimport"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  EXPORT
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="dropdownMenuLinkexport">
+
+                  <hr class="p-0 m-0">
+                  <a class="dropdown-item py-2" style="cursor:pointer;" (click)="exportSelectedInstance()">Export
+                    selected instance</a>
+                  <a class="dropdown-item py-2" style="cursor:pointer;" (click)="openMultiInstanceSelector()">Export
+                    aggregated data</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="flex-shrink-0">
+              <div class="dropdown">
+                <a class="btn site-btn-outlined dropdown-toggle" role="button" id="dropdownMenuLinkimport"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  IMPORT
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="dropdownMenuLinkexport">
+                  <input #beneficiaryImportFileInput type="file" style="display: none;" id="ctrlImportBeneficiary"
+                    accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    (change)="onBeneficiaryImportFileSelected($event.target.files)">
+
+                  <!-- <a class="dropdown-item py-2" (click)="openBeneficiaryImportFile()">Import</a> -->
+                  <hr class="p-0 m-0">
+                  <a class="dropdown-item py-2" style="cursor:pointer;" (click)="downloadImportTemplate()">Download
+                    Template</a>
+                  <hr class="p-0 m-0">
+                  <a class="dropdown-item py-2" style="cursor:pointer;" data-toggle="modal"
+                    data-target=".ImportCollectionInstance">Import with collection instance</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- filer accordion start -->
+
+        <div class="accordion" id="accordionExample">
+          <beneficiary-filter #filter (filterComplete)="filterComplete($event)"></beneficiary-filter>
+
+        </div>
+
+
+        <!-- filer accordion end -->
+
+        <!-- table info start -->
+
+        <beneficiary-filter-text [beneficiaryFilterModel]="beneficiaryFilterModel"
+          (removeFilterClicked)="beneficiaryFilterRemove($event)"></beneficiary-filter-text>
+
+        <!-- table info end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="full-table-ctl">
+          <!-- table control start -->
+          <div class="py-3">
+            <div class="table-control-head" id=#table-control-head-default>
+              <div class="d-flex flex-wrap py-2  align-items-baseline">
+                <div class="flex-grow-1 mr-3">
+                  <div class="d-flex"> 
+                    <p class="gry-text mb-0 my-auto">
+                      <button class="btn site-btn-primary" instance-modal-trigger="selectInstanceModal">
+                        Select Instance
+                      </button>
+                     
+                      <span class="instance-status-style" style="pointer-events: none;">
+                        <instance-status [instance]="currentInstance"></instance-status>
+                        <instance-selector-modal *ngIf="loadInstanceSelectorModal" elementId="selectInstanceModal"
+                          title="Select Instance" [selectedInstanceIds]="lstSelectedInstance" instanceFor=1
+                          isMultivalued="false" instanceStatus=6 
+                          value="required"
+                          (instanceValueChanged)="instanceValue_changed($event)">
+                        </instance-selector-modal>
+                      </span>
+
+                    </p>
+
+
+                    <p class="gry-text mb-0 my-auto">
+                      <button #multiInstanceSelector hidden class="btn site-btn-primary"
+                        instance-modal-trigger="multiInstanceSelector"></button>
+                      <span class="instance-status-style" style="pointer-events:none;">
+                        <instance-selector-modal *ngIf="loadInstanceSelectorModal" elementId="multiInstanceSelector"
+                          title="Select Instance" [selectedInstanceIds]="lstSelectedInstanceForExport" instanceFor=1
+                          isMultivalued="true" instanceStatus=4 (instanceValueChanged)="exportAggregatedData($event)">
+                        </instance-selector-modal>
+                      </span>
+
+                    </p>
+
+                  </div>
+                  <div class="d-flex my-3">
+
+                    <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <p class="mb-0 gry-text">
+                        Grid View: {{selectedView}}
+                        <span class="table-view-dropdown">
+                          <i class=" fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </p>
+                    </a>
+                    <div class="dropdown-menu py-0" aria-labelledby="dropdownMenutableview">
+                      <span (click)="selectView_Clicked({id:0,name:'Complete View'})"
+                        class="py-2 d-flex dropdown-item  border-bottom">
+                        <span class="flex-grow-1">Complete View </span>
+                      </span>
+                      <span (click)="selectView_Clicked(grid)" class="py-2 d-flex dropdown-item  border-bottom"
+                        *ngFor="let grid of gridView">
+                        <span class="flex-grow-1">{{grid.name}} </span>
+                        <span class="ml-2">
+                          <a class="edit-btn" [routerLink]="['/unicef/beneficiary/column-edit/',grid.id]">
+                            <i class="fa fa-pencil-alt px-1"></i>
+                          </a>
+                        </span>
+                      </span>
+
+                      <span class="py-2 ">
+                        <a class="btn site-btn-cutom-link w-100 text-left" data-toggle="tooltip" title="Edit"
+                          [routerLink]="['/unicef/beneficiary/column-new']" type="button">
+                          <span class="">+ Create new view</span>
+                        </a>
+                      </span>
+
+                    </div>
+
+                    <div class="gry-text">
+                      <label style="padding-left: 15px;padding-right: 5px;">Collection Status: </label>
+                    </div>
+                    <div>
+                      <select class="form-control custom-select-sm cursor-pointer text-center pl-0 pr-0 "
+                        name="collectionStatus" (change)="changeGridByCollectionStatus()"
+                        [(ngModel)]="collectionStatus">
+                        <option class="dropdown-item" *ngFor="let col of collectionStatusList" value="{{col.id}}">
+                          {{col.text}}</option>
+                      </select>
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+                <div>
+
+                  <a (click)="openDynamicColumnModal()" class="site-btn-outlined py-2 px-3">
+                    <span class="mr-3">Add Column</span>
+                    <span>
+
+                      <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+                        style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                        <g>
+                          <path d="M8.1,15.7h5.3V3H8.1V15.7z M8.7,3.7h3.9V15H8.7V3.7z" />
+                          <path d="M12.6,18.1c-0.2-0.1-0.3,0-0.5,0.1l-0.4,0.4v-2.2c0-0.2-0.2-0.4-0.4-0.4h-1.1c-0.2,0-0.4,0.2-0.4,0.4l0,2.3l-0.6-0.6
+                                    c-0.1-0.1-0.3-0.2-0.5-0.1c-0.2,0.1-0.3,0.2-0.3,0.4v1c0,0.1,0,0.2,0.1,0.3c0.1,0.1,0.6,0.6,1.1,1.1c1,1,1,1,1.2,1
+                                    c0.2,0,0.2-0.1,0.5-0.3c0.1-0.1,0.3-0.3,0.6-0.6c0.4-0.4,0.8-0.9,1-1c0.1-0.1,0.1-0.2,0.1-0.3v-1.2C12.9,18.3,12.7,18.2,12.6,18.1z
+                                    M12.2,19.7c-0.7,0.7-1.2,1.2-1.5,1.5c-0.3-0.3-1.1-1.1-1.7-1.7v-0.4l0.6,0.6c0.1,0.1,0.3,0.2,0.5,0.1c0.2-0.1,0.3-0.2,0.3-0.4
+                                    l0-2.6H11v2.6c0,0.2,0.1,0.3,0.3,0.4c0.2,0.1,0.3,0,0.5-0.1l0.4-0.4V19.7z" />
+                          <path
+                            d="M22.1,10.3H14V23h8.1c0.3,0,0.5-0.2,0.5-0.5V10.9C22.7,10.6,22.4,10.3,22.1,10.3z M22,14.3h-4V11h4V14.3z M18,15h4v3.3h-4
+                                    V15z M17.4,11v3.3h-2.7V11H17.4z M17.4,18.3h-2.7V15h2.7V18.3z M14.7,19h2.7v3.4h-2.7V19z M18,22.3V19h4v3.4H18z" />
+                          <path d="M3.9,10.3c-0.3,0-0.5,0.2-0.5,0.5v3.5V15v3.3V19v3.5c0,0.3,0.2,0.5,0.5,0.5h3.8V10.3H3.9z M4,11h3v3.3H4V11z M4,15h3v3.3H4
+                                    V15z M7,22.3H4V19h3V22.3z" />
+                        </g>
+                      </svg>
+
+                    </span>
+                  </a>
+
+                </div>
+              </div>
+
+              <!-- table option start -->
+
+              <div [ngClass]="{ 'show-context-menu': beneficiarySelected }" class=" table-cell-options py-2 px-2"
+                id=#table-cell-option-show-hide>
+                <div class="d-flex flex-wrap">
+                  <p class="my-auto flex-grow-1 ml-2"><span
+                      class="mr-2">{{beneficiarySelectedSize}}</span><span>Beneficiary(s) selected</span>
+                  </p>
+                  <div class="d-flex">
+                    <a *ngIf="isEditButtonVisible" class="site-btn-outlined-white-borderd py-2 px-3 mr-3"
+                      (click)="editBeneficiary()">
+                      <span class="mr-3">Edit</span>
+                      <span>
+                        <i class="fa fa-pencil-alt"></i>
+                      </span>
+                    </a>
+                    <a *ngIf="isDeleteButtonVisible" data-toggle="modal" (click)="deleteBeneficiarys()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span class="mr-3">Delete</span>
+                      <span>
+                        <i class="fa fa-trash-alt"></i>
+                      </span>
+                    </a>
+                    <a *ngIf="isActiveButtonVisible" data-toggle="modal" (click)="activeBeneficiarys()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span class="mr-3">Active</span>
+
+                    </a>
+
+                    <a *ngIf="isRecollectButtonVisible" data-toggle="modal" (click)="recollectBeneficiarys()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span class="mr-3">Recollect</span>
+
+                    </a>
+
+                    <a *ngIf="isInactiveApproveButtonVisible" data-toggle="modal" (click)="approveInctiveBeneficiarys()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span class="mr-3">Inactive Approve</span>
+                    </a>
+
+                    <a *ngIf="isApproveButtonVisible" data-toggle="modal" (click)="approveBeneficiarys()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span class="mr-3">Approve</span>
+
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- table option end -->
+            </div>
+
+
+
+          </div>
+          <!-- table control end -->
+
+          <!-- table start -->
+          <div>
+
+            <div class="site-table table-responsive">
+              <div class="row">
+                <div class="col-6">
+                  <div style="width: 100%;">
+                    <page-size-selector (onPageSizeChanged)="onPageSizeChanged($event)"
+                      [totalItems]="pagedBeneficiaries?.total" [size]="page.size"></page-size-selector>
+                  </div>
+
+                </div>
+                <div class="col-6">
+                  <grid-legend [entityType]="1"></grid-legend>
+                </div>
+              </div>
+
+
+
+              <div id="myGrid" class="ag-theme-alpine">
+                <ngx-datatable class='material' [columnMode]="ColumnMode.force" [selected]="selected"
+                  [selectionType]="SelectionType.checkbox" (select)="onNgxDataTableSelect($event)"
+                  [selectAllRowsOnPage]="true" [rowIdentity]="rowIdentity" [externalPaging]="true"
+                  [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)"
+                  (activate)="onActivate($event)" [rows]="rows" [columns]="columns" [scrollbarH]="true"
+                  [rowClass]="getRowClass" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
+                  [virtualization]="false">
+                  <ngx-datatable-footer>
+                    <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+                      let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
+
+                      <div>
+                        Selected: {{getSelected}} of {{rowCount}} total
+                      </div>
+                      <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'"
+                        [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                        [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+                        [hidden]="!((rowCount / pageSize) > 1)" (change)="setPage($event)">
+                      </datatable-pager>
+                    </ng-template>
+                  </ngx-datatable-footer>
+                </ngx-datatable>
+
+                <ng-template #hdrTplWithContextMenu let-column="column" ngx-datatable-header-template>
+                  <div class="header-btn ">
+                    <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </span>&nbsp;
+                    <span container="body" ngbTooltip="{{column.name}}">
+                      {{column.name}}
+                    </span>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <button class="dropdown-item" type="button"
+                        (click)="openDynamicColumnModalForEdit(column.columnId)">Edit</button>
+                      <button *ngIf="selectedViewId != 0" class="dropdown-item" type="button"
+                        (click)="openDynamicColumnModalForDelete(column.columnId)">Remove</button>
+                    </div>
+                  </div>
+                </ng-template>
+                <ng-template #hdrTpl let-column="column" ngx-datatable-header-template>
+                  <span container="body" ngbTooltip="{{column.name}}">
+                    {{column.name}}
+                  </span>
+                </ng-template>
+                <ng-template #cellView list-type-cell-renderer let-column="column" let-row="row"
+                  ngx-datatable-cell-template let-value="value">
+
+                  <a *ngIf="row.collectionStatus!=5" class="cursor-pointer"> <span container="body" ngbTooltip="{{getListCellText(value)}}">
+                      <cell-viewer [cell]="value" (edit)="editDynamicCell($event,value)"
+                        (add)="addDynamicCell($event,value)" [showAdd]="true">
+                      </cell-viewer>
+                    </span></a>
+
+                    <span *ngIf="row.collectionStatus==5 && value.dataType!=6" container="body" ngbTooltip="{{value.values}}">
+                      {{value.values}}
+                    </span>
+                    <span *ngIf="row.collectionStatus==5 && value.dataType==6" container="body" ngbTooltip="{{getListCellText(value,column)}}">
+                      {{getListCellText(value,column)}}
+                    </span>
+                </ng-template>
+                <ng-template #customCellTpl let-column="column" let-row="row" ngx-datatable-cell-template
+                  let-value="value">
+                  <span container="body" ngbTooltip="{{value.values}}">
+                    {{value.values}}
+                  </span>
+                </ng-template>
+                <ng-template #listCellTpl let-column="column" let-row="row" ngx-datatable-cell-template
+                  let-value="value">
+                  <span container="body" ngbTooltip="{{getListCellText(value,column)}}">
+                    {{getListCellText(value,column)}}
+                  </span>
+                </ng-template>
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+          <!-- table end -->
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Delete beneficiary -->
+  <!-- <div class="modal fade deleteBeneficiary" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title red-text" id="exampleModalLabel">Confirm Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="red-text">
+            Are you sure you want to delete?
+          </h3>
+        </div>
+        <div class="modal-footer">
+          <a type="button" #deleteBeneficiaryModalClose class="btn site-btn-cutom-link"
+            data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="deleteBeneficiarys()" class="btn site-btn-primary-red"><span>Delete</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div> -->
+  <!-- Delete beneficiary-->
+  <!-- Import with Collection Instance Modal -->
+  <div class="modal fade ImportCollectionInstance" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Import new data</h5>
+          <button type="button" #versionDataImportModalClose class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Instance</label>
+              <div class="dropdown">
+                <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="col-10 d-inline-block p-0">
+                    <instance-status [instance]="currentInstanceForVersionData"></instance-status>
+                  </div>
+                </button>
+                <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" (click)="selectInstanceForImportVersionData_Click(instance)"
+                    *ngFor="let instance of lstInstanceForImportVersionData">
+                    <instance-status [instance]="instance"></instance-status>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input #beneficiaryVersionDataImportFileInput type="file" style="display: none;"
+                id="ctrlImportBeneficiaryVersionData"
+                accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                (change)="onBeneficiaryVersionDataImportFileSelected($event.target.files)">
+
+              <a class="btn site-btn-outlined" (click)="openBeneficiaryVersionDataImportFile()" role="button">
+                <span class="mr-3">Upload File</span>
+                <span>
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M4,20.7h18V22H4V20.7z" />
+                      <path d="M12.4,6.5v11.7h1.3V6.5l4.2,4.2l0.9-0.9L13,4L7.2,9.8l0.9,0.9L12.4,6.5z" />
+                    </g>
+                  </svg>
+                </span>
+              </a>
+              &nbsp;
+              <label>{{versionDataFileName}}</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary" (click)="uploadVersionData()"><span>Import Data</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end Import with collection Instance -->
+
+
+
+  <!-- Select facility modal -->
+  <div class="modal fade facilitySelect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Facility</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                          l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                          s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Facility Name</th>
+                      <th class="last-tableCellWidth" scope="col">Facility ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>Name</div>
+                      </td>
+                      <td>
+                        <div>#number</div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <nav aria-label="Page navigation example ">
+                <ul class="pagination mb-0 justify-content-end">
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link">1</a></li>
+                  <li class="page-item"><a class="page-link">2</a></li>
+                  <li class="page-item"><a class="page-link">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end select facility  -->
+
+  <!-- Select camp modal -->
+  <div class="modal fade campselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                                  l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                                  s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Camp Name</th>
+                      <th scope="col">Camp ID</th>
+                      <th scope="col">District</th>
+                      <th scope="col">Level of camp</th>
+                      <th scope="col">Ssid</th>
+                      <th scope="col">Union</th>
+                      <th scope="col">Upazila</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">Camp 10</td>
+                      <td>1166548</td>
+                      <td>Cox's Bazar</td>
+                      <td>Choukhali</td>
+                      <td>CXB-235</td>
+                      <td>Whykong</td>
+                      <td>Ukhia</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <nav aria-label="Page navigation example ">
+                <ul class="pagination mb-0 justify-content-end">
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link">1</a></li>
+                  <li class="page-item"><a class="page-link">2</a></li>
+                  <li class="page-item"><a class="page-link">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end select camp  -->
+
+  <!-- Select camp block modal -->
+  <div class="modal fade campblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Block</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                                  l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                                  s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Block Name</th>
+                      <th scope="col">Block ID</th>
+                      <th scope="col">Camp SSID</th>
+                      <th scope="col">Sub Block</th>
+                      <th scope="col">Camp Name</th>
+                      <th scope="col">Union</th>
+                      <th scope="col">Upazila</th>
+                      <th scope="col">District</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">C10_B</td>
+                      <td>C10_B</td>
+                      <td>CXB-214</td>
+                      <td>C10_B01</td>
+                      <td>Camp 10</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <nav aria-label="Page navigation example ">
+                <ul class="pagination mb-0 justify-content-end">
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link">1</a></li>
+                  <li class="page-item"><a class="page-link">2</a></li>
+                  <li class="page-item"><a class="page-link">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp block camp  -->
+
+  <!-- Select camp block modal -->
+  <div class="modal fade campsubblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Sub Block</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn">
+                    <span class="px-2">Search</span>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                                    l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                                    s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </form>
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Block Name</th>
+                      <th scope="col">Block ID</th>
+                      <th scope="col">Camp SSID</th>
+                      <th scope="col">Sub Block</th>
+                      <th scope="col">Camp Name</th>
+                      <th scope="col">Union</th>
+                      <th scope="col">Upazila</th>
+                      <th scope="col">District</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="materialExampleRadios">
+                        </div>
+                      </td>
+                      <td colspan="2">C10_B</td>
+                      <td>C10_B</td>
+                      <td>CXB-214</td>
+                      <td>C10_B01</td>
+                      <td>Camp 10</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <nav aria-label="Page navigation example ">
+                <ul class="pagination mb-0 justify-content-end">
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link">1</a></li>
+                  <li class="page-item"><a class="page-link">2</a></li>
+                  <li class="page-item"><a class="page-link">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp block camp  -->
+
+</div>
+
+
+
+<script>
+  $(function () {
+    $("#chkoption").click(function () {
+      if ($(this).is(":checked")) {
+        $("#table-cell-option-show-hide").show();
+        $("#table-control-head-default").hide();
+      } else {
+        $("#table-cell-option-show-hide").hide();
+        $("#table-control-head-default").show();
+      }
+    });
+  });
+</script>

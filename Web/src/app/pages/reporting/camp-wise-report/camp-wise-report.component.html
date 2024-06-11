@@ -1,0 +1,38 @@
+<form class="site-form">
+  <div class="form-row">
+      <div class="form-group col-md-3">
+     
+      <div class="dropdown">
+        <button class="btn site-btn-primary btn-block" (click)="facSelector.reloadCheck()"
+          instance-modal-trigger="selectFacilityInstanceModal">
+          Select Facility Instance
+        </button>
+
+        <instance-selector-modal #facSelector elementId="selectFacilityInstanceModal" title="Select Instance"
+          [selectedInstanceIds]="facilityInstances" instanceFor=2 isMultivalued="false" instanceStatus=6
+          (instanceValueChanged)="facilityInstanceValue_changed($event)">
+        </instance-selector-modal>
+      </div>
+    </div>
+    <div class="form-group col-md-9 d-flex align-items-center" *ngIf="facilityInstances.length>0">
+      <span class="filter-tag py-1 px-2 d-flex flex-wrap" *ngFor="let c of facilityInstances">
+        <span class="mr-3 ml-1"> {{c.title}}</span>
+        <span class="mr-1"><a (click)="removeFacilityInstance(c)"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+
+      </span>
+    </div>
+
+  </div>
+ 
+  <div class="form-row">
+
+    <div class="form-group col-md-3 mb-0">
+      <button class="btn site-btn-primary btn-block" (click)="downloadCampWiseReport()">
+        Download
+      </button>
+
+    </div>
+
+  </div>
+</form>

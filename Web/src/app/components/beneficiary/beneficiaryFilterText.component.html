@@ -1,0 +1,60 @@
+<div class="py-2" *ngIf="showCurrentFilter()">
+    <div class="d-flex flex-wrap align-content-start ">
+      <p class="gry-text  mr-2 py-1 my-auto">Now showing :</p>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showDateOfBirth()">
+        <span class="mr-3 ml-1"> Date of birth: {{beneficiaryFilterModel.dateOfBirth.startDate}} -
+          {{beneficiaryFilterModel.dateOfBirth.endDate}}</span>
+        <span class="mr-1"><a (click)="removeFilter('dateOfBirth')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showEnrolmentDate()">
+        <span class="mr-3 ml-1">Enrollment date: {{beneficiaryFilterModel.enrolmentDate.startDate}} -
+          {{beneficiaryFilterModel.enrolmentDate.endDate}}</span>
+        <span class="mr-1"><a (click)="removeFilter('enrolmentDate')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" 
+      *ngIf="showSex()">
+        <span class="mr-3 ml-1"> Sex: {{getGender(beneficiaryFilterModel.sex)}}</span>
+        <span class="mr-1"><a (click)="removeFilter('sex')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap"
+        *ngIf="showLevelOfStudy()">
+        <span class="mr-3 ml-1"> Level of study:
+          {{getLevelOfStudy(beneficiaryFilterModel.levelOfStudy)}}</span>
+        <span class="mr-1"><a (click)="removeFilter('levelOfStudy')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="showDisable()">
+        <span class="mr-3 ml-1"> Disable: {{beneficiaryFilterModel.disable==='true'?'Yes':'No'}}</span>
+        <span class="mr-1"><a (click)="removeFilter('disable')"><i class="fa fa-times"
+              aria-hidden="true"></i></a></span>
+      </span>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="beneficiaryFilterModel.camps.length>0">
+        <span class="mr-3 ml-1"> Camps:
+
+          <span *ngFor="let c of beneficiaryFilterModel.camps">
+            <span> {{c.name}},</span>
+          </span>
+        </span>
+        <span class="mr-1"><a (click)="removeFilter('camps')"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+
+      </span>
+
+      <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap" *ngIf="beneficiaryFilterModel.facilities.length>0">
+        <span class="mr-3 ml-1"> Facility:
+
+          <span *ngFor="let c of beneficiaryFilterModel.facilities">
+            <span> {{c.facilityName}},</span>
+          </span>
+        </span>
+        <span class="mr-1"><a (click)="removeFilter('facilities')"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+
+      </span>
+    </div>
+  </div>

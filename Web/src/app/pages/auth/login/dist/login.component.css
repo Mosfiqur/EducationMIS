@@ -1,0 +1,60 @@
+.loginpage, .loginpage h1 {
+  font-family: "roboto", sans-serif;
+  background-color: var(--Gry100);
+}
+
+label {
+  color: var(--Blue700);
+}
+
+.login-area {
+  padding: 30px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 10px 0px var(--Blue200);
+  box-shadow: 0px 0px 10px 0px var(--Blue200);
+  border-radius: 10px;
+}
+
+.simple-logo {
+  width: 60%;
+  height: auto;
+  padding: 0.5em;
+}
+
+.login-title {
+  color: var(--Blue600);
+  font-size: 1.5em;
+  cursor: default;
+}
+
+.send .anchor {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  color: #51bdea;
+}
+
+a :hover {
+  text-decoration: none;
+}
+
+.forgot .small {
+  color: var(--Blue600);
+  font-size: 0.8em;
+}
+.forgot .small:hover, .forgot .small:focus, .forgot .small:active {
+  text-decoration: underline !important;
+}
+
+.form-group .form-control {
+  padding: 20px 10px;
+  font-size: 0.86em;
+  border-radius: 5px;
+  border: 1px solid var(--Blue200);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+}
+.form-group .form-control:focus {
+  outline: 0;
+}

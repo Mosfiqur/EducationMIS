@@ -1,0 +1,119 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Teacher Select</h5>
+    <button type="button" (click)="closeModal()" class="close" data-dismiss="modal"><span>&times;</span></button>
+  </div>
+
+  <div class="modal-body">
+    <div class="d-flex flex-wrap mt-3">
+      <div class="flex-grow-1">
+        <div class="input-group mb-3 searchbox-with-filter">
+        
+          <input type="text" class="form-control" (input)="search($event.target.value)" placeholder="Input search text"
+          aria-label="Input group example" aria-describedby="btnGroupAddon" name="searchText">
+          <span class="input-group-text search-icon p-0 px-2">
+            <a>
+              <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                <g>
+                  <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                        l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                        s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                </g>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- <div class="input-group">
+      <input type="text" placeholder="Input search text" class="form-control" (input)="search($event.target.value)"
+        name="searchText">
+      <span class="input-group-text search-icon p-0 px-2">
+        <a>
+          <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26" style="enable-background:new 0 0 26 26;"
+            xml:space="preserve">
+            <g>
+              <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                                l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                                s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+            </g>
+          </svg>
+        </a>
+      </span>
+    </div> -->
+    
+    <div class="site-table table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="row">
+              &nbsp;
+            </th>
+            <th scope="col">Name</th>
+            <th scope="col">Designation</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of lstTeacher | paginate: teacherPaginationConfig">
+            <th scope="row">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input"  
+                  name="{{c.id}}" [checked]="c.Selected===true" (change)="checkbox_changed($event,c)">                                                   
+              </div>
+            </th>
+            
+            <td>{{c.fullName}}</td>
+            <td>{{c.designation}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    
+    
+    
+    
+    <!-- <div class="row border-bottom padding-10">
+      <div class="col-sm-1">
+        &nbsp;
+      </div>
+      <div class="col-sm-5">
+        <label>Name</label>
+      </div>
+      <div class="col-sm-3">
+        <label>Designation</label>
+      </div>
+
+    </div>
+    <div class="row" *ngFor="let c of lstTeacher | paginate: teacherPaginationConfig">
+      <div class="col-sm-1">
+        <input type="checkbox" name="{{c.id}}" [checked]="c.Selected===true" (change)="checkbox_changed($event,c)">
+      </div>
+      <div class="col-sm-5">
+        <label>{{c.fullName}}</label>
+      </div>
+      <div class="col-sm-3">
+        <label>{{c.designation}}</label>
+      </div>
+
+
+    </div> -->
+    <div class=" border-top pt-3">
+      <pagination-controls id='teacher_pagination' (pageChange)="pageChangedInstance($event)"
+        class="d-flex justify-content-end pt-3">
+      </pagination-controls>
+    </div>
+    
+  </div>
+  <div class="modal-footer">
+    <a type="button" (click)="confirm()" class="btn site-btn-primary"
+      data-dismiss="modal">
+      <span>Confirm</span>
+    </a>
+  </div>
+</div>

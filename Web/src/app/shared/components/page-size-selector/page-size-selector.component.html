@@ -1,0 +1,28 @@
+
+<div class="page-size-selector">
+  <form  class="form-inline">
+    <div class="form-group py-3 mr-4">
+      <label for="page-size" class="pr-2">Results Per Page :</label> 
+      <select class="form-control custom-select-sm cursor-pointer text-center pl-0 pr-0"id="page-size"
+      name="pageSize"
+      [(ngModel)]="selectedPageSize"
+      
+      >
+        <option *ngFor="let pageSize of pageSizes"
+       
+        value="{{pageSize.id}}">{{pageSize.text}}</option>      
+      </select>    
+  <div class="ml-3 ">
+    <div class=" cursor-default px-3 py-1  filter-tag">
+      <span class="font-weight-bold">
+        Total Showing: {{numberOfItemsShowing}} 
+      </span>
+    </div>
+    
+  </div>
+      
+    </div>
+  </form>
+    
+  
+  </div>

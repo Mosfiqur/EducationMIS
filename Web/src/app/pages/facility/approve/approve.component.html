@@ -1,0 +1,206 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Facility Approval
+        </h1>
+
+        <div>
+
+        </div>
+
+        <div class="d-flex flex-wrap mt-3">
+          <div class="flex-grow-1 mr-2">
+            <div class="input-group mb-3 searchbox-with-filter">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <a class="filter-btn" type="button" data-toggle="collapse" data-target="#filter-main"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="px-2">Filter By</span>
+                    <i class="fas fa-chevron-down pr-3"></i>
+                  </a>
+
+                </span>
+
+              </div>
+              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                placeholder="Search here" (input)="search($event.target.value)">
+              <span class="input-group-text search-icon p-0 px-2">
+                <a>
+                  <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 26 26"
+                    style="enable-background:new 0 0 26 26;" xml:space="preserve">
+                    <g>
+                      <path d="M22.8,22L18,17.1c1.3-1.5,2.1-3.5,2.1-5.6c0-4.7-3.8-8.5-8.5-8.5C6.8,3,3,6.8,3,11.5S6.8,20,11.5,20c2.1,0,4.1-0.8,5.6-2.1
+                                            l4.9,4.9c0.1,0.1,0.3,0.2,0.4,0.2s0.3-0.1,0.4-0.2C23.1,22.6,23.1,22.2,22.8,22z M4.2,11.5c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3
+                                            s-3.3,7.3-7.3,7.3C7.5,18.9,4.2,15.6,4.2,11.5z" />
+                    </g>
+                  </svg>
+                </a>
+              </span>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- filer accordion start -->
+
+        <div class="accordion" id="accordionExample">
+          <facility-filter #filter (filterComplete)="filterComplete($event)"></facility-filter>
+
+        </div>
+
+
+        <!-- filer accordion end -->
+
+        <!-- table info start -->
+
+        <facility-filter-text [facilityFilterModel]="facilityFilterModel"
+          (removeFilterClicked)="facilityFilterRemove($event)"></facility-filter-text>
+
+        <!-- table info end -->
+
+
+
+        <div class="full-table-ctl">
+          <!-- table control start -->
+          <div class="py-3">
+            <div class="table-control-head" id=#table-control-head-default>
+              <div class="d-flex flex-wrap py-2  align-items-baseline">
+                <div class="flex-grow-1 mr-3">
+                  <div class="d-flex">
+                    <p class="gry-text mb-0 my-auto">
+                      Instance: {{selectedInstance}}
+                    </p>
+                    <a class="px-2 py-1 ml-2 table-view-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right ml-2 py-0" aria-labelledby="dropdownMenutableview">
+                      <span (click)="instance_Clicked(instance)" class="py-2 d-flex dropdown-item  border-bottom"
+                        *ngFor="let instance of lstInstance">
+                        <span class="flex-grow-1">{{instance.title}} </span>
+
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- table option start -->
+              <div [ngClass]="{ 'show-context-menu': showContextMenu }" class=" table-cell-options py-2 px-2"
+                id=#table-cell-option-show-hide>
+                <div class="d-flex flex-wrap">
+                  <p class="my-auto flex-grow-1 ml-2"><span class="mr-2">{{facilitySelectedSize}}</span><span>Item(s)
+                      selected</span></p>
+                  <div class="d-flex">
+                    <a *ngIf="collectionStatus!=3" (click)="approveFacility()"
+                      class="btn site-btn-outlined-white-bg py-2 px-3 mr-3">
+                      <span>Approve</span>
+                    </a>
+                    <a *ngIf="collectionStatus!=4" (click)="recollectFacility()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+                      <span>Recollect</span>
+                    </a>
+
+                    <!-- <a class="site-btn-outlined-white-borderd py-2 px-3 mr-2"
+                      [routerLink]="['/unicef/beneficiary/aprove-single-facility']">
+                      <span>View Beneficiary In this Facility</span>
+
+                    </a> -->
+                  </div>
+                </div>
+              </div>
+              <!-- table option end -->
+
+            </div>
+          </div>
+
+          <!-- table control end -->
+
+          <!-- table start -->
+          <div class>
+            <div>
+              <page-size-selector (onPageSizeChanged)="onPageSizeChanged($event)" [totalItems]="pagedFacilities?.total">
+              </page-size-selector>
+
+              <div class="col-6" style="padding-left: 0px;">
+                <select class="form-content-2-scroll pr-2 custom-select" name="collectionStatus"
+                  (change)="changeGridByCollectionStatus()" [(ngModel)]="collectionStatus">
+                  <option class="dropdown-item" *ngFor="let col of collectionStatusList" value="{{col.id}}">
+                    {{col.text}}</option>
+                </select>
+              </div>
+              <br>
+              <div class="site-table table-responsive">
+                <div id="myGrid" class="ag-theme-alpine">
+
+                  <ngx-datatable class='material' [columnMode]="ColumnMode.force" [selected]="selected"
+                    [selectionType]="SelectionType.checkbox" (select)="onNgxDataTableSelect($event)"
+                    [selectAllRowsOnPage]="true" [rowIdentity]="rowIdentity" [externalPaging]="true"
+                    [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)"
+                    (activate)="onActivate($event)" [rows]="rows" [columns]="columns" [scrollbarH]="true"
+                    [rowClass]="getRowClass" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
+                    [virtualization]="false">
+                    <ngx-datatable-footer>
+                      <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+                        let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
+
+                        <div>
+                          Selected: {{getSelected}} of {{rowCount}} total
+                        </div>
+                        <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'"
+                          [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                          [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+                          [hidden]="!((rowCount / pageSize) > 1)" (change)="setPage($event)">
+                        </datatable-pager>
+                      </ng-template>
+                    </ngx-datatable-footer>
+                  </ngx-datatable>
+                  <ng-template #hdrTpl let-column="column" ngx-datatable-header-template>
+                    <span container="body" ngbTooltip="{{column.name}}">
+                      {{column.name}}
+                    </span>
+                  </ng-template>
+                  <ng-template #customCellTpl let-column="column" let-row="row" ngx-datatable-cell-template
+                    let-value="value">
+                    <span container="body" ngbTooltip="{{value}}">
+                      {{value}}
+                    </span>
+                  </ng-template>
+                  <ng-template #listCellTpl let-column="column" let-row="row" ngx-datatable-cell-template
+                    let-value="value">
+                    <span container="body" ngbTooltip="{{getListCellText(value,column)}}">
+                      {{getListCellText(value,column)}}
+                    </span>
+                  </ng-template>
+                  
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- table end -->
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

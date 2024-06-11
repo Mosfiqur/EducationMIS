@@ -1,0 +1,740 @@
+[
+  {
+    "id": "1",
+    "permissionName": "GetPredefinedDashboardTotals",
+    "description": "View Predefined Dashboard Totals",
+    "group": "Dashboard"
+  },
+  {
+    "id": "2",
+    "permissionName": "GetGapMaps",
+    "description": "View Gap Maps",
+    "group": "Dashboard"
+  },
+  {
+    "id": "3",
+    "permissionName": "GetLcMaps",
+    "description": "View LC Maps",
+    "group": "Dashboard"
+  },
+  {
+    "id": "4",
+    "permissionName": "AddJrpParameter",
+    "description": "Add Parameter Of JRP Dashboard",
+    "group": "Dashboard"
+  },
+  {
+    "id": "5",
+    "permissionName": "UpdateJrpParameter",
+    "description": "Update Jrp Parameter",
+    "group": "Dashboard"
+  },
+  {
+    "id": "6",
+    "permissionName": "DeleteJrpParameter",
+    "description": "Delete Jrp Parameter",
+    "group": "Dashboard"
+  },
+  {
+    "id": "7",
+    "permissionName": "GetJrpParameter",
+    "description": "View Jrp Parameter",
+    "group": "Dashboard"
+  },
+  {
+    "id": "8",
+    "permissionName": "GetJrpChart",
+    "description": "View Jrp Chart",
+    "group": "Dashboard"
+  },
+  {
+    "id": "9",
+    "permissionName": "AddEmbeddedDashboard",
+    "description": "Add Embedded Dashboard",
+    "group": "Dashboard"
+  },
+  {
+    "id": "10",
+    "permissionName": "UpdateEmbeddedDashboard",
+    "description": "Update Embedded Dashboard",
+    "group": "Dashboard"
+  },
+  {
+    "id": "11",
+    "permissionName": "DeleteEmbeddedDashboard",
+    "description": "Delete Embedded Dashboard",
+    "group": "Dashboard"
+  },
+  {
+    "id": "12",
+    "permissionName": "GetEmbeddedDashboard",
+    "description": "View Embedded Dashboard",
+    "group": "Dashboard"
+  },
+  {
+    "id": "1001",
+    "permissionName": "AddUsers",
+    "description": "Add User",
+    "group": "User"
+  },
+  {
+    "id": "1002",
+    "permissionName": "UpdateOwnProfileInfo",
+    "description": "Update Own Profile Info",
+    "group": "User"
+  },
+  {
+    "id": "1003",
+    "permissionName": "EditUsers",
+    "description": "Update user",
+    "group": "User"
+  },
+  {
+    "id": "1004",
+    "permissionName": "ViewUsers",
+    "description": "View All The Users",
+    "group": "User"
+  },
+  {
+    "id": "1005",
+    "permissionName": "DeleteUser",
+    "description": "Delete User ",
+    "group": "User"
+  },
+  {
+    "id": "1006",
+    "permissionName": "ResetUsersPassword",
+    "description": "Reset Users Password",
+    "group": "User"
+  },
+  {
+    "id": "1007",
+    "permissionName": "AddUserDynamicCells",
+    "description": "Add User Dynamic Property Value",
+    "group": "User"
+  },
+  {
+    "id": "1008",
+    "permissionName": "UpdateUserDynamicCells",
+    "description": "Update User Dynamic Property Value",
+    "group": "User"
+  },
+  {
+    "id": "1009",
+    "permissionName": "DeleteUserDynamicCells",
+    "description": "Delete User Dynamic Property Value",
+    "group": "User"
+  },
+  {
+    "id": "1010",
+    "permissionName": "ExportFilteredUsers",
+    "description": "Export filtered users",
+    "group": "User"
+  },
+  {
+    "id": "1011",
+    "permissionName": "SaveUserDynamicColumn",
+    "description": "Add Or Update User Dynamic Column",
+    "group": "User"
+  },
+  {
+    "id": "1012",
+    "permissionName": "ViewUserDynamicColumn",
+    "description": "View User Dynamic Column",
+    "group": "User"
+  },
+  {
+    "id": "2001",
+    "permissionName": "AddRoles",
+    "description": "Add Role",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2002",
+    "permissionName": "EditRoles",
+    "description": "Update Role Permissions",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2003",
+    "permissionName": "ViewRoles",
+    "description": "View Roles",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2004",
+    "permissionName": "DeleteRole",
+    "description": "Delete Role",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2005",
+    "permissionName": "ViewLevels",
+    "description": "View User Levels",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2006",
+    "permissionName": "ViewPermissions",
+    "description": "View Permissions",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2007",
+    "permissionName": "ViewPermissionsPresets",
+    "description": "View Enabled Permissions",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2008",
+    "permissionName": "ViewEducationSectorPartners",
+    "description": "View Education Sector Partners",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2009",
+    "permissionName": "ChangeOwnPassword",
+    "description": "Change Own Password",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "2010",
+    "permissionName": "GetOwnPermissions",
+    "description": "Get Own Permissions",
+    "group": "Role and Permission"
+  },
+  {
+    "id": "3001",
+    "permissionName": "AddBudgetFramework",
+    "description": "Add New Budget ",
+    "group": "Framework"
+  },
+  {
+    "id": "3002",
+    "permissionName": "EditBudgetFramework",
+    "description": "Update Budget",
+    "group": "Framework"
+  },
+  {
+    "id": "3003",
+    "permissionName": "DeleteBudgetFramework",
+    "description": "Delete Budget",
+    "group": "Framework"
+  },
+  {
+    "id": "3004",
+    "permissionName": "ViewBudgetFramework",
+    "description": "View Budget",
+    "group": "Framework"
+  },
+  {
+    "id": "3005",
+    "permissionName": "AddBudgetDynamicCells",
+    "description": "Add Or Update Budget Dynamic Property Value",
+    "group": "Framework"
+  },
+  {
+    "id": "3006",
+    "permissionName": "DeleteBudgetDynamicCells",
+    "description": "Delete Budget Dynamic Property Value",
+    "group": "Framework"
+  },
+  {
+    "id": "3007",
+    "permissionName": "AddMonitoringFramework",
+    "description": "Add Monitoring Framework",
+    "group": "Framework"
+  },
+  {
+    "id": "3008",
+    "permissionName": "EditMonitoringFramework",
+    "description": "Update Monitoring Framework",
+    "group": "Framework"
+  },
+  {
+    "id": "3009",
+    "permissionName": "DeleteMonitoringFramework",
+    "description": "Delete Monitoring Framework",
+    "group": "Framework"
+  },
+  {
+    "id": "3010",
+    "permissionName": "ViewMonitoringFramework",
+    "description": "View All Monitoring Framework",
+    "group": "Framework"
+  },
+  {
+    "id": "3011",
+    "permissionName": "AddMonitoringDynamicCells",
+    "description": "Add Or Update Monitoring Framework Dynamic Property Value",
+    "group": "Framework"
+  },
+  {
+    "id": "3012",
+    "permissionName": "DeleteMonitoringDynamicCells",
+    "description": "Delete Monitoring Dynamic Property Value",
+    "group": "Framework"
+  },
+  {
+    "id": "3013",
+    "permissionName": "AddTargetFramework",
+    "description": "Add Target ",
+    "group": "Framework"
+  },
+  {
+    "id": "3014",
+    "permissionName": "EditTargetFramework",
+    "description": "Update Target",
+    "group": "Framework"
+  },
+  {
+    "id": "3015",
+    "permissionName": "DeleteTargetFramework",
+    "description": "Delete Target",
+    "group": "Framework"
+  },
+  {
+    "id": "3016",
+    "permissionName": "ViewTargetFramework",
+    "description": "View Target",
+    "group": "Framework"
+  },
+  {
+    "id": "3017",
+    "permissionName": "AddTargetDynamicCells",
+    "description": "Add Or Update Target Dynamic Property Value",
+    "group": "Framework"
+  },
+  {
+    "id": "3018",
+    "permissionName": "DeleteTargetDynamicCells",
+    "description": "Delete Target Dynamic Property Value Information",
+    "group": "Framework"
+  },
+  {
+    "id": "3019",
+    "permissionName": "SaveMonitoringDynamicColumn",
+    "description": "Add Or Update Monitoring Framework Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3020",
+    "permissionName": "SaveBudgetDynamicColumn",
+    "description": "Add Or Update Budget Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3021",
+    "permissionName": "SaveTargetDynamicColumn",
+    "description": "Add Or Update Target Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3022",
+    "permissionName": "ViewMonitoringDynamicColumn",
+    "description": "View Monitoring Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3023",
+    "permissionName": "ViewBudgetDynamicColumn",
+    "description": "View Budget Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3024",
+    "permissionName": "ViewTargetDynamicColumn",
+    "description": "View Target Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3025",
+    "permissionName": "DeleteBudgetDynamicColumn",
+    "description": "Delete Budget Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3026",
+    "permissionName": "DeleteTargetDynamicColumn",
+    "description": "Delete Target Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "3027",
+    "permissionName": "DeleteUserDynamicColumn",
+    "description": "Delete User Dynamic Column",
+    "group": "Framework"
+  },
+  {
+    "id": "4001",
+    "permissionName": "ViewBeneficiaryGrid",
+    "description": "View Beneficiaries",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4002",
+    "permissionName": "EditBeneficiaryData",
+    "description": "Add Or Update Beneficiary",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4003",
+    "permissionName": "CanActivateBeneficiaryData",
+    "description": "Can Activate Beneficiary Data",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4004",
+    "permissionName": "DeactivateBeneficiaryData",
+    "description": "Deactivate Beneficiary Data",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4005",
+    "permissionName": "DeleteBeneficiaryData",
+    "description": "Delete Beneficiaries ",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4006",
+    "permissionName": "ImportBeneficiariesVersionData",
+    "description": "Import Instance Data For Beneficiary",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4007",
+    "permissionName": "DownloadBeneficiaryVersionDataImportFile",
+    "description": "Download Excel Template For Beneficiary Instance Data",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4008",
+    "permissionName": "ExportVersionedBeneficiaries",
+    "description": "Export Instance Data For Beneficiary",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4009",
+    "permissionName": "ExportAggBeneficiaries",
+    "description": "Export aggregated beneficiaries",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4010",
+    "permissionName": "ApproveBeneficiaryData",
+    "description": "Approve Beneficiaries ",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4011",
+    "permissionName": "DisapproveBeneficiaryData",
+    "description": "Recollect Beneficiaries",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4012",
+    "permissionName": "SaveBeneficiaryDynamicColumn",
+    "description": "Add Beneficiary Dynamic Column",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4013",
+    "permissionName": "ViewBeneficiaryDynamicColumn",
+    "description": "View Beneficiary Dynamic Column",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4014",
+    "permissionName": "DeleteBeneficiaryDynamicColumn",
+    "description": "Delete Beneficiary Dynamic Column",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4015",
+    "permissionName": "AddBeneficiaryCell",
+    "description": "Add Or Update Beneficiary Indicator Value",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4016",
+    "permissionName": "DeleteBeneficiaryCell",
+    "description": "Delete Beneficiary Indicator Value",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4017",
+    "permissionName": "CreateBeneficiaryGridView",
+    "description": "Add Or Update View In Beneficiaries",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4018",
+    "permissionName": "DeleteBeneficiaryGridView",
+    "description": "Delete View In Beneficiaries",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4019",
+    "permissionName": "CreateBeneficiarySchedule",
+    "description": "Add Beneficiary Schedule",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4020",
+    "permissionName": "UpdateBeneficiarySchedule",
+    "description": "Update Beneficiary Schedule",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4021",
+    "permissionName": "UpdateBeneficiaryScheduleInstance",
+    "description": "Update Beneficiary Schedule Instance",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4022",
+    "permissionName": "ViewBeneficiarySchedule",
+    "description": "View Beneficiary Schedule",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4023",
+    "permissionName": "DeleteBeneficiarySchedule",
+    "description": "Delete Beneficiary Schedule",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4024",
+    "permissionName": "StartBeneficiaryCollection",
+    "description": "Start Beneficiary Data Collection",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4025",
+    "permissionName": "ViewBeneficiaryInstances",
+    "description": "View Beneficiary Instances ",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4026",
+    "permissionName": "CompleteBeneficiaryInstance",
+    "description": "Complete Beneficiary Instance",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4027",
+    "permissionName": "ViewBeneficiaryIndicator",
+    "description": "View All Indicator List",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4028",
+    "permissionName": "AddBeneficiaryIndicator",
+    "description": "Add Indicator",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "4029",
+    "permissionName": "DeleteBeneficiaryIndicator",
+    "description": "Delete Indicator",
+    "group": "Beneficiary"
+  },
+  {
+    "id": "5001",
+    "permissionName": "ViewFacilityGrid",
+    "description": "View Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5002",
+    "permissionName": "EditFacilityData",
+    "description": "Add Or Update Facility",
+    "group": "Facility"
+  },
+  {
+    "id": "5003",
+    "permissionName": "DeleteFacilityData",
+    "description": "Delete Facility",
+    "group": "Facility"
+  },
+  {
+    "id": "5004",
+    "permissionName": "ImportFacilitiesVersionData",
+    "description": "Import Instance Data For Facility",
+    "group": "Facility"
+  },
+  {
+    "id": "5005",
+    "permissionName": "ExportVersionedFacilities",
+    "description": "Export Instance Data For Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5006",
+    "permissionName": "ExportAggFacilities",
+    "description": "Export aggregated facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5007",
+    "permissionName": "ApproveFacilityData",
+    "description": "Approve Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5008",
+    "permissionName": "DisapproveFacilityData",
+    "description": "Recollect Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5009",
+    "permissionName": "SaveFacilityDynamicColumn",
+    "description": "Add Facility Dynamic Properties Column",
+    "group": "Facility"
+  },
+  {
+    "id": "5010",
+    "permissionName": "ViewFacilityDynamicColumn",
+    "description": "View Facility Dynamic Properties Column",
+    "group": "Facility"
+  },
+  {
+    "id": "5011",
+    "permissionName": "DeleteFacilityDynamicColumn",
+    "description": "Delete Facility Dynamic Properties Column",
+    "group": "Facility"
+  },
+  {
+    "id": "5012",
+    "permissionName": "AddFacilityCell",
+    "description": "Add Or Update Facility Indicator Value",
+    "group": "Facility"
+  },
+  {
+    "id": "5013",
+    "permissionName": "DeleteFacilityCell",
+    "description": "Delete Facility Indicator Value",
+    "group": "Facility"
+  },
+  {
+    "id": "5014",
+    "permissionName": "CreateFacilityGridView",
+    "description": "Add Or Update View In Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5015",
+    "permissionName": "DeleteFacilityGridView",
+    "description": "Delete View in Facilities",
+    "group": "Facility"
+  },
+  {
+    "id": "5016",
+    "permissionName": "ViewFacilitySchedule",
+    "description": "View Facility Schedule",
+    "group": "Facility"
+  },
+  {
+    "id": "5017",
+    "permissionName": "UpdateFacilityScheduleInstance",
+    "description": "Update Facility Schedule Instance",
+    "group": "Facility"
+  },
+  {
+    "id": "5018",
+    "permissionName": "UpdateFacilitySchedule",
+    "description": "Update Facility Schedule",
+    "group": "Facility"
+  },
+  {
+    "id": "5019",
+    "permissionName": "CreateFacilitySchedule",
+    "description": "Add New Facility Schedule",
+    "group": "Facility"
+  },
+  {
+    "id": "5020",
+    "permissionName": "ViewFacilityInstances",
+    "description": "View Facility Instances ",
+    "group": "Facility"
+  },
+  {
+    "id": "5021",
+    "permissionName": "StartFacilityCollection",
+    "description": "Start Facility Data Collection",
+    "group": "Facility"
+  },
+  {
+    "id": "5022",
+    "permissionName": "DeleteFacilitySchedule",
+    "description": "Delete Schedule",
+    "group": "Facility"
+  },
+  {
+    "id": "5023",
+    "permissionName": "CompleteFacilityInstance",
+    "description": "Complete Facility Instance",
+    "group": "Facility"
+  },
+  {
+    "id": "5024",
+    "permissionName": "DeleteFacilityIndicator",
+    "description": "Delete Indicator",
+    "group": "Facility"
+  },
+  {
+    "id": "5025",
+    "permissionName": "AddFacilityIndicator",
+    "description": "Add Indicator",
+    "group": "Facility"
+  },
+  {
+    "id": "5026",
+    "permissionName": "ViewFacilityIndicator",
+    "description": "View All Indicator List",
+    "group": "Facility"
+  },
+  {
+    "id": "5027",
+    "permissionName": "DownloadFacilityImportFile",
+    "description": "Download Excel Template For Facility Instance Data",
+    "group": "Facility"
+  },
+  {
+    "id": "6001",
+    "permissionName": "Download5WReport",
+    "description": "Download 5W Report",
+    "group": "Report"
+  },
+  {
+    "id": "6002",
+    "permissionName": "GetDuplicationReport",
+    "description": "Download Beneficiary Duplication Report",
+    "group": "Report"
+  },
+  {
+    "id": "6003",
+    "permissionName": "GetGapAnalysisReport",
+    "description": "Download Gap Analysis Report",
+    "group": "Report"
+  },
+  {
+    "id": "6004",
+    "permissionName": "GetDamageReport",
+    "description": "Download Damage Report",
+    "group": "Report"
+  },
+  {
+    "id": "6005",
+    "permissionName": "GetSummaryReport",
+    "description": "Download Summary Report",
+    "group": "Report"
+  },
+  {
+    "id": "6006",
+    "permissionName": "GetCampWiseReport",
+    "description": "Download Camp Wise Report",
+    "group": "Report"
+  }
+]

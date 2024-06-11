@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/display_setings"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:elevation="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="15dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bottom_sheet_close_iv"
+            android:layout_width="24sp"
+            android:layout_height="24sp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8sp"
+            android:src="@drawable/ic_close_black_24dp"
+            app:tint="@color/green"/>
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/green"
+            android:layout_below="@id/bottom_sheet_close_iv"
+            android:layout_marginRight="4sp"
+            android:layout_marginLeft="4sp"/>
+        <RelativeLayout
+            android:id="@+id/layer1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_margin="4sp"
+            android:layout_below="@id/divider1">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/green_iv"
+                android:layout_width="12sp"
+                android:layout_height="12sp"
+                android:layout_marginLeft="4sp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/green_circle"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8sp"
+                android:layout_toRightOf="@id/green_iv"
+
+                android:text="@string/online"
+                android:textColor="@color/green"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tick_1"
+                android:layout_width="12sp"
+                android:layout_height="12sp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/tick"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8sp"
+                android:visibility="visible"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="@color/green"
+            android:layout_below="@id/layer1"
+            android:layout_marginRight="4sp"
+            android:layout_marginLeft="4sp"/>
+
+        <RelativeLayout
+            android:id="@+id/layer2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_margin="4sp"
+            android:layout_below="@id/divider2">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/red_iv"
+                android:layout_width="12sp"
+                android:layout_height="12sp"
+                android:layout_marginLeft="4sp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/red_circle"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/red_iv"
+                android:layout_marginLeft="8sp"
+                android:text="@string/offline"
+                android:textColor="@color/green"
+                android:textSize="18sp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tick_2"
+                android:layout_width="12sp"
+                android:layout_height="12sp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/tick"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8sp"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

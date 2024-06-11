@@ -1,0 +1,210 @@
+<div class="row mt-3">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+    <div class="allborder-box border-redious-xl hover-shadow w-100">
+      <div class="p-3">
+        <div class="d-flex">
+          <div class="flex-grow-1  flex-shrink-0 my-auto">
+            <img class="img-fluid dashboard-icons my-auto" src="./assets/images/dashboardicon-01.svg">
+
+          </div>
+
+          <div class="text-right">
+            <p class="purle-text mb-0">
+              {{totalCounts?.totalProjects}}
+            </p>
+            <p class="gry-text mb-0">Projects</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+    <div class="allborder-box border-redious-xl hover-shadow  w-100">
+      <div class="p-3">
+        <div class="d-flex">
+          <div class="flex-grow-1  flex-shrink-0 my-auto">
+            <img class="img-fluid dashboard-icons my-auto" src="./assets/images/dashboardicon-02.svg">
+
+          </div>
+
+          <div class="text-right">
+            <p class="purle-text mb-0">
+              {{totalCounts?.totalBeneficiries}}
+            </p>
+            <p class="gry-text mb-0">Beneficiaries</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+    <div class="allborder-box border-redious-xl hover-shadow w-100">
+      <div class="p-3">
+        <div class="d-flex">
+          <div class="flex-grow-1  flex-shrink-0 my-auto">
+            <img class="img-fluid dashboard-icons my-auto" src="./assets/images/dashboardicon-03.svg">
+
+          </div>
+
+          <div class="text-right">
+            <p class="dark-blue-text mb-0">
+              {{totalCounts?.totalFacilities}}
+            </p>
+            <p class="gry-text mb-0">Facilities</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 d-flex ">
+    <div class="allborder-box border-redious-xl hover-shadow w-100">
+      <div class="p-3">
+        <div class="d-flex">
+          <div class="flex-grow-1  flex-shrink-0 my-auto">
+            <img class="img-fluid dashboard-icons my-auto" src="./assets/images/dashboardicon-04.svg">
+
+          </div>
+
+          <div class="text-right">
+            <p class="lite-blue-text mb-0">
+              {{totalCounts?.totalTeachers}}
+            </p>
+            <p class="gry-text mb-0">Teachers</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="mt-4 row">
+  <div class="col-sm-12 col-12 pb-xl-0 pb-lg-0 pb-md-4 pb-sm-4 pb-4">
+    <div class="allborder-box border-redious-xl hover-shadow">
+      <div>
+        <div class="py-3 px-3 border-bottom d-flex">
+          <p class="mb-0 gry-text flex-grow-1 py-1">
+            Target Achievement
+          </p>
+
+        </div>
+
+        <div class="py-2 px-3">
+
+          <div class="row">
+            <div class="col-md-12">
+              <jrp-filter (filterComplete)="filterComplete($event)"></jrp-filter>
+
+            </div>
+            
+          </div>
+        
+          <div class="row">&nbsp;</div>
+          <div class="form-row">
+
+            <div class="form-group col-md-12">
+
+              <div class="d-flex flex-wrap align-content-start ">
+                <span class="label-margin-top">Parameter Info:</span>
+                <span class="filter-tag py-1 px-2 ml-2 mr-1 my-1 d-flex flex-wrap" *ngFor="let c of jrpParameterInfoList">
+                  <span class="ml-1 mr-3"> {{c.name}}</span>
+                  <span class="icon-link-hover my-auto" (click)="editJrpParameter(c)">
+                    <i class="fa fa-pencil-alt mr-3 gry-text" aria-hidden="true"></i>
+                  </span>
+                  <span class="icon-link-hover my-auto" (click)="deleteJrpParameter(c.id)">
+                    <i class="fa fa-trash mr-1 gry-text" aria-hidden="true"></i>
+                  </span>
+
+
+                </span>
+                <button title="Add Parameter" class="px-2 py-0 site-btn-primary inline-block-button ml-2 my-auto" (click)="openJrpParameter()"> +
+                </button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-12">
+
+                <highcharts-chart [Highcharts]="Highcharts" [constructorType]="jrpChartType" [options]="jrpChart"
+                  style="width: 100%; height: 400px; display: block;">
+                </highcharts-chart>
+
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+<!--Parameter Modal start-->
+<!-- <div class="modal fade" id="parameterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <form [formGroup]="parameterForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Parameter</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Select Target</label>
+            <button class="btn site-btn-primary form-control" (click)="selectTarget()">{{getTargetText()}}</button>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Select Indicator</label>
+            <button class="btn site-btn-primary form-control" (click)="selectIndicator()">{{getIndicatorText()}}</button>
+
+          </div>
+          <div class="form-group">
+            <label>Formula</label>
+
+            <select formControlName="formula" name="formula" class="form-content-2-scroll pr-2 custom-select">
+              <option value="">Select</option>
+              <option class="dropdown-item" *ngFor="let u of formulaList" value="{{u.id}}">
+                {{u.text}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input formControlName="name" name="name" type="text" class="form-control">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"
+            [title]="parameterForm.valid ? 'Save facility data' : 'Disabled until fill all field'"
+            [disabled]="!parameterForm.valid" (click)="save()">Save </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div> -->
+<!--Parameter Modal end-->

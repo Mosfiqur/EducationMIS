@@ -1,0 +1,28 @@
+<!-- <pre>{{listFacility|json}}</pre> -->
+
+<div class="card">
+  <app-back-button [pageTitle]="'Upload Beneficiaries from Offline'"></app-back-button>
+
+  
+  <div class=" my-4 pb-1" *ngIf="listFacility?.length===0">
+    <div colspan="12">
+      <div class="text-center py-5">
+        <p class="xl-text mb-0">No Data Available for Upload</p>
+        <p class="lg-text">(After Collecting Data in Offline , Uploaded Data will available here.)</p>
+      </div>
+    </div>
+  </div>
+
+  <a *ngFor="let facility of listFacility" (click)="navigateToLink(facility)" aria-expanded="false" style="cursor:pointer;">
+    <div class="card-header row">
+      <div class="col-md-11">{{facility.facilityName}}</div>
+      <!-- <div class="col-md-1"><span class="badge badge-pill badge-success">Collected</span></div> -->
+    </div>
+    <div class="card-body">
+      <p class="card-text"> Facility Id : {{facility.facilityCode}} </p>
+      <p class="card-text"> Camp Name: {{facility.campName}} </p>
+      <p class="card-text"> Programming Partner : {{facility.programmingPartnerName}} </p>
+      <p class="card-text"> Implementation Partner : {{facility.implementationPartnerName}} </p>
+    </div>
+  </a>
+</div>

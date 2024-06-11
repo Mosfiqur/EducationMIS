@@ -1,0 +1,22 @@
+<div class="card m-5 border-0">
+  <div class="card-title" style="text-align: center; font-weight: 900;">Offline Beneficiary Data</div>
+  <div class=" my-4 pb-1" *ngIf="listInstance?.length===0">
+    <div colspan="12">
+      <div class="text-center py-5">
+        <p class="xl-text mb-0">No Data found in Offline. </p>
+        <p class="lg-text" style="font-size:1.2em;">(Go to Collect Beneficiary and Scroll down then Click Make All
+          Available Offline to Download)</p>
+      </div>
+    </div>
+  </div>
+
+  <a *ngFor="let instance of listInstance"
+    [routerLink]="['/unicefpwa/offline-facility-instance/facility',collectFor,instance.id]" aria-expanded="false"
+    style="cursor: pointer;cursor: pointer;border: 1px solid;margin-top: 20px;border-radius: 8px;">
+    <div class="card-body">
+      <h5 class="card-title">Schedule : {{instance.instanceTitle}}</h5>
+      <p class="card-text">Start Date : {{instance?.dataCollectionDate|date:'dd-MMM-yyyy'}} |
+        End Date : {{instance?.endDate|date:'dd-MMM-yyyy'}}
+    </div>
+  </a>
+</div>

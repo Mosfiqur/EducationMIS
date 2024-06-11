@@ -1,0 +1,67 @@
+<app-back-button [pageTitle]="'Facilities List'"></app-back-button>
+<!-- <pre>{{scheduleInstance|json}}</pre> -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="card m-3 border-0">
+      <div class="card-body" style="border: 1px solid;border-radius: 8px;">
+        <h5 class="card-title">Schedule : {{scheduleInstance?.instanceTitle}}</h5>
+        <p class="card-text">Start Date : {{scheduleInstance?.dataCollectionDate|date:'dd-MMM-yyyy'}}   |   
+          End Date :   {{scheduleInstance?.endDate|date:'dd-MMM-yyyy'}}      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="col-auto">
+      <div class="input-group mt-5">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-search"></i></div>
+        </div>
+        <input type="text" (keyup)="searchFacilityonKeyup($event)" class="form-control" placeholder="Search Facility">
+      </div>
+    </div>
+    <span style="padding-left:1rem">Total Facilities : {{listFacility.length}}</span>
+  </div>
+</div>
+<div class=" my-4 pb-1" *ngIf="listFacility.length===0">
+  <div colspan="12">
+    <div class="text-center py-5">
+      <p class="xl-text mb-0">No data found.</p>
+      <p class="lg-text">(Data will be displayed here)</p>
+    </div>
+  </div>
+</div>
+<a *ngFor="let facility of listFacility | paginate : { itemsPerPage: 10, currentPage: offlinePageNo }" 
+(click)="navigateToLink(facility)" aria-expanded="false"
+  style="cursor: pointer;">
+  <!-- {{facility|json}} -->
+  <div class="card">
+    <div class="row card-header">
+      <div class="col-md-10">
+        {{facility.facilityName}}
+
+      </div>
+      <div class="col-md-1">
+        <div *ngIf="collectFor == 2">
+          <div *ngIf="CollectionStatusText(facility.collectionStatus); let status;">
+
+            <span *ngIf="status =='NotCollected'" class="badge badge-pill badge-info">{{status}}</span>
+            <span *ngIf="status =='Collected'" class="badge badge-pill badge-success">{{status}}</span>
+            <span *ngIf="status =='Approved'" class="badge badge-pill badge-warning">{{status}}</span>
+            <span *ngIf="status =='Recollect'" class="badge badge-pill badge-primary">{{status}}</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <p class="card-text"> Facility Id : {{facility.facilityCode}} </p>
+      <p class="card-text"> Camp Name: {{facility.campName}} </p>
+      <p class="card-text"> Programming Partner : {{facility.programmingPartnerName}} </p>
+      <p class="card-text"> Implementation Partner : {{facility.implementationPartnerName}} </p>
+
+    </div>
+  </div>
+</a>
+
+<pagination-controls (pageChange)="offlinePageNo = $event" class="d-flex justify-content-end pt-3">
+</pagination-controls>

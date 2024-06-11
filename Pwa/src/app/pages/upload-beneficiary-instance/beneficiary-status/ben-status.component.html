@@ -1,0 +1,53 @@
+<div class="card">
+  <app-back-button [pageTitle]="'Beneficiaries List For Uploading Offline Data'"></app-back-button>
+
+  <div class="row" *ngIf="listBeneficiary?.length>0 || listDisengagedBeneficiary?.length>0">
+    <div class="col-md-5"></div>
+    <div class="col-md-7"><button class="btn btn-danger m-2" type="button" (click)="onClickUpload()">Upload</button>
+    </div>
+  </div>
+  <!-- <pre>{{facility|json}}</pre> -->
+  <div class="card-body">
+    <p class="card-text"> Facility Name : {{facility?.facilityName}} </p>
+    <p class="card-text"> Camp Name: {{facility?.campName}} </p>
+    <p class="card-text"> Programming Partner : {{facility?.programmingPartnerName}}</p>
+    <p class="card-text"> Implementation Partner : {{facility?.implementationPartnerName}} </p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <!-- <pre>{{listBeneficiary|json}}</pre> -->
+    <!-- <pre>{{listDisengagedBeneficiary|json}}</pre> -->
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Unhcr Id</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <div *ngIf="beneficiary?.disengaged === false"> -->
+          <tr *ngFor="let beneficiary of listBeneficiary">
+            <td>{{beneficiary.beneficiaryName}}</td>
+            <td>{{beneficiary.UnhcrId}}</td>
+            <td>
+              <span class="badge badge-pill badge-success">Collected</span>
+            </td>
+          </tr>
+        <!-- </div> -->
+        <!-- <div *ngIf="beneficiary?.disengaged === true"> -->
+          <tr *ngFor="let beneficiary of listDisengagedBeneficiary">
+            <td>{{beneficiary.beneficiaryName}}</td>
+            <td>{{beneficiary.UnhcrId}}</td>
+            <td>
+              <span class="badge badge-pill badge-warning">Disengaged</span>
+            </td>
+          </tr>
+        <!-- </div> -->
+      </tbody>
+    </table>
+  </div>
+</div>

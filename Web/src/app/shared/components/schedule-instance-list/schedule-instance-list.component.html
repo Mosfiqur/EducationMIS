@@ -1,0 +1,110 @@
+<div class="full-table-ctl">
+  <!-- table control start -->
+  <div class="py-3">
+    <div class="table-control-head" id=#table-control-head-default>
+      <div class="d-flex flex-wrap py-2">
+        <div class="flex-grow-1 mr-3">
+          <p class="gry-text  mr-2 py-1 my-auto">All Reporting cycle</p>
+        </div>
+        <div>
+
+        </div>
+      </div>
+
+      <!-- table option start -->
+
+      <div [ngClass]="{'show-context-menu': numberOfInstanceSelected > 0}" class=" table-cell-options py-2 px-2"
+        id=#table-cell-option-show-hide>
+        <div class="d-flex flex-wrap">
+          <p class="my-auto flex-grow-1"><span>{{numberOfInstanceSelected}}</span><span> Reporting cycle(s)
+              selected</span></p>
+          <div class="d-flex">
+            <!-- <a class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+             <span>Auto Collection Set</span>                        
+           </a> -->
+            <a *ngIf="numberOfInstanceSelected==1" (click)="editInstance()"
+              class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+              <span class="mr-3">Edit</span>
+              <span>
+                <icon-edit></icon-edit>
+              </span>
+
+            </a>
+
+            <a *ngIf="selectedItemsHaveSameStatus && showComplete" (click)="completeInstance()"
+              class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+              <span class="">Complete</span>
+              
+            </a>
+
+
+
+            <a (click)="onStartCollection()" *ngIf="selectedItemsHaveSameStatus && collectVisible"
+              class="site-btn-outlined-white-borderd py-2 px-3 mr-3">
+              <span>Collect</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- table option end -->
+    </div>
+
+
+
+  </div>
+  <!-- table control end -->
+
+  <!-- table start -->
+  <div class>
+    <page-size-selector 
+    (onPageSizeChanged)="onPageSizeChanged($event)"
+    [totalItems]="pagedInstances?.total"
+    ></page-size-selector>
+
+    <div>
+
+      <div class="site-table">
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th scope="row">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="materialExampleRadios" [ngModel]="isAllSelected"
+                    (ngModelChange)="selectAll($event)" id=#chkoption>
+                </div>
+              </th>
+              <th scope="col">Schedule</th>
+              <th scope="col">Month</th>
+              <th scope="col">Year</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let instance of instances | paginate: paginationConfig">
+              <th scope="row ">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="materialExampleRadios" id=#chkoption
+                    [(ngModel)]="instance.isSelected" (ngModelChange)="toggleSelection(instance)">
+                </div>
+              </th>
+              <td> {{instance.title}}</td>
+              <td>{{instance.dataCollectionDate | date:'MMMM'}}</td>
+              <td>{{instance.dataCollectionDate | date:'yyyy'}}</td>
+              <td><span [ngClass]="{'upcoming-badge': instance.status==instanceStatusEnum.Pending,                                     
+                        'running-badge': instance.status==instanceStatusEnum.Running,
+                        'done-badge': instance.status==instanceStatusEnum.Completed
+                      }" class="py-1 px-2 ">{{instance.status | instanceStatus}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pagination-controls (pageChange)="onPageChange($event)" class="d-flex justify-content-end pt-3" id="instance_list"></pagination-controls>
+
+
+    </div>
+  </div>
+  <!-- table end -->
+</div>

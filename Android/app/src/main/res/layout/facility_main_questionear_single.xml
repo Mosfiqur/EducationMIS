@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="com.unicef.mis.enumtype.CollectionStatus"/>
+        <import type="com.unicef.mis.enumtype.EntityType"/>
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.FacilityViewModel" />
+        <variable
+            name="facility"
+            type="com.unicef.mis.model.benificiary.facility_list.FacilityListDatum" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8sp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/questioner_group_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:cardCornerRadius="5sp"
+            app:cardElevation="5sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4sp">
+                <RelativeLayout
+                    android:id="@+id/header1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/header_tv"
+                        android:layout_width="226sp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="4sp"
+                        android:layout_marginRight="4sp"
+                        android:text="@{facility.facilityName}"
+                        android:textColor="@color/green"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/status_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="12sp"
+                        android:layout_marginEnd="12sp"
+                        android:layout_marginRight="13dp"
+                        android:background="@{facility.collectionStatus == CollectionStatus.NotCollected.getIntValue() ? @drawable/collected_rectangle : @drawable/not_collected_rectangle}"
+                        android:padding="12sp"
+                        android:text="@{facility.getCollectionStatusText()}"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:visibility="@{viewModel.entityType == EntityType.Beneficiary.getIntValue()? View.GONE : View.VISIBLE}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginLeft="4sp"
+                    android:layout_marginRight="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_below="@id/header1">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer2_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/facility_id_title"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_facility_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer2_header_tv"
+                        android:text="@{facility.facilityCode}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logout_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layer2"
+                    android:layout_margin="4sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer3_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="Camp Name"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer3_header_value_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer3_header_tv"
+                        android:text="@{facility.campName}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/logout_layout"
+                    android:layout_margin="4sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer4_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="Programming Partner"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer4_header_value_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/layer4_header_tv"
+                        android:text="@{facility.programmingPartnerName}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layer5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layer4"
+                    android:layout_margin="4sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer5_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="Implementation Name"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer5_header_value_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/layer5_header_tv"
+                        android:text="@{facility.implemantationPartnerName}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5sp"
+            android:layout_below="@id/questioner_group_card"
+            android:layout_margin="12sp"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+</layout>

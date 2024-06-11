@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.BeneficiaryRecordsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/benificary_final_inidcator_layout">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="5sp"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="1sp"
+                    android:onClick="goBack"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+
+                    app:tint="@color/green" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8sp"
+                    android:layout_toRightOf="@id/back"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/save_all_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12sp"
+                    android:text="@string/submit"
+                    android:textColor="@color/black"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/questioner_group_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="12sp"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            app:cardCornerRadius="5sp"
+            app:cardElevation="15sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle">
+
+                <RelativeLayout
+                    android:id="@+id/layer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer2_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="Benificiary Id"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_facility_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer2_header_tv"
+                        android:text="@{viewModel.beneficiary.unhcrId}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logout_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layer2"
+                    android:layout_margin="4sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer3_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="Benificiay Name"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer3_header_value_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer3_header_tv"
+                        android:text="@{viewModel.beneficiary.beneficiaryName}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/status_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/logout_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8sp"
+                    android:layout_marginRight="4sp"
+                    android:background="@drawable/collected_rectangle"
+                    android:padding="12sp"
+                    android:text="@{viewModel.statusText}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/questioner_group_card">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/questioner_group_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/questioner_group_card"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            shimmer:duration="800">
+
+            <!-- Adding 7 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+
+                <include layout="@layout/shimmer_effect" />
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
+
+</layout>

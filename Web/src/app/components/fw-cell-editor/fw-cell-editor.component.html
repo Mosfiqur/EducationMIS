@@ -1,0 +1,152 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cell editor</h5>
+        <button type="button" #closeEdit class="close" (click)="handleCancel()">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="cellForm" (ngSubmit)="onSubmit()" *ngIf="column.columnDataType != dataType.List">
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">{{cell?.columnName}}</label>
+                <input 
+                    *ngIf="column.columnDataType===dataType.Integer || column.columnDataType===dataType.Decimal" 
+                    type="number"
+                    class="form-control" id="cell"
+                    formControlName="value"
+                    name="value"
+                    >
+
+                <input 
+                    *ngIf="column.columnDataType===dataType.Text" 
+                    type="text"
+                    class="form-control" id="cell"
+                    formControlName="value"
+                    name="value"
+                    >
+
+                    <div class="d-flex flex-wrap" *ngIf="column.columnDataType===dataType.Datetime">
+                      <div class="flex-grow-1">
+                        <div class="input-group searchbox-with-filter">
+                         
+                          <input type="text" class="form-control" id="calender" 
+                          ngbDatepicker #dpStart="ngbDatepicker"
+                          placeholder=""
+                          formControlName="value"
+                          aria-label="Input group example" aria-describedby="btnGroupAddon" >
+                          <span class="input-group-text search-icon p-0 px-2" (click)="dpStart.toggle()">
+                            <a>
+                              <icon-calender></icon-calender>
+                            </a>
+                          </span>
+                        </div>
+                  
+                  
+                      </div>
+                  
+                  
+                    </div>
+                    
+                    <!-- <div 
+                    *ngIf="column.columnDataType===dataType.Datetime" 
+                    class="input-group" >
+                        <input type="text" 
+                            class="form-control" 
+                            id="calender" 
+                            ngbDatepicker #dpStart="ngbDatepicker"
+                            placeholder="1/7/2020"
+                            formControlName="value"
+                            >
+                        <div class="input-group-prepend">
+                          <span 
+                          (click)="dpStart.toggle()"
+                          class="input-group-text alt-input-group-text" id="">
+                            <icon-calender></icon-calender>
+                          </span>
+                        </div>
+                      </div> -->
+
+                      <div class="form-group" *ngIf="column.columnDataType === dataType.Boolean">
+                        <div class="form-check-inline form-check">
+                          <input class="form-check-input" id="addressType1Id"
+                          type="radio"
+                          value="Yes"
+                          formControlName="value" id="inlineRadio1">
+                         
+                          <label class="form-check-label mr-3" for="inlineRadio1">Yes</label>
+                      </div> 
+                      <div class="form-check-inline form-check">
+                          <input class="form-check-input" id="addressType1Id"
+                          type="radio"
+                          value="No"
+                          formControlName="value" id="inlineRadio2">
+                          
+                          <label class="form-check-label mr-3" for="inlineRadio2">No</label>
+                      </div>
+                      </div>
+                      <!-- <div *ngIf="column.columnDataType === dataType.Boolean">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input"
+                                   id="addressType1Id"
+                                   type="radio"
+                                   value="Yes"
+                                   formControlName="value"> Yes
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input"
+                                   id="addressType1Id"
+                                   type="radio"
+                                   value="No"
+                                   formControlName="value"> No
+                          </label>
+                        </div>  
+                      </div> -->
+                
+              <div class="invalid-feedback d-block" >
+                {{validationErrors?.value}}
+              </div> 
+            </div>
+        </form>
+
+        <form class="row">
+          <div class="col-6">
+            <div class="form-check" *ngFor="let item of listItems; let i = index;">
+              <input                 
+               type="checkbox" 
+               class="form-check-input "
+               name="{{i}}"                
+               [checked]="item.isSelected"
+               (click)="onModelChange($event.target.checked, item)"
+                id="{{i}}">
+                  
+                   <label class="form-check-label ml-3" for="{{i}}">{{item.title}}</label>
+         </div>
+          </div>
+          
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a class="btn site-btn-primary-red" (click)="handleDelete()" class="mr-auto">
+            <span class="delete-btn cursor-pointer">Delete </span>                     
+        </a>
+        <a type="button" #cancelButton (click)="handleCancel()" class="btn site-btn-cutom-link"><span>Cancel</span></a>
+        <button type="button" 
+        *ngIf="column.columnDataType === dataType.List"        
+        (click)="saveList()" class="btn site-btn-primary"><span>Save</span></button>
+        
+        <button type="button" 
+        *ngIf="column.columnDataType != dataType.List"
+        [disabled]="!cellForm.valid"
+        (click)="onSubmit()" class="btn site-btn-primary"><span>Save</span></button>
+    </div>
+</div>
+<script>
+  let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#today").value = today;
+
+document.querySelector("#today2").valueAsDate = new Date();
+</script>

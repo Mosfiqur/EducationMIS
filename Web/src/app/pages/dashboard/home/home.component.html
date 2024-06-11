@@ -1,0 +1,37 @@
+<div class="p-4 borderBoxHeight">
+    <div class="row">
+        <div class="col-12">
+            <div class="">
+
+                <h1 class="pb-3 mb-0">
+                    Predefined Dashboard
+                </h1>
+
+                <div>
+                    <div class="mt-4 pb-1">
+                        <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="col-10 d-inline-block p-0">{{selectedRoute ? selectedRoute.name : 'Select a Dashboard'}}</div> 
+                        </button>
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                                <a 
+                                    *ngFor="let board of dashboards"
+                                    class="dropdown-item"                                     
+                                    [routerLink]="board.path"
+                                    (click)="onRouteSelected(board)"
+                                    >{{board.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="mt-4">
+                <h2 class="mb-0">Now Showing: <span class="ml-2">{{selectedRoute?.name}}</span></h2>
+                <router-outlet></router-outlet>
+              </div>
+        </div>
+        
+    </div>
+</div>

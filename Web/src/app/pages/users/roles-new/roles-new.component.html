@@ -1,0 +1,149 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div class="d-flex headding-with-back-btn pb-3 mb-0">
+        <a class="mr-3 pr-1 site-main-back-btn border-right" [routerLink]="['/unicef/users/roles']">
+          <span class="pr-3">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 26"
+              style="enable-background: new 0 0 26 26;" xml:space="preserve">
+              <path d="M22.9,12.1h-18l6.9-6.5c0.4-0.3,0.4-0.9,0-1.3c-0.3-0.4-0.9-0.4-1.3,0l-7.9,7.5c-0.3,0.3-0.5,0.8-0.5,1.3
+                    c0,0.5,0.2,0.9,0.5,1.3l7.8,7.5c0.2,0.2,0.4,0.2,0.6,0.2c0.2,0,0.5-0.1,0.7-0.3c0.3-0.4,0.3-0.9,0-1.3l-6.9-6.5h18
+                    c0.5,0,0.9-0.4,0.9-0.9S23.4,12.1,22.9,12.1L22.9,12.1z" />
+            </svg>
+          </span>
+        </a>
+
+        <h1 class="mb-0">
+          {{editState ? 'Edit Role' : 'Add New Role'}}
+        </h1>
+      </div>
+
+      <div class="mt-4">
+        <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">
+              <div class="row">
+                <div class="col pr-2">
+                  <div class="form-content-3-scroll pr-2">
+                    <div class="flex-grow-1">
+                      <div class="form-group">
+                        <label for="inputEmail4">Role Name<span class="red-text font-weight-bold">
+                            * </span>:</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Enter Role Name" name="roleName"
+                          formControlName="roleName" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail4">Level
+                        <span class="red-text font-weight-bold">* </span>:</label>
+
+                      <select class="form-content-2-scroll pr-2 custom-select" formControlName="levelId" name="levelId">
+                        <option value="">Select</option>
+                        <option class="dropdown-item" *ngFor="let level of levels" value="{{ level.id }}">
+                          {{ level.levelName }}</option>
+                      </select>
+
+                      <div class="invalid-feedback d-block" *ngIf="
+                          roleForm.controls.levelId.errors &&
+                          roleForm.controls.levelId.touched
+                        ">
+                        <span *ngIf="roleForm.controls.levelId.errors.required">Level is required</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="inputEmail4">Permission Preset
+                        <span class="red-text font-weight-bold">* </span>:</label>
+
+                      <select class="form-content-2-scroll pr-2 custom-select" formControlName="permissionPresetId"
+                        name="permissionPresetId" (change)="onSelectPreset()">
+                        <option class="dropdown-item" value="">Select</option>
+                        <option class="dropdown-item" *ngFor="let preset of presets" value="{{ preset.id }}">
+                          {{ preset.presetName }}</option>
+                      </select>
+
+                      <div class="invalid-feedback d-block" *ngIf="
+                          roleForm.controls.permissionPresetId.errors &&
+                          roleForm.controls.permissionPresetId.touched
+                        ">
+                        <span *ngIf="
+                            roleForm.controls.permissionPresetId.errors.required
+                          ">Permission preset is required</span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="">
+                          <div class="filter-byrecord">
+                            <div class="pt-3 pb-1 mb-2 d-flex flex-wrap">
+                              <p class="mb-0 gry-text pr-3 flex-grow-1 my-auto">
+                                Set Permission:
+                              </p>
+                              <label class="switch mb-0" type="button" data-toggle="collapse"
+                                data-target="#Recordinstance" aria-expanded="true" aria-controls="collapseOne">
+                                <input type="checkbox" formControlName="isAllSelected"
+                                  (click)="onSelectAllPermission()" />
+                                <span class="slider round"></span>
+                              </label>
+                              <p class="gry-text mb-0 ml-3 my-auto">Set All</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="allborder-box border-redious-xl">
+                      <div class="p-3">
+                        <div class="filter-byrecord" formArrayName="permissions"
+                          *ngFor="let permission of permissionsFormArray.controls; let i = index">
+                          <div *ngIf="permissions[i]?.isGroup===true">
+                            <div class="py-3 d-flex flex-wrap">
+                              
+                              <p class="mb-0 gry-text pr-3 flex-grow-1 ml-3 my-auto font-weight-bold">
+                                {{permissions[i].description}}
+                              </p>
+                              <label class="switch mb-0" type="button" data-toggle="collapse"
+                                data-target="#Recordinstance" aria-expanded="true" aria-controls="collapseOne">
+                                <input type="checkbox" (click)="onSelectPermissionAllGroupWiseSet(permissions[i])"
+                                 formControlName="{{i}}" />
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+                          </div>
+
+                            <div class="py-3 d-flex flex-wrap" *ngIf="permissions[i]?.isGroup===false">
+                              <label class="switch mb-0" type="button" data-toggle="collapse"
+                                data-target="#Recordinstance" aria-expanded="true" aria-controls="collapseOne">
+                                <input type="checkbox" formControlName="{{i}}" (ngModelChange)="toggleSelection()" />
+                                <span class="slider round"></span>
+                              </label>
+                              <p class="mb-0 gry-text pr-3 flex-grow-1 ml-3 my-auto">
+                                {{permissions[i].description}}
+                              </p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+              <button type="submit" [disabled]="!roleForm.valid"
+                [title]="roleForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                class="btn site-btn-primary py-2 px-3 mb-3 btn-block text-center">
+                <span> Save </span>
+              </button>
+
+              <a [routerLink]="['/unicef/users/roles']"
+                class="site-btn-secondary py-2 px-3 mb-3 btn-block text-center"><span> Return Without Saving </span></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

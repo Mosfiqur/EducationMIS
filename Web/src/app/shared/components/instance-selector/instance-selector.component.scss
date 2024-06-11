@@ -1,0 +1,30 @@
+// input[type=checkbox] {
+//     box-sizing: border-box;
+//     padding: 0;
+//     -webkit-appearance: auto;
+//     -moz-appearance: auto;
+//      appearance: auto;
+//     /* border: 11px solid var(--Gry500); */
+//     border-radius: 2px;
+//     outline: 0;
+//     color: var(--white);
+//     cursor: pointer;
+//     transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+// }
+
+.padding-10{
+    padding-left: 5px;;
+}
+
+.form-check-style{
+    position:relative;
+}
+
+.checkBox_hide_style{
+    z-index: 1000; 
+    background-color: rgba(0,0,0,.0);
+    position: absolute; 
+    top:0;
+    left:0;
+    width:100%;
+}

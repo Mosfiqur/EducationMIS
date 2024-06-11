@@ -1,0 +1,271 @@
+<!-- <pre>{{facilityViewModel|json}}</pre> -->
+<!-- <pre>{{facility|json}}</pre> -->
+<div class="card">
+  <div *ngIf="onlineOfflineStatus == 1">
+    <app-back-button [pageTitle]="'Online Beneficiary Indicators'"></app-back-button>
+  </div>
+  <div *ngIf="onlineOfflineStatus == 2">
+    <app-back-button [pageTitle]="'Offline Beneficiary Indicators'"></app-back-button>
+  </div>
+  <!-- <pre>{{beneficiary|json}}</pre> -->
+
+  <div style="text-align:center;">
+    <div *ngIf="onlineOfflineStatus == 1">
+
+      <div class="row card-body">
+        <div class="col-md-6">
+          <h5>Beneficiary Name : {{beneficiary?.name}}</h5>
+          <h6>Unhcr Id : {{beneficiary?.unhcrId}}</h6>
+          <h6>Father Name : {{beneficiary?.fatherName}}</h6>
+          <h6>Mother Name : {{beneficiary?.motherName}}</h6>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <button type="button" class="btn btn-danger" type="button" data-target=".inactiveSelect"
+              data-toggle="modal">Disengage
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div *ngIf="onlineOfflineStatus == 2">
+      <div class="row card-body">
+        <div class="col-md-6">
+          <h5>Beneficiary Name : {{beneficiary?.beneficiaryName}}</h5>
+          <h6>Unhcr Id : {{beneficiary?.UnhcrId}}</h6>
+          <h6>Father Name : {{beneficiary?.fatherName}}</h6>
+          <h6>Mother Name : {{beneficiary?.motherName}}</h6>
+        </div>
+        <div class="col-md-6" *ngIf="beneficiary?.id != 0">
+          <div *ngIf="beneficiary?.disengaged === false">
+            <button type="button" class="btn btn-danger" type="button" data-target=".inactiveSelect"
+              data-toggle="modal">Disengage
+            </button>
+          </div>
+          <div *ngIf="beneficiary?.disengaged === true">
+            <button type="button" class="btn btn-success" type="button" data-target=".inactiveSelect"
+              data-toggle="modal">Re-engage
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <form [formGroup]="indicatorForm" (ngSubmit)="onSubmit()">
+    <div style="text-align: right;">
+      <button *ngIf="onlineOfflineStatus === 2 && listbeneficiaryIndicator?.length != 0" type="button"
+        [disabled]="!(beneficiary?.disengaged === false)" type="submit" class="btn btn-success mb-2 mr-4">Save
+        All</button>
+
+      <button *ngIf="onlineOfflineStatus === 1 && listbeneficiaryIndicator?.length != 0" type="button" type="submit"
+        class="btn btn-success mb-2 mr-4">Save
+        All</button>
+
+      <div class=" my-4 pb-1" *ngIf="listbeneficiaryIndicator.length===0">
+        <div colspan="12">
+          <div class="text-center py-5">
+            <p class="xl-text mb-0">No Indicator found.</p>
+            <p class="lg-text">(Indicator will be displayed here)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <pre>{{indicatorForm.value|json}}</pre> -->
+    <!-- <pre>{{listbeneficiaryIndicator|json}}</pre> -->
+    <div class="card" *ngFor="let indicator of listbeneficiaryIndicator" style="margin:1px 0px 10px 1px">
+      <div class="card-header row">
+        <div class="col-md-11">
+          <h5 class="card-title">{{indicator.columnName}}</h5>
+          <h5 class="card-title" *ngIf="indicator.columnNameInBangla !== ''">( {{indicator.columnNameInBangla}} )</h5>
+        </div>
+        <div class="col-md-1">
+          <!-- <button *ngIf="onlineOfflineStatus === 2" type="button"
+          (click)="onClickRecordSave(indicator.id,indicator.columnDataType)" 
+          [disabled]="!(beneficiary?.disengaged === false)" class="btn btn-info">Save</button> -->
+          <!-- <button *ngIf="onlineOfflineStatus === 1" type="button"
+          (click)="onClickRecordSave(indicator.entityDynamicColumnId,indicator.columnDataType)"
+          class="btn btn-info">Save</button> -->
+        </div>
+      </div>
+
+      <div class="card-body Online" *ngIf="onlineOfflineStatus == 1">
+
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === true">
+          <input class="form-control" type="text" value="{{disabledIndicatorNameFind(indicator.entityDynamicColumnId,indicator.values.join(','))}}" disabled />
+        </div>
+
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === false">
+          <div
+            *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Int' || ColumnDataTypeText(indicator.columnDataType) == 'Decimal'">
+            <input class="form-control" type="number" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Text'">
+            <input class="form-control" type="text" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Datetime'">
+            <input class="form-control" type="date" formControlName="{{indicator.entityDynamicColumnId}}" required />
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Boolean'">
+            <select class="custom-select mr-sm-2" formControlName="{{indicator.entityDynamicColumnId}}" required>
+              <option value="">Please Select an Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+            <button (click)="onClickListTypeSave(indicator)"
+              class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+              data-backdrop="static" data-keyboard="false">
+              <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+            </button>
+
+            <div class="py-2"
+              *ngIf="listSelectedListItem.get(indicator.entityDynamicColumnId)?.length > 0; else noItemFound;">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p>
+
+                <div *ngFor="let selectedListItem of listSelectedListItem.get(indicator.entityDynamicColumnId)">
+                  <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                    <span class="mr-3 ml-1"> {{selectedListItem.title}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noItemFound class="py-2">
+              <div class="d-flex flex-wrap align-content-start"
+                *ngIf="indicator.values.length==0 || listSelectedListItem.get(indicator.entityDynamicColumnId)?.length == 0">
+                <p class="gry-text  mr-2 py-1 my-auto">You have not Choosed anything yet. </p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-body Offline" *ngIf="onlineOfflineStatus === 2">
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === true">
+          <input class="form-control" type="text" value="{{disabledIndicatorNameFind(indicator.entityDynamicColumnId)}}" disabled />
+        </div>
+
+        <div *ngIf="isDisabledIndicator(indicator.entityDynamicColumnId) === false">
+          <div *ngIf="beneficiary?.disengaged === false">
+            <div
+              *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Int' || ColumnDataTypeText(indicator.columnDataType) == 'Decimal'">
+              <input class="form-control" type="number" formControlName="{{indicator.id}}" required />
+            </div>
+            <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Text'">
+              <input class="form-control" type="text" formControlName="{{indicator.id}}" required />
+            </div>
+            <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Datetime'">
+              <input class="form-control" type="date" formControlName="{{indicator.id}}" required />
+            </div>
+            <div *ngIf="ColumnDataTypeText(indicator.columnDataType) == 'Boolean'">
+              <select class="custom-select mr-sm-2" formControlName="{{indicator.id}}" required>
+                <option value="">Please Select an Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <!-- {{indicator|json}} -->
+            <!-- <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+            <button (click)="onClickListTypeSave(indicator)"
+              class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+              data-backdrop="static" data-keyboard="false">
+              <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+            </button>
+  
+            <div class="py-2">
+              <div class="d-flex flex-wrap align-content-start">
+                <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p> 
+  
+                <div *ngFor="let selectedListItem of listSelectedListItem">
+                  <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                    <span class="mr-3 ml-1"> {{selectedListItem}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+            <div *ngIf="ColumnDataTypeText(indicator.columnDataType) === 'List'">
+              <button (click)="onClickListTypeSave(indicator)"
+                class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button" data-toggle="modal"
+                data-backdrop="static" data-keyboard="false">
+                <div class="col-10 d-inline-block p-0 font-weight-normal">Click here to select a list item </div>
+              </button>
+
+              <div class="py-2"
+                *ngIf="listSelectedListItem.get(indicator.entityDynamicColumnId)?.length > 0; else noItemFound;">
+                <div class="d-flex flex-wrap align-content-start">
+                  <p class="gry-text  mr-2 py-1 my-auto">You have selected: </p>
+
+                  <div *ngFor="let selectedListItem of listSelectedListItem.get(indicator.entityDynamicColumnId)">
+                    <span class="filter-tag py-1 px-2 mr-2 my-1 d-flex flex-wrap">
+                      <span class="mr-3 ml-1"> {{selectedListItem.title}}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <ng-template #noItemFound class="py-2">
+                <div class="d-flex flex-wrap align-content-start">
+                  <p class="gry-text  mr-2 py-1 my-auto">You have not Choosed anything yet. </p>
+                </div>
+              </ng-template>
+            </div>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <button *ngIf="onlineOfflineStatus === 2 && listbeneficiaryIndicator?.length != 0" type="button"
+        [disabled]="!(beneficiary?.disengaged === false)" type="submit" class="btn btn-success mb-2">Save All</button>
+
+      <button *ngIf="onlineOfflineStatus === 1 && listbeneficiaryIndicator?.length != 0" type="button" type="submit"
+        class="btn btn-success mb-2">Save
+        All</button>
+    </div>
+
+  </form>
+</div>
+
+
+
+<!-- Select Make Inactive button modal -->
+<div class="modal fade inactiveSelect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="p-0">
+          <div class="">
+            <h5>Are you Sure you want to Perform the Action to this Beneficiary ?? </h5>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn site btn-light" data-dismiss="modal"><span>Cancel</span></a>
+        <a type="button" *ngIf="onlineOfflineStatus === 1" class="btn site btn-danger"
+          (click)="makeBeneficiaryInactiveOnline(beneficiary?.id)" data-dismiss="modal"><span>Confirm</span>
+        </a>
+        <a type="button" *ngIf="onlineOfflineStatus === 2"
+          (click)="makeBeneficiaryInactiveToggle(beneficiary?.disengaged)" class="btn site btn-danger"
+          data-dismiss="modal"><span>Confirm</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- modal end Make Inactive button  -->

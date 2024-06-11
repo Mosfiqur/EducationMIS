@@ -1,0 +1,184 @@
+<div class="p-4">
+  <div class="row">
+    <div class="col-12 site-maincontent-ctl">
+      <div>
+
+        <h1 class="pb-3 mb-0">
+          Beneficiaries' Schedules
+        </h1>
+
+        <div>
+          <div class="my-4 pb-1">
+            <a (click)="createNewSchedule()" class="site-btn-primary py-2 px-3" data-toggle="modal"
+              data-target=".newSchedule"><span>Create
+                Monitoring Schedule</span></a>
+          </div>
+        </div>
+
+
+        <div class="full-table-ctl">
+          <!-- table control start -->
+          <div class="py-3">
+            <div class="table-control-head" id=#table-control-head-default>
+              <div class="d-flex flex-wrap py-2">
+                <div class="flex-grow-1 mr-3">
+                  <p class="gry-text  mr-2 py-1 my-auto">All Schedules</p>
+                </div>
+
+              </div>
+
+              <!-- table option start -->
+
+              <div [ngClass]="{'show-context-menu': numberOfSchedulesSelected > 0}"
+                class=" table-cell-options py-2 px-2" id=#table-cell-option-show-hide>
+                <div class="d-flex flex-wrap">
+                  <p class="my-auto flex-grow-1 ml-2"><span class="mr-2">{{numberOfSchedulesSelected}}</span><span>
+                      Schedule(s) selected</span></p>
+                  <div class="d-flex">
+
+                    <a *ngIf="numberOfSchedulesSelected==1" (click)="editSchedule()"
+                      class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Edit</span>
+                      <span>
+                        <icon-edit></icon-edit>
+                      </span>
+
+                    </a>
+
+                    <a (click)="deleteSelectedSchedules()" class="site-btn-outlined-white-borderd py-2 px-3 mr-2">
+                      <span class="mr-3">Delete</span>
+                      <span>
+                        <i class="fa fa-trash-alt"></i>
+                      </span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+              <!-- table option end -->
+            </div>
+
+
+
+          </div>
+          <!-- table control end -->
+
+          <!-- table start -->
+
+          <div>
+            <page-size-selector (onPageSizeChanged)="onPageSizeChanged($event)" [totalItems]="pagedSchedules?.total">
+            </page-size-selector>
+
+            <div class="site-table table-responsive">
+              <table class="table">
+
+                <thead>
+                  <tr>
+                    <th scope="row">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="materialExampleRadios" id=#chkoption
+                          [ngModel]="isAllSelected" (ngModelChange)="selectAll($event)">
+                      </div>
+                    </th>
+                    <th scope="col">Name</th>
+                    <th scope="col"> Description</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr class="table-info-ctl"  *ngIf="!schedules || !schedules.length">
+                    <td colspan="5">
+                      <div class="py-2 px-3">
+                        <div class="text-center py-5">
+                          <p class="xl-text mb-0">Create new Schedule</p>
+                          <p class="lg-text">(your schedules will be displayed here)</p>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr *ngFor="let schedule of schedules | paginate : paginationConfig">
+                    <th scope="row">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="materialExampleRadios"
+                          [(ngModel)]="schedule.isSelected" (ngModelChange)="toggleSelection(schedule)" id=#chkoption>
+                      </div>
+                    </th>
+                    <td>{{schedule.scheduleName}}</td>
+                    <td>{{schedule.description}}</td>
+                    <td>{{schedule.startDate | date}}</td>
+                    <td>{{schedule.endDate | date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <pagination-controls (pageChange)="getPage($event)" id="schedule_list"
+              class="d-flex justify-content-end pt-3"></pagination-controls>
+
+            <!-- <div class="border-top">
+              <div class="pt-3">
+                <nav aria-label="Page navigation example ">
+                  <ul class="pagination mb-0 justify-content-end">
+                    <li class="page-item">
+                      <a class="page-link"  aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" >1</a></li>
+                    <li class="page-item"><a class="page-link" >2</a></li>
+                    <li class="page-item"><a class="page-link" >3</a></li>
+                    <li class="page-item">
+                      <a class="page-link"  aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div> -->
+
+          </div>
+
+          <!-- table end -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal start -->
+
+  <!-- Delete Schedule -->
+  <div class="modal fade deleteSelectedIndicator" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title red-text" id="exampleModalLabel">Confirm Action</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3 class="red-text ">
+            Are you sure you want to remove?
+          </h3>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" class="btn site-btn-primary-red"><span>Delete</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Delete schedule-->
+
+</div>

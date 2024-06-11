@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "designationName": "Admin"
+  },
+  {
+    "id": 2,
+    "designationName": "Program Partner"
+  },
+  {
+    "id": 3,
+    "designationName": "Implementation Partner"
+  },
+  {
+    "id": 4,
+    "designationName": "Teacher"
+  }
+]

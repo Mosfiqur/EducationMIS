@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicefEducationMIS.Core", "UnicefEducationMIS.Core\UnicefEducationMIS.Core.csproj", "{43E0D825-1C07-45E5-B1F0-E6C4B7DA04E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicefEducationMIS.Dependency", "UnicefEducationMIS.Dependency\UnicefEducationMIS.Dependency.csproj", "{646296B2-944E-4A37-86C6-8E478497D16A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicefEducationMIS.Web", "UnicefEducationMIS.Web\UnicefEducationMIS.Web.csproj", "{26B13E51-34E0-41C4-8313-3E45405F2D95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicefEducationMIS.Data", "UnicefEducationMIS.Data\UnicefEducationMIS.Data.csproj", "{790F849F-D974-4080-8127-F1AD7CDC7853}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnicefEducationMIS.Service", "UnicefEducationMIS.Service\UnicefEducationMIS.Service.csproj", "{1270DFC5-5F5B-45E0-BFE0-9692FBA44D86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB5FA713-8CF9-4E16-92C9-3C8FDDA7EC33}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43E0D825-1C07-45E5-B1F0-E6C4B7DA04E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E0D825-1C07-45E5-B1F0-E6C4B7DA04E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E0D825-1C07-45E5-B1F0-E6C4B7DA04E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E0D825-1C07-45E5-B1F0-E6C4B7DA04E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{646296B2-944E-4A37-86C6-8E478497D16A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646296B2-944E-4A37-86C6-8E478497D16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646296B2-944E-4A37-86C6-8E478497D16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646296B2-944E-4A37-86C6-8E478497D16A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26B13E51-34E0-41C4-8313-3E45405F2D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B13E51-34E0-41C4-8313-3E45405F2D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B13E51-34E0-41C4-8313-3E45405F2D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B13E51-34E0-41C4-8313-3E45405F2D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790F849F-D974-4080-8127-F1AD7CDC7853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790F849F-D974-4080-8127-F1AD7CDC7853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790F849F-D974-4080-8127-F1AD7CDC7853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790F849F-D974-4080-8127-F1AD7CDC7853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1270DFC5-5F5B-45E0-BFE0-9692FBA44D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1270DFC5-5F5B-45E0-BFE0-9692FBA44D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1270DFC5-5F5B-45E0-BFE0-9692FBA44D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1270DFC5-5F5B-45E0-BFE0-9692FBA44D86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45176B1C-2475-4571-8DF7-F2DBF1370909}
+	EndGlobalSection
+EndGlobal

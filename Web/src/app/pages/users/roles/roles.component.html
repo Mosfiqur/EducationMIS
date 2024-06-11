@@ -1,0 +1,147 @@
+<div class="p-4">
+  <div class="row">
+      <div class="col-12 site-maincontent-ctl">
+          <div>
+
+              <h1 class="pb-3 mb-0">
+               User Roles
+              </h1>
+
+              <div>
+                  <div class="my-4 pb-1">
+                      <a class="site-btn-primary py-2 px-3"  [routerLink]="['/unicef/users/roles-new']" ><span>Add New Roles</span></a>
+                  </div>
+
+              </div>
+
+
+              <div class="full-table-ctl"> 
+                <!-- table control start -->
+              <div class="py-3">
+                <div class="table-control-head" id=#table-control-head-default> 
+                  <div class="d-flex flex-wrap py-2">
+                    <div class="flex-grow-1 mr-3">  
+                      <p class="gry-text  mr-2 py-1 my-auto">All Roles</p>                 
+                    </div>
+                    <div>
+                      
+                    </div>
+                  </div>
+
+                  <!-- table option start -->
+
+                  <div [ngClass]="{'show-context-menu': roleSelected}" class="table-cell-options py-2 px-2" id=#table-cell-option-show-hide>
+                   <div class="d-flex flex-wrap">
+                     <p class="my-auto flex-grow-1 ml-2"><span class="mr-2">{{numberOfRolesSelected}}</span><span>Role(s) selected</span></p>
+                     <div class="d-flex" *ngIf="!disableOnMultiSelection" >
+                       <button 
+                       
+                       type="button" 
+                       class="site-btn-outlined-white-borderd py-2 px-3 mr-2" *ngIf="selectedRole?.id"
+                       [disabled]="disableOnMultiSelection"
+                       [routerLink]="['/unicef/users/roles', selectedRole?.id, 'edit']"
+                       >
+                         <span>Change Permission</span>      
+                       </button>
+       
+                    
+                     </div>
+                   </div>
+                  </div>
+                    <!-- table option end -->
+                </div>
+               
+
+
+              </div>
+                   <!-- table control end -->
+
+                    <!-- table start -->
+          <div class>
+            <page-size-selector 
+            (onPageSizeChanged)="onPageSizeChanged($event)"
+            [totalItems]="pagedResponse?.total"
+            ></page-size-selector>
+            <div>
+
+              <div class="site-table table-responsive">
+                <table class="table table-hover">
+                
+                  <thead>
+                    <tr>
+                      <th scope="row">
+                        <div class="form-check">
+                          <input type="checkbox" 
+                          [ngModel]="isAllSelected"
+                          (ngModelChange)="selectAll($event)"
+                          class="form-check-input"  
+                          name="materialExampleRadios" id=#chkoption>                                                   
+                        </div>
+                      </th>
+                      <th scope="col">Role Name</th>
+                      <th scope="col">Level</th>                                                             
+                      </tr>
+                  </thead>
+                  <tbody>   
+                    <tr class="table-info-ctl" style="display:none;" >
+                      <td colspan="5">
+                        <div class="py-2 px-3">
+                          <div class="text-center py-5">
+                            <p  class="xl-text mb-0">Create new Roles</p>
+                            <p class="lg-text">(your roles will display here)</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>  
+                    
+                    <tr *ngFor="let role of roles | paginate : pageConfig">
+                      <th scope="row ">
+                        <div class="form-check">
+                          <input type="checkbox"
+                          [(ngModel)]="role.isSelected" 
+                          (ngModelChange)="toggleSelection(role)"
+
+                          class="form-check-input"  name="materialExampleRadios"  id=#chkoption>                                                   
+                        </div>
+                      </th>
+                      <td> {{role.roleName}}</td>
+                      <td>{{role.levelName}}</td>                                           
+                     </tr>              
+                  </tbody>
+                </table>
+              </div>
+
+              <pagination-controls (pageChange)="getPage($event)" id="role_list" class="d-flex justify-content-end pt-3"></pagination-controls>
+              <!-- <div class="border-top">
+                <div class="pt-3"> 
+                  <nav aria-label="Page navigation example ">
+                    <ul class="pagination mb-0 justify-content-end">
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" >1</a></li>
+                      <li class="page-item"><a class="page-link" >2</a></li>
+                      <li class="page-item"><a class="page-link" >3</a></li>
+                      <li class="page-item">
+                        <a class="page-link"  aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+         
+              </div> -->
+
+            </div>
+          </div>
+          <!-- table end -->
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>

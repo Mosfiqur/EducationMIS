@@ -1,0 +1,110 @@
+<div class="modal-content" *ngIf="listEditorForm">
+
+
+  
+  <form class="site-form" [formGroup]="listEditorForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h5 class="modal-title flex-grow-1" id="exampleModalLabel">List Editor</h5>
+      <button type="button" *ngIf="!isEditing" (click)="startEditing()" class="btn btn-outline-secondary edit-btn">
+        <span>
+            <i class="fa fa-pencil-alt"></i>
+          </span>
+      </button> 
+    </div>
+    <div class="modal-body">
+     
+        <div class="form-group">
+          <div class="row">
+            <div class="col-12">
+              <label for="exampleFormControlInput1">Name <span class="red-text font-weight-bold">* </span>:</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Enter a name i.e List of tomattoes" 
+                id="name"
+                formControlName="name"
+                name="name"
+                [readonly]="!isEditing"
+                >
+
+                <div class="invalid-feedback d-block" >
+                  {{validationErrors?.name}}
+                </div>
+                <!-- <div class="invalid-feedback d-block" 
+                *ngIf="listEditorForm.controls.name.errors && listEditorForm.controls.name.touched">
+                <span *ngIf="listEditorForm.controls.name.errors.required">Title is required</span>
+              </div> -->
+    
+            </div>
+            
+          </div>
+        </div>
+        <div formArrayName="listItems">
+            <label for="inputEmail4">List Items <span class="red-text font-weight-bold">* </span>:</label>
+            <div class="form-group"
+            *ngFor="let item of listItems.controls; let i = index;"
+            [formGroupName]="i"
+        >
+            
+            <div class="d-flex flex-wrap">
+                <div class="flex-grow-1 mr-3 form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Item label" 
+                    id="name"
+                    formControlName="title"
+                    name="title"
+                    [readonly]="!isEditing"
+                    >
+
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors['listItems'+i+'title']}}
+                    </div>
+                </div>
+                <div class="flex-shrink-0 mr-3 form-group">
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Item value" 
+                    id="name"
+                    formControlName="value"
+                    name="title"
+                    [readonly]="!isEditing"
+                    >
+                    <div class="invalid-feedback d-block" >
+                      {{validationErrors['listItems'+i+'value']}}
+                    </div>
+                </div>
+                <div class="flex-shrink-0 form-group" *ngIf="isEditing">
+                    <button type="button" (click)="removeItemAt(i)" class="btn btn-outline-secondary">
+                      <i class="fa fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+          </div> 
+        </div>
+ 
+          <div class="form-group" *ngIf="isEditing">
+            <button type="button" 
+            (click)="addListItem()" 
+            [disabled]="!listEditorForm.get('listItems').valid"
+            class="btn btn-outline-secondary">+ Add</button>
+          </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" (click)="onCancel()" class="btn site-btn-cutom-link" ><span>Cancel </span></button>
+      <button 
+        type="submit" 
+        *ngIf="isEditing" 
+        [disabled]="!listEditorForm.valid"
+        class="btn site-btn-secondary-2">
+        <span>Save </span></button>
+      <button type="button" *ngIf="!isEditing" (click)="doneEditing()" class="btn site-btn-secondary-2"><span>Done </span></button>      
+    </div>
+
+  </form>
+  </div>
+
+ 

@@ -1,0 +1,402 @@
+<app-back-button [pageTitle]="'Create New Beneficiary'"></app-back-button>
+
+<div class="pl-4">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="beneficiaryForm" (ngSubmit)="onSubmit()">
+        <!-- {{beneficiaryForm.value|json}} -->
+        <div class="mt-4">
+          <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-12 border-right">
+
+              <div class="">
+                <!-- <div class="pb-4">
+                  <a  data-toggle="modal" data-target=".facilitySelect"
+                    class="site-btn-primary py-2 px-3"><span>
+                      Select Facility </span></a>
+                </div> -->
+                <div class="row">
+                  <div class="col pr-2">
+                    <div class="form-content-3-scroll pr-2">
+                      <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Facility Name : {{facilityName}}</label>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Facility Code : {{facilityCode}}</label>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4"> UNHCR Id<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <input type="text" class="form-control" formControlName="unhcrId" name="unhcrId"
+                            placeholder="This is the unique ID per student">
+                        </div>
+
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Name of the student<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <input type="text" name="name" formControlName="name" class="form-control"
+                            placeholder="Enter Student Name">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Father's Name:<span class="red-text font-weight-bold ml-2">*
+                            </span></label>
+                          <input type="text" name="fatherName" formControlName="fatherName" class="form-control"
+                            placeholder="Enter Fathers's Name">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Mother's Name:<span class="red-text font-weight-bold ml-2">*
+                            </span></label>
+                          <input type="text" name="motherName" formControlName="motherName" class="form-control"
+                            placeholder="Enter Mother's Name">
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">FCN Id:<span class="red-text font-weight-bold ml-2">*</span></label>
+                          <input type="text" name="fcnId" formControlName="fcnId" class="form-control"
+                            placeholder="Enter FCN Id">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Camp <span class="red-text font-weight-bold ml-2">*
+                            </span> : </label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campselect" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                              <div class="col-10 d-inline-block p-0">{{selectedCampName}}</div>
+                            </button>
+                          </div>
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Block:<span class="red-text font-weight-bold ml-2">*
+                            </span></label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campblockselect" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                              <div class="col-10 d-inline-block p-0">{{selectedBlockName}}</div>
+                            </button>
+                          </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Beneficiary Sub Block:<span class="red-text font-weight-bold ml-2">*
+                            </span></label>
+                          <div class="dropdown">
+                            <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                              data-target=".campsubblockselect" data-toggle="modal" data-backdrop="static" data-keyboard="false">
+                              <div class="col-10 d-inline-block p-0">{{selectedSubBlockName}}</div>
+                            </button>
+
+                          </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Date of birth:<span class="red-text font-weight-bold ml-2">* </span>
+                          </label>
+                          <input name="dateOfBirth" type="date" formControlName="dateOfBirth" class="form-control">
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Gender<span class="red-text font-weight-bold ml-2">* :</span>
+                          </label>
+                          <div class="dropdown">
+
+                            <select class="form-content-2-scroll pr-2 custom-select" formControlName="sex">
+                              <option value="">Please Select Gender</option>
+                              <option class="dropdown-item" *ngFor="let gender of genderList" value="{{gender.id}}">
+                                {{gender.text}}</option>
+                            </select>
+
+                            <!-- <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" *ngFor="let gen of gender"
+                                (click)="genderSelect(gen)">{{gen.name}}</a>
+                            </div> -->
+                          </div>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Disabled :<span class="red-text font-weight-bold ml-2">*
+                            </span></label>
+                          <div class="dropdown">
+                            <select class="custom-select mr-sm-2" formControlName="disabled" required>
+                              <option value="">Please Select an Option</option>
+                              <option value = true >Yes</option>
+                              <option value = false >No</option>
+                            </select>
+                            <!-- <button class="btn btn-block site-btn-outlined dropdown-toggle text-left" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <div class="col-10 d-inline-block p-0">{{this.beneficiaryCreateViewModel.disabled?"Yes":"No"}}</div>
+                            </button> -->
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+
+                              <!-- <a class="dropdown-item" (click)="setDisability(false)">No</a>
+                              <a class="dropdown-item" (click)="setDisability(true)">Yes</a> -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Level of the study<span class="red-text font-weight-bold ml-2">*
+                            </span>:</label>
+                          <div class="dropdown">
+
+                            <select class="form-content-2-scroll pr-2 custom-select" formControlName="levelOfStudy">
+                              <option value="">Select level Of Study</option>
+                              <option class="dropdown-item" *ngFor="let study of levelOfStudyList"
+                                value="{{study.id}}">{{study.text}}</option>
+                            </select>
+
+                            <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                              <!-- <a class="dropdown-item" *ngFor="let gen of levelOfStudy" (click)="levelOfStudySelect(gen)">{{gen.name}}</a> -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Enrollment Date of Current Level<span
+                              class="red-text font-weight-bold ml-2">* </span> :</label>
+                          <input name="enrollmentDate" type="date" formControlName="enrollmentDate"
+                            class="form-control">
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                          <label for="inputEmail4">Remarks:</label>
+                          <textarea class="form-control" name="remarks" formControlName="remarks"
+                            id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4"> Programming Partner : {{programmingPartnerName}}</label>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4"> Implementation Partner : {{implementationPartnerName}}</label>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4"> Data Holder Name: {{user.fullName}}</label>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Data Holder Phone: {{user?.phoneNumber}}</label>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="col-xl-3 col-sm-12 col-12">
+              <button style="cursor: pointer;" class="site-btn-primary py-2 px-3 mb-3 btn-block text-center"
+                type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Select camp modal -->
+  <div class="modal fade campselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" (click)="closeCampModalClicked()" id="exampleModalLabel">Select Camp</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Camp Name</th>
+                      <th colspan="2" scope="col">Camp SSID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer" (click)="campRadioOnChange(cam)" 
+                    *ngFor="let cam of listCamps">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="instanceRadio"
+                            (change)="campRadioOnChange(cam)"
+                            [checked]="(cam.id == selectedCampId && !changeCampId) || (changeCampId && cam.id === onChangeSelectedCampId)" 
+                           />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{cam.name}}</div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{cam.ssid}}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeCampModalClicked()" #campModalClose class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="onClickCamp()" #campModalClose class="btn site-btn-primary"
+            data-dismiss="modal"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end select camp  -->
+
+  <!-- Select camp block modal -->
+  <div class="modal fade campblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Block</h5>
+          <button type="button" (click)="closeBlockModalClicked()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Block Name</th>
+                      <th colspan="2" scope="col">Block Id</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer" (click)="blockRadioOnChange(bl)" 
+                    *ngFor="let bl of listBlocks">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="instanceRadio"
+                            (change)="blockRadioOnChange(bl)"
+                            [checked]="(bl.id == selectedBlockId && !changeBlockId) || (changeBlockId && bl.id === onChangeSelectedBlockId)" 
+                             />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{bl.name}}</div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{bl.code}}</div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class=" border-top pt-3">
+              <!-- <pagination-controls id='block_pagination' (pageChange)="pageChangedBlock(p=$event)">
+              </pagination-controls> -->
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeBlockModalClicked()" #blockModalClose class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="onClickBlock()" #campModalClose class="btn site-btn-primary"
+            data-dismiss="modal"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp block camp  -->
+
+  <!-- Select camp Sub-block modal -->
+  <div class="modal fade campsubblockselect" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Camp Sub Block</h5>
+          <button type="button" (click)="closeSubBlockModalClicked()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="p-0">
+            <div class="">
+              <div class="site-table">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="btn-tableCellWidth" scope="col"></th>
+                      <th colspan="2" scope="col">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="cursor-pointer" (click)="subBlockRadioOnChange(sb)"
+                    *ngFor="let sb of listSubBlocks">
+                      <td class="btn-tableCell" scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="instanceRadio"
+                            (change)="subBlockRadioOnChange(sb)"
+                            [checked]="(sb.id == selectedSubBlockId && !changeSubBlockId) || (changeSubBlockId && sb.id === onChangeSelectedSubBlockId)"
+                          />
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div>{{sb.name}}</div>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- <div class=" border-top pt-3">
+              <pagination-controls id='subBlock_pagination' (pageChange)="pageChangedSubBlock(p=$event)">
+              </pagination-controls>
+            </div> -->
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <a type="button" (click)="closeSubBlockModalClicked()" #subBlockModalClose class="btn site-btn-cutom-link" data-dismiss="modal"><span>Cancel</span></a>
+          <a type="button" (click)="onClickSubBlock()" #campModalClose class="btn site-btn-primary"
+            data-dismiss="modal"><span>Select</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- modal end camp Sub-block camp  -->
+</div>

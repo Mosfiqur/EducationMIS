@@ -1,0 +1,464 @@
+﻿[
+  {
+    "id": 1,
+    "code": "CXB-210_B054",
+    "name": "C08E_A",
+    "campId": 14
+  },
+  {
+    "id": 2,
+    "code": "CXB-210_B055",
+    "name": "C08E_B",
+    "campId": 14
+  },
+  {
+    "id": 3,
+    "code": "CXB-210_B056",
+    "name": "C08E_C",
+    "campId": 14
+  },
+  {
+    "id": 4,
+    "code": "CXB-210_B057",
+    "name": "C08E_D",
+    "campId": 14
+  },
+  {
+    "id": 5,
+    "code": "CXB-210_B058",
+    "name": "C08E_E",
+    "campId": 14
+  },
+  {
+    "id": 6,
+    "code": "CXB-210_B059",
+    "name": "C08E_F",
+    "campId": 14
+  },
+  {
+    "id": 7,
+    "code": "CXB-211_B060",
+    "name": "C08W_A",
+    "campId": 13
+  },
+  {
+    "id": 8,
+    "code": "CXB-211_B061",
+    "name": "C08W_B",
+    "campId": 13
+  },
+  {
+    "id": 9,
+    "code": "CXB-211_B062",
+    "name": "C08W_C",
+    "campId": 13
+  },
+  {
+    "id": 10,
+    "code": "CXB-211_B063",
+    "name": "C08W_D",
+    "campId": 13
+  },
+  {
+    "id": 11,
+    "code": "CXB-211_B064",
+    "name": "C08W_E",
+    "campId": 13
+  },
+  {
+    "id": 12,
+    "code": "CXB-211_B065",
+    "name": "C08W_F",
+    "campId": 13
+  },
+  {
+    "id": 13,
+    "code": "CXB-213_B066",
+    "name": "C09_A",
+    "campId": 12
+  },
+  {
+    "id": 14,
+    "code": "CXB-213_B067",
+    "name": "C09_B",
+    "campId": 12
+  },
+  {
+    "id": 15,
+    "code": "CXB-213_B068",
+    "name": "C09_C",
+    "campId": 12
+  },
+  {
+    "id": 16,
+    "code": "CXB-213_B069",
+    "name": "C09_D",
+    "campId": 12
+  },
+  {
+    "id": 17,
+    "code": "CXB-213_B070",
+    "name": "C09_E",
+    "campId": 12
+  },
+  {
+    "id": 18,
+    "code": "CXB-213_B071",
+    "name": "C09_F",
+    "campId": 12
+  },
+  {
+    "id": 19,
+    "code": "CXB-213_B072",
+    "name": "C09_G",
+    "campId": 12
+  },
+  {
+    "id": 20,
+    "code": "CXB-214_B073",
+    "name": "C10_A",
+    "campId": 11
+  },
+  {
+    "id": 21,
+    "code": "CXB-214_B074",
+    "name": "C10_B",
+    "campId": 11
+  },
+  {
+    "id": 22,
+    "code": "CXB-214_B075",
+    "name": "C10_C",
+    "campId": 11
+  },
+  {
+    "id": 23,
+    "code": "CXB-214_B076",
+    "name": "C10_D",
+    "campId": 11
+  },
+  {
+    "id": 24,
+    "code": "CXB-214_B077",
+    "name": "C10_E",
+    "campId": 11
+  },
+  {
+    "id": 25,
+    "code": "CXB-214_B078",
+    "name": "C10_F",
+    "campId": 15
+  },
+  {
+    "id": 26,
+    "code": "CXB-217_B079",
+    "name": "C11_A",
+    "campId": 8
+  },
+  {
+    "id": 27,
+    "code": "CXB-217_B080",
+    "name": "C11_B",
+    "campId": 8
+  },
+  {
+    "id": 28,
+    "code": "CXB-217_B081",
+    "name": "C11_C",
+    "campId": 8
+  },
+  {
+    "id": 29,
+    "code": "CXB-217_B082",
+    "name": "C11_D",
+    "campId": 8
+  },
+  {
+    "id": 30,
+    "code": "CXB-217_B083",
+    "name": "C11_E",
+    "campId": 8
+  },
+  {
+    "id": 31,
+    "code": "CXB-217_B084",
+    "name": "C11_F",
+    "campId": 8
+  },
+  {
+    "id": 32,
+    "code": "CXB-218_B085",
+    "name": "C12_A",
+    "campId": 7
+  },
+  {
+    "id": 33,
+    "code": "CXB-218_B086",
+    "name": "C12_B",
+    "campId": 7
+  },
+  {
+    "id": 34,
+    "code": "CXB-218_B087",
+    "name": "C12_C",
+    "campId": 7
+  },
+  {
+    "id": 35,
+    "code": "CXB-218_B088",
+    "name": "C12_D",
+    "campId": 7
+  },
+  {
+    "id": 36,
+    "code": "CXB-220_B089",
+    "name": "C13_A",
+    "campId": 5
+  },
+  {
+    "id": 37,
+    "code": "CXB-220_B090",
+    "name": "C13_B",
+    "campId": 5
+  },
+  {
+    "id": 38,
+    "code": "CXB-220_B091",
+    "name": "C13_C",
+    "campId": 5
+  },
+  {
+    "id": 39,
+    "code": "CXB-220_B092",
+    "name": "C13_D",
+    "campId": 5
+  },
+  {
+    "id": 40,
+    "code": "CXB-220_B093",
+    "name": "C13_E",
+    "campId": 5
+  },
+  {
+    "id": 41,
+    "code": "CXB-220_B094",
+    "name": "C13_F",
+    "campId": 5
+  },
+  {
+    "id": 42,
+    "code": "CXB-220_B095",
+    "name": "C13_G",
+    "campId": 5
+  },
+  {
+    "id": 43,
+    "code": "CXB-222_B096",
+    "name": "C14_A",
+    "campId": 4
+  },
+  {
+    "id": 44,
+    "code": "CXB-222_B097",
+    "name": "C14_B",
+    "campId": 4
+  },
+  {
+    "id": 45,
+    "code": "CXB-222_B098",
+    "name": "C14_C",
+    "campId": 4
+  },
+  {
+    "id": 46,
+    "code": "CXB-222_B099",
+    "name": "C14_D",
+    "campId": 4
+  },
+  {
+    "id": 47,
+    "code": "CXB-222_B100",
+    "name": "C14_E",
+    "campId": 4
+  },
+  {
+    "id": 48,
+    "code": "CXB-224_B109",
+    "name": "C16_A",
+    "campId": 3
+  },
+  {
+    "id": 49,
+    "code": "CXB-224_B110",
+    "name": "C16_B",
+    "campId": 3
+  },
+  {
+    "id": 50,
+    "code": "CXB-224_B111",
+    "name": "C16_C",
+    "campId": 3
+  },
+  {
+    "id": 51,
+    "code": "CXB-224_B112",
+    "name": "C16_D",
+    "campId": 3
+  },
+  {
+    "id": 52,
+    "code": "CXB-215_B116",
+    "name": "C18_A",
+    "campId": 10
+  },
+  {
+    "id": 53,
+    "code": "CXB-215_B117",
+    "name": "C18_B",
+    "campId": 10
+  },
+  {
+    "id": 54,
+    "code": "CXB-215_B118",
+    "name": "C18_C",
+    "campId": 10
+  },
+  {
+    "id": 55,
+    "code": "CXB-215_B119",
+    "name": "C18_D",
+    "campId": 10
+  },
+  {
+    "id": 56,
+    "code": "CXB-215_B120",
+    "name": "C18_E",
+    "campId": 10
+  },
+  {
+    "id": 57,
+    "code": "CXB-219_B121",
+    "name": "C19_A",
+    "campId": 6
+  },
+  {
+    "id": 58,
+    "code": "CXB-219_B122",
+    "name": "C19_B",
+    "campId": 6
+  },
+  {
+    "id": 59,
+    "code": "CXB-219_B123",
+    "name": "C19_C",
+    "campId": 6
+  },
+  {
+    "id": 60,
+    "code": "CXB-219_B124",
+    "name": "C19_D",
+    "campId": 6
+  },
+  {
+    "id": 61,
+    "code": "CXB-216_B125",
+    "name": "C20_A",
+    "campId": 9
+  },
+  {
+    "id": 62,
+    "code": "CXB-216_B126",
+    "name": "C20_B",
+    "campId": 9
+  },
+  {
+    "id": 63,
+    "code": "CXB-085_B128",
+    "name": "C20_D",
+    "campId": 15
+  },
+  {
+    "id": 64,
+    "code": "CXB-085_B129",
+    "name": "C20_E",
+    "campId": 15
+  },
+  {
+    "id": 65,
+    "code": "CXB-085_B130",
+    "name": "C20_F",
+    "campId": 15
+  },
+  {
+    "id": 66,
+    "code": "CXB-085_B131",
+    "name": "C20_G",
+    "campId": 15
+  },
+  {
+    "id": 67,
+    "code": "CXB-032_B132",
+    "name": "C21_H",
+    "campId": 18
+  },
+  {
+    "id": 68,
+    "code": "CXB-032_B133",
+    "name": "C22_A",
+    "campId": 18
+  },
+  {
+    "id": 69,
+    "code": "CXB-233_B135",
+    "name": "C22_B",
+    "campId": 2
+  },
+  {
+    "id": 70,
+    "code": "CXB-233_B136",
+    "name": "C22_C",
+    "campId": 2
+  },
+  {
+    "id": 71,
+    "code": "CXB-233_B137",
+    "name": "C22_D",
+    "campId": 2
+  },
+  {
+    "id": 72,
+    "code": "CXB-233_B138",
+    "name": "C22_E",
+    "campId": 2
+  },
+  {
+    "id": 73,
+    "code": "CXB-233_B139",
+    "name": "C24_A",
+    "campId": 2
+  },
+  {
+    "id": 74,
+    "code": "CXB-233_B140",
+    "name": "C24_B",
+    "campId": 2
+  },
+  {
+    "id": 75,
+    "code": "CXB-233_B141",
+    "name": "C24_C",
+    "campId": 2
+  },
+  {
+    "id": 76,
+    "code": "CXB-017_B142",
+    "name": "C24_A",
+    "campId": 17
+  },
+  {
+    "id": 77,
+    "code": "CXB-017_B143",
+    "name": "C23_A",
+    "campId": 17
+  }
+]

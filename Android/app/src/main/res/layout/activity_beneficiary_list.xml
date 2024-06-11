@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.unicef.mis.enumtype.OperationMode" />
+
+        <variable
+            name="viewModel"
+            type="com.unicef.mis.viewmodel.BeneficiaryViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:shimmer="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="1sp"
+                    android:onClick="goBack"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    app:tint="@color/green" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/app_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/back"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/upload_all_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8sp"
+                    android:text="@string/upload"
+                    android:background="@drawable/not_collected_rectangle"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:onClick="@{()->viewModel.uploadBeneficiaries()}"
+                    android:visibility="@{viewModel.operationMode == OperationMode.Upload.getIntValue() ? View.VISIBLE:View.GONE}" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/facility_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="12sp"
+            android:background="@color/background"
+            app:cardCornerRadius="5sp"
+            app:cardElevation="5sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle">
+
+                <RelativeLayout
+                    android:id="@+id/layer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer2_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/facility_tv"
+                        android:textColor="@color/green"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_facility_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer2_header_tv"
+                        android:text="@{viewModel.facility.facilityName}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logout_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layer2"
+                    android:layout_margin="12sp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/layer3_header_tv"
+                        android:layout_width="134sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/facility_id_title"
+                        android:textColor="@color/green"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/id_facility_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8sp"
+                        android:layout_toRightOf="@id/layer3_header_tv"
+                        android:text="@{viewModel.facility.facilityCode}"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/extended_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/logout_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="12sp"
+                    android:contentDescription="@string/create_beneficiary"
+                    android:onClick="@{()-> viewModel.addBeneficiary()}"
+                    android:text="@string/create_beneficiary"
+                    android:textColor="@color/white"
+                    android:visibility="@{viewModel.operationMode == OperationMode.Upload.getIntValue() ? View.GONE : View.VISIBLE}"
+                    app:backgroundTint="@color/green"
+                    app:icon="@drawable/ic_baseline_add_24"
+                    app:iconTint="@color/white" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/svSearchBeneficiaries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/facility_info"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:background="@drawable/rectangle"
+            shimmer:iconifiedByDefault="false"
+            shimmer:queryHint="Search Facilities" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRecordsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/svSearchBeneficiaries"
+            android:layout_marginLeft="12sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginBottom="2sp"
+            android:text="@{viewModel.generalMsg}"
+            android:textSize="16sp"
+            tools:text="Total count message goes here" />
+
+        <RelativeLayout
+            android:id="@+id/layer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRecordsCount"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_header_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/name"
+                android:textSize="21sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_header_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/id"
+                android:textSize="21sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18sp"
+                android:text="@string/status"
+                android:textSize="21sp" />
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_below="@+id/layer1"
+            android:layout_marginLeft="12sp"
+            android:layout_marginTop="8sp"
+            android:layout_marginRight="12sp"
+            android:layout_marginBottom="4sp"
+            android:background="@color/green" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/benificiary_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line1"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:layout_below="@id/benificiary_list_recycler" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/no_content_iv"
+            android:layout_width="256sp"
+            android:layout_height="256sp"
+            android:layout_below="@id/line1"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12sp"
+            android:layout_marginRight="12sp"
+            android:orientation="vertical"
+            android:src="@drawable/no_content_found"
+            android:visibility="@{viewModel.totalCount > 0 ? View.GONE: View.VISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_content_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8sp"
+            android:gravity="center"
+            android:text="@string/no_content_found"
+            android:textSize="16sp"
+            android:visibility="@{viewModel.totalCount > 0 ? View.GONE: View.VISIBLE}" />
+
+    </RelativeLayout>
+</layout>

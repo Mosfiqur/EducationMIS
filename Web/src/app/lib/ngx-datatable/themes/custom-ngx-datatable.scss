@@ -1,0 +1,99 @@
+.show-context-menu {
+    display: block !important;   
+}
+.datatable-body-cell-label{
+    min-width:30px;
+    overflow:hidden;
+    
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell{
+    padding-bottom:0;
+   
+}
+.ngx-datatable.material .datatable-header .resize-handle{
+   
+    border-right:1px solid var(--Gry300) !important;
+}
+.ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap{
+    min-width:30px;
+    overflow-x:hidden !important;
+    overflow-y:visible !important;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    
+}
+.ngx-datatable.material{
+    box-shadow:none !important;
+}
+.ngx-datatable.material .datatable-header{
+    border-top:1px solid #dee2e6;
+    border-bottom:1px solid #dee2e6;
+}
+.ngx-datatable .datatable-body .datatable-body-row{
+    border-top:1px solid #dee2e6;
+}
+.header-btn{
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow-x: hidden;
+    
+}
+.datatable-header-cell,
+.datatable-header {
+overflow:visible !important;
+}
+.datatable-row-center{
+z-index:11;
+}
+
+.datatable-row-left{
+z-index:12 !important;
+}
+
+datatable-header, datatable-body, datatable-footer{
+width: auto !important;
+}
+
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a{
+    color:white;
+    background-color:var(--Blue600) !important;
+}
+
+.datatable-checkbox input[type='checkbox']:after{
+    background:transparent !important;
+}
+.datatable-checkbox input[type='checkbox']:before{
+    transition: none !important;
+    width:0.7rem !important;
+}
+.datatable-checkbox input[type='checkbox']:checked:before {
+   
+    height: 0.4rem !important;
+    margin-left: 0.019rem;
+    margin-top: 0.06rem;
+    border-color:var(--white) !important;
+    
+}
+
+.empty-row{
+    padding-top:2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:1.4rem;
+    color:var(--Gry400);
+}
+
+
+virtual-scroller {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: 42vh;
+    height: 42vh;
+    width: 100%;
+  }
+  .datatable-body{
+    overflow-y: hidden !important;
+  }
